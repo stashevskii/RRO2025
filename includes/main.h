@@ -3,7 +3,7 @@ int blackElement1, blackElement2;
 int scannedColors[6], scannedHeights[6];
 int elements[4];
 int manipLeft = -1, manipRight = -1;
-int cellLeft = 0, cellRight = 0;
+int cellLeft = -1, cellRight = -1;
 int currCross = 1;
 int needCross = 0;
 const int finishCross = 4;
@@ -23,9 +23,10 @@ void toCubes() {
     turnLine180(80);
     stopBC(150);
     lineCM(70, 10, 35, 30);
-    turnOneMotor(leftMotor, 15, -1, 45, 45);
-    driveCM(85, -15.5, 30, 30);
-    driveCM(40, -46.5, 30, 30);
+    turnOneMotor(leftMotor, 50, -6, 30, 70);
+    turnOneMotor(rightMotor, 50, -6, 30, 70);
+    driveCM(75, -15.5, 30, 30);
+    driveCM(40, -42.5, 30, 30);
     stopBC(1950);
     driveCM(80, 20, 30, 30);
     arc(100, -27.5, 178, 45, 45);
@@ -88,7 +89,6 @@ void grab4() {
         if (scannedColors[i] == 6) {
             needCross = i; 
             scannedColors[i] = -1;
-            manipRight = scannedHeights[i];
             break;
         }
     }
@@ -98,7 +98,8 @@ void grab4() {
     driveCM(65, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
-    takeRightManip();
+    if (cellRight != scannedColors[needCross]) {takeRightManip(); manipRight = scannedHeights[needCross];}
+    else {takeLeftManip(); manipLeft = scannedHeights[needCross];}
 
     currCross = needCross; 
     for (int i = 0; i < 6; i++) {
@@ -114,7 +115,8 @@ void grab4() {
     driveCM(65, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
-    takeLeftManip();
+    if (cellLeft != scannedColors[needCross] && cellLeft != -1) {takeLeftManip(); manipLeft = scannedHeights[needCross];}
+    else {takeRightManip(); manipRight = scannedHeights[needCross];}
 
     currCross = needCross;
     navigate(currCross, finishCross, 3, false, gottenDir);
@@ -122,7 +124,12 @@ void grab4() {
     else {turnLeft(70, 179, 35);}
     align();
 
-    XCross(100, 1, 45);
+    lineCM(75, 15, 35, 35);
+    openFullLeft();
+    openFullRight();
+    lineCM(35, 5, 35, 35);
+    floorGrabLeft();
+    floorGrabRight();
     XCross(100, 1, 100);
     XCross(75, 1, 100);
 }

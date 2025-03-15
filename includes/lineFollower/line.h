@@ -52,11 +52,11 @@ float line(int power) {
 	return u;
 }*/
 
-float lineS2Inner(int power) {
+float lineS2Inner(int power, int gray = 20) {
 	float r1, g1, b1;
 	sensorRGB(leftS, r1, g1, b1);
 
-	float eInner = 20 - (r1 + g1 + b1) / 3;
+	float eInner = gray - (r1 + g1 + b1) / 3;
 	float kpInner = calcCoefficient(power, lineKpOne, cSOne);
 	float kdInner = calcCoefficient(power, lineKdOne, cSOne);
 	float kiInner = calcCoefficient(power, lineKiOne, cSOne);
@@ -202,6 +202,38 @@ void lineCM(int power, float cm, int startPower = startDefault, int endPower = s
 	localDistC = nMotorEncoder[rightMotor];
 }
 
+void lineCM1sensor(int power, float cm, int startPower = startDefault, int endPower = stopDefault) {
+	eold = 0;
+	isum = 0;
+	localDistB = nMotorEncoder[leftMotor];
+	localDistC = nMotorEncoder[rightMotor];
+
+	if(startPower != 0) {
+		globalDistB = nMotorEncoder[leftMotor];
+		globalDistC = nMotorEncoder[rightMotor];
+	}
+
+	float enc = fromCmToDeg(cm);
+
+	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
+		float speedB = SmoothB(startPower, power, endPower, enc);
+		float speedC = SmoothC(startPower, power, endPower, enc);
+		float u = lineS2Inner(speedC, -5);
+
+		float powerB =  -speedB - u;
+		float powerC =  speedC - u;
+		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
+		powerB /= ratio;
+		powerC /= ratio;
+
+		motor[motorB] = powerB;
+		motor[motorC] = powerC;
+	}
+
+	localDistB = nMotorEncoder[leftMotor];
+	localDistC = nMotorEncoder[rightMotor];
+}
+
 void XCross1Sensor(int power, int n, int startPower = startDefault, bool toWheels = true, int dist = 8, lineColor stopColorLeft = blackLine, lineColor stopColorRight = blackLine) {
 	eold = 0;
 	isum = 0;
@@ -230,7 +262,6 @@ void XCross1Sensor(int power, int n, int startPower = startDefault, bool toWheel
 		motor[rightMotor] = powerC;
 
 		if(checkColor(leftS, stopColorLeft) && checkColor(rightS, stopColorRight)) {
-			//peak();
 			if (!flag) {
 				cur++;
 				flag = true;
