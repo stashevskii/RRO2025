@@ -33,5 +33,5 @@ task main() {
 	startTask(initManipRight);
 	startTask(PIDManipLeft);
 	startTask(initManipLeft);
-	runner();
+	liftContRight(0, 1);
 }

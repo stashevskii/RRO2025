@@ -124,7 +124,7 @@ void grab4() {
     else {turnLeft(70, 179, 35);}
     align();
 
-    lineCM(75, 15, 35, 35);
+    XCross(100, 1, 35);
     openFullLeft();
     openFullRight();
     lineCM(35, 5, 35, 35);
