@@ -16,7 +16,6 @@ task PIDManipRight() {
 		float u2 = e2 * manipKp2 + (e2 - eoldManip2) * manipKd2 + isum;
 		motor[manipMotor2] = u2 * manipKc2;
 		eoldManip2 = e2;
-		sleep(2);
 	}
 }
 

@@ -14,12 +14,23 @@ typedef struct {
 	float minV, maxV;
 } colorHSV;
 
+typedef struct {
+	tMotor motor;
+	float power;
+	float pos;
+	float e, eOld;
+	float u;
+} manipulator;
+
 lineColor blackLine;
 lineColor whiteLine;
 lineColor grayLineLeft;
 lineColor grayLineRight;
 lineColor whiteLineLeft;
 lineColor whiteLineRight;
+
+manipulator mLeft;
+manipulator mRight;
 
 colorHSV blue;
 colorHSV green;
