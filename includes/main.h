@@ -30,7 +30,7 @@ void toCubes() {
     driveCM(80, 20, 30, 30);
     arc(100, -27.5, 178, 45, 45);
     XCross(100, 1, 60);
-    XCross(80, 1, 100, true, 8);
+    XCross(80, 1, 100, true, 7);
 }
 
 void scanHeights() {

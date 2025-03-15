@@ -73,10 +73,10 @@ void liftSomeRight(bool afk = false) {
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
 		manipKc2 = 0.15;
-		manipPos2 = -170;
+		manipPos2 = -205;
 	} else {
-		manipKc2 = 0.36;
-		manipPos2 = -210;
+		manipKc2 = 0.3;
+		manipPos2 = -220;
 	}
 	if (afk) {stopBC(425);}
 }

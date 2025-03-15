@@ -55,8 +55,8 @@ void liftSomeLeft(bool afk = false) {
 
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
-		manipKc = 0.08;
-		manipPos = 245;
+		manipKc = 0.09;
+		manipPos = 205;
 	} else {
 		manipKc = 0.11;
 		manipPos = 245;
