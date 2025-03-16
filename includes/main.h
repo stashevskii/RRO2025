@@ -24,9 +24,14 @@ void toCubes() {
     turnLine180(80);
     stopBC(150);
     lineCM(70, 10, 35, 30);
+<<<<<<< HEAD
     turnOneMotor(leftMotor, 35, -7.25, 30, 30);
     turnOneMotor(rightMotor, 35, -7.25, 30, 30);
     stopBC(5);
+=======
+    turnOneMotor(leftMotor, 50, -6, 30, 70);
+    turnOneMotor(rightMotor, 50, -6, 30, 70);
+>>>>>>> 5fd2ac4 (manip stable)
     driveCM(75, -15.5, 30, 30);
     driveCM(40, -42.5, 30, 30);
     stopBC(1950);
@@ -136,9 +141,15 @@ void grab4() {
     XCross(75, 1, 100);
 }
 
+<<<<<<< HEAD
 void bringContsToShip() {
     stopBC(100);
     turnLine180(65, 160, 25);
+=======
+void sortInShip() {
+    stopBC(100);
+    turnLine180(65);
+>>>>>>> 5fd2ac4 (manip stable)
     align();
     liftContLeft(manipLeft);
     liftContRight(manipRight, true);
@@ -147,8 +158,12 @@ void bringContsToShip() {
     stopBC(100);
     turnLine180(55);
     align();
+<<<<<<< HEAD
     XCross(70, 1, 45, false);
     lineCM(70, 6.1, 35, 35);
+=======
+    XCross(70, 1, 45); 
+>>>>>>> 5fd2ac4 (manip stable)
 
     if (manipRight == 0 && manipLeft == 1) {right0left1();}
     else if (manipRight == 1 && manipLeft == 0) {right1left0();}
@@ -163,16 +178,24 @@ void bringContsToShip() {
     XCross(35, 1, 35);
     floorGrabLeft();
     floorGrabRight(true);
+<<<<<<< HEAD
     turnLine180(55, 170, 35);
+=======
+    turnLine180(55);
+>>>>>>> 5fd2ac4 (manip stable)
     align();
 
     if (manipRight == cellRight && manipLeft == cellLeft) {swapConts();}
 
     liftContLeft(cellLeft);
     liftContRight(cellRight, true);
+<<<<<<< HEAD
 
     XCross(75, 1, 35, false);
     lineCM(70, 6, 35, 35);
+=======
+    XCross(75, 1, 35, true, 7);
+>>>>>>> 5fd2ac4 (manip stable)
     stopBC(100);
 
     if (cellRight == 0 && cellLeft == 1) {right0left1();}
@@ -192,5 +215,9 @@ void runner() {
     toCubes();
     scanHeights();
     grab4();
+<<<<<<< HEAD
     bringContsToShip();
+=======
+    sortInShip();
+>>>>>>> 5fd2ac4 (manip stable)
 }

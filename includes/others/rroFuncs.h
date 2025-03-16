@@ -88,6 +88,10 @@ void takeLeftManip() {
 
 void right0left1() {
     align();
+<<<<<<< HEAD
+=======
+    driveCM(70, -0.7, 70, 70);
+>>>>>>> 5fd2ac4 (manip stable)
     turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
     turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
     toShipRun();
@@ -99,7 +103,10 @@ void right0left1() {
 }
 
 void right1left0() {
+<<<<<<< HEAD
     align();
+=======
+>>>>>>> 5fd2ac4 (manip stable)
     turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
     turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
     toShipRun();
@@ -111,7 +118,10 @@ void right1left0() {
 }
 
 void twoSituations(bool big) {
+<<<<<<< HEAD
     align();
+=======
+>>>>>>> 5fd2ac4 (manip stable)
     if (big) {shipTurn += 2;}
     turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
     if (big) {shipTurn -= 3;}

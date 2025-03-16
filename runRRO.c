@@ -20,8 +20,13 @@ tHTCS2 sensor;
 #include "includes/sensors/hitechnic/colorsCheckers.h"
 #include "includes/sensors/hitechnic/colorScan.h"
 #include "includes/lineFollower/line.h"
+<<<<<<< HEAD
 #include "includes/manipulators/manipulatorLeft.h"
 #include "includes/manipulators/manipulatorRight.h"
+=======
+#include "includes/manipulators/manipulator.h"
+#include "includes/manipulators/manipulator2.h"
+>>>>>>> 5fd2ac4 (manip stable)
 #include "includes/others/rroFuncs.h"
 #include "includes/lineFollower/navigation.h"
 #include "includes/main.h"
