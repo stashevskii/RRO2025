@@ -1,7 +1,7 @@
-bool flag = false;
 bool left = false, right = false;
 int blackElement1, blackElement2;
 int scannedColors[6], scannedHeights[6];
+int sizeToLift;
 int manipLeft = -1, manipRight = -1;
 int cellLeft = -1, cellRight = -1;
 int currCross = 1;
@@ -16,23 +16,26 @@ void scan() {
         if (bEl == blackElement1 || bEl == blackElement2) {scannedColors[bEl] = 1;}
         else {scannedColors[bEl] = 6;}
     }
+    printNumbers(scannedColors, 6, 10000);
 }
 
 void toCubes() {
-    XCross(65, 1, 60, false);
-    turnLine180(80);
-    stopBC(150);
-    lineCM(70, 10, 35, 30);
-    turnOneMotor(leftMotor, 30, -13, 30, 30);
-    turnOneMotor(rightMotor, 30, -13, 30, 30);
-    stopBC(5);
-    driveCM(75, -15.5, 30, 30);
-    driveCM(40, -42.5, 30, 30);
-    stopBC(1950);
-    driveCM(80, 20, 30, 30);
-    arc(100, -27.5, 178, 45, 45);
-    XCross(100, 1, 60);
-    XCross(80, 1, 100, true, 7);
+    XCross(65, 1, 60, true, 7.2);
+    turnLineRight(80, 70, 45);
+    align();
+    lineCM(70, 27.4, 50, 50);
+    arc(100, -24, 178, 45, 45);
+    XCross(80, 1, 35, true, 5.5);
+    driveCM(75, -6, 30, 30);
+    turnLine180(75, 160, 35);
+    align();
+    lineCM(35, 15, 30, 0);
+    driveCM(35, -38, 40, 40);
+    stopBC(3100);
+    driveCM(75, 3, 75, 75);
+    lineCM(75, 9.5, 75, 75);
+    arc(80, -37.7, 84.5, 45, 45);
+    XCross(75, 1, 55, true, 7.15);
 }
 
 void scanHeights() {
@@ -85,16 +88,28 @@ void grab4() {
             break;
         }
     }
-
     navigate(0, needCross, 0, false, _);
     takeDuoCells();
-
     currCross = needCross;
     for (int i = 0; i < 6; i++) {
         if (scannedColors[i] == 6) {
-            needCross = i; 
-            manipRight = scannedHeights[i];
             scannedColors[i] = -1;
+            needCross = i;
+            if (cellRight == scannedHeights[i]) {
+                left = true;
+                manipLeft = scannedHeights[i];
+                sizeToLift = manipLeft;
+                for (int j = 0; j < 6; j++) {
+                    if (scannedColors[j] == 6) {manipRight = scannedHeights[j]; break;}
+                }
+            } else {
+                right = true;
+                manipRight = scannedHeights[i];
+                sizeToLift = manipRight;
+                for (int j = 0; j < 6; j++) {
+                    if (scannedColors[j] == 6) {manipLeft = scannedHeights[j]; break;}
+                }
+            }
             break;
         }
     }
@@ -104,13 +119,13 @@ void grab4() {
     driveCM(65, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
-    takeRightManip();
+    if (left) {takeLeftManip();}
+    else {takeRightManip();}
 
     currCross = needCross; 
     for (int i = 0; i < 6; i++) {
         if (scannedColors[i] == 6) {
             needCross = i;
-            manipLeft = scannedHeights[i];
             break;
         }
     }
@@ -120,7 +135,10 @@ void grab4() {
     driveCM(65, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
-    takeLeftManip();
+
+    if (right) {takeLeftManip();}
+    else if (left) {takeRightManipWhenLeftIsBusy();}
+    else {takeLeftManip();}
 
     currCross = needCross;
     navigate(currCross, finishCross, 3, false, gottenDir);
@@ -142,7 +160,7 @@ void bringContsToShip() {
     stopBC(100);
     turnLine180(65, 160, 25);
     align();
-    liftContLeft(manipLeft);
+    liftContLeft(manipLeft, true);
     liftContRight(manipRight, true);
     lineCM(80, 26, 50, 50);
     driveCM(65, -15, 50, 50);
@@ -168,9 +186,7 @@ void bringContsToShip() {
     turnLine180(55, 170, 35);
     align();
 
-    if (manipRight == cellRight && manipLeft == cellLeft) {swapConts();}
-
-    liftContLeft(cellLeft);
+    liftContLeft(cellLeft, true);
     liftContRight(cellRight, true);
 
     XCross(75, 1, 35, false);
@@ -181,7 +197,7 @@ void bringContsToShip() {
     else if (cellRight == 1 && cellLeft == 0) {right1left0();}
     else if (cellRight == 1 && cellLeft == 1) {twoSituations(true);} 
     else {twoSituations(false);}
-    turnLine180(55);
+    turnLine180(55, 155, 60);
     align();
 
     XCross(85, 1, 35);

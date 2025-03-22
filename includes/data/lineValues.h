@@ -1,4 +1,4 @@
-long r1Min = 0;
+long r1Min = 1;
 long g1Min = 38;
 long b1Min = 39;
 long r1Max = 263;

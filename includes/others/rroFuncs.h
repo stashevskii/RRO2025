@@ -1,6 +1,6 @@
-float shipTurn = 70.5;
-const float copyST = 70.5;
-const float turnPower = 41;
+float shipTurn = 67.5;
+const float copyST = 67.5;
+const float turnPower = 35;
 
 void r() {
     stopBC(2.5);
@@ -41,6 +41,16 @@ void swapConts() {
     openFullLeft();
     openFullRight(true);
     driveCM(60, -10, 30, 30);
+}
+
+void takeRightManipWhenLeftIsBusy() {
+    turnOneMotor(leftMotor, 65, -33.5, 35, 35);
+    driveCM(70, -2, 70, 70);
+    openFullRight(true);
+    driveCM(65, 14.5, 30, 30);
+    floorGrabRight(true);
+    driveCM(65, -13.5, 30, 30);
+    turnOneMotor(leftMotor, 65, 33.5, 35, 35);
 }
 
 void takeDuoCells() {
@@ -137,7 +147,7 @@ void twoSituations(bool big) {
 }
 
 void leaveCubes(int *heights, int *cols, int i) {
-    int waiting = 140; //55
+    int waiting = 175; //55
     if (cols[i] == 6) {
         if (heights[i] == 1) {
             peak();
