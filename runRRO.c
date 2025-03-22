@@ -24,6 +24,7 @@ tHTCS2 sensor;
 #include "includes/manipulators/manipulatorRight.h"
 #include "includes/others/rroFuncs.h"
 #include "includes/lineFollower/navigation.h"
+#include "includes/others/screen.h"
 #include "includes/main.h"
 
 task main() {

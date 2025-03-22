@@ -2,7 +2,6 @@ bool flag = false;
 bool left = false, right = false;
 int blackElement1, blackElement2;
 int scannedColors[6], scannedHeights[6];
-int elements[4];
 int manipLeft = -1, manipRight = -1;
 int cellLeft = -1, cellRight = -1;
 int currCross = 1;
@@ -24,8 +23,8 @@ void toCubes() {
     turnLine180(80);
     stopBC(150);
     lineCM(70, 10, 35, 30);
-    turnOneMotor(leftMotor, 35, -7.25, 30, 30);
-    turnOneMotor(rightMotor, 35, -7.25, 30, 30);
+    turnOneMotor(leftMotor, 30, -13, 30, 30);
+    turnOneMotor(rightMotor, 30, -13, 30, 30);
     stopBC(5);
     driveCM(75, -15.5, 30, 30);
     driveCM(40, -42.5, 30, 30);
@@ -37,6 +36,9 @@ void toCubes() {
 }
 
 void scanHeights() {
+    reverseArray(scannedColors, 6);
+    reverseArray(scannedHeights, 6);
+
     int counter = 0;
 
     turnLineLeft(70, 50, 15);
@@ -87,7 +89,7 @@ void grab4() {
     navigate(0, needCross, 0, false, _);
     takeDuoCells();
 
-    currCross = needCross:
+    currCross = needCross;
     for (int i = 0; i < 6; i++) {
         if (scannedColors[i] == 6) {
             needCross = i; 
@@ -184,7 +186,7 @@ void bringContsToShip() {
 
     XCross(85, 1, 35);
     XCross(85, 1, 85);
-    XCross(35, 1, 85);
+    XCross(85, 1, 85);
 }
 
 void runner() {

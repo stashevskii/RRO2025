@@ -58,8 +58,8 @@ void liftContLeft(int size, bool afk = false) {
 		manipKc = 0.15;
 		manipPos = 235;
 	} else {
-		manipKc = 0.12;
-		manipPos = 200;
+		manipKc = 0.11;
+		manipPos = 230;
 	}
 	if (afk) {stopBC(400);}
 }

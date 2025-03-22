@@ -59,7 +59,7 @@ void openFullRightLowLowSpeed(bool afk = false) {
 }
 
 void closeFullRightLowSpeed(bool afk = false) {
-	manipKc2 = 0.15;
+	manipKc2 = 0.1;
 	manipPos2 = 550;
 	if (afk) {stopBC(400);}
 }
@@ -76,7 +76,7 @@ void liftContRight(int size, bool afk = false) {
 		manipPos2 = -197;
 	} else {
 		manipKc2 = 0.23;
-		manipPos2 = -197.5;
+		manipPos2 = -202.5;
 	}
 	if (afk) {stopBC(425);}
 }

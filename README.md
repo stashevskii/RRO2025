@@ -1,5 +1,5 @@
 # РРО 2025
-## _Разработчики [@stashevskii](https://github.com/purnasth) и [@Leshechkagit](https://github.com/purnasth)_
+## _Разработчики [@stashevskii](https://github.com/stashevskii) и [@Leshechkagit](https://github.com/Leshechkagit)_
 
 Код для Российской Робототехнической Олимпиады 2025 на RobotC.
 

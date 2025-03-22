@@ -1,6 +1,6 @@
-float shipTurn = 72;
-const float copyST = 72;
-const float turnPower = 50;
+float shipTurn = 70.5;
+const float copyST = 70.5;
+const float turnPower = 41;
 
 void r() {
     stopBC(2.5);
@@ -46,7 +46,7 @@ void swapConts() {
 void takeDuoCells() {
     liftSomeLeft();
     liftSomeRight();
-    turnLeft(50, 91.5, 35, 20);
+    turnLeft(55, 92.5, 35, 20);
     driveCM(55, 17, 20, 40);
     closeFullLeft();
     closeFullRight(true);
