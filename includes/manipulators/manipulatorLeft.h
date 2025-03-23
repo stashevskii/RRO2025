@@ -31,13 +31,13 @@ task initManipLeft() {
 
 void floorGrabLeft(bool afk = false) {
 	manipKc = 0.71;
-	manipPos = 405;
+	manipPos = 407;
 	if (afk) {stopBC(400);}
 }
 
 void openLeftNotFull(bool afk = false) {
 	manipKc = 0.1;
-	manipPos = 540;
+	manipPos = 565;
 	if (afk) {stopBC(400);}
 }
 
@@ -56,7 +56,7 @@ void liftSomeLeft(bool afk = false) {
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
 		manipKc = 0.08;
-		manipPos = 250;
+		manipPos = 252.5;
 	} else {
 		manipKc = 0.08;
 		manipPos = 250;
