@@ -217,17 +217,18 @@ void takeRubbish() {
     XCross(75, 1, 75, true, 6.9);
     turnLineLeft(75, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
-    XCross(65, 1, 40, true, 7.6);
+    XCross(65, 1, 40, true, 7.1);
     turnLineRight(70, 65, 30);
-    liftContLeft(0, true);
-    lineCM(35, 1.3, 35, 35);
+    liftSomeLeft(true);
+    lineCM(35, 1, 35, 35);
 	align();
-	arc(63, 10, 90, 45, 45);
+	arc(63, 9, 91, 45, 45);
 	driveCM(62, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(75, 15, 90, 45, 45);
 	driveCM(62, 43.5, 20, 25);
-	liftSomeLeft(true);
+	liftContLeft(0, true);
+    driveCM(62, -3.5, 20, 25);
 	arc(85, 20, -90, 45, 45);
     closeFullLeft();
     closeFullRight();
@@ -246,10 +247,10 @@ void takeRubbish() {
 }
 
 void runner() {
-    scan();
+    /*scan();
     toCubes();
     scanHeights();
     grab4();
-    bringContsToShip();
+    bringContsToShip();*/
     takeRubbish();
 }
