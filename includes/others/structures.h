@@ -29,12 +29,12 @@ colorHSV black;
 colorHSV white;
 
 void initColors() {
-	blackLine.minR = -11;
-	blackLine.maxR = 27;
-	blackLine.minG = -11;
-	blackLine.maxG = 27;
-	blackLine.minB = -11;
-	blackLine.maxB = 27;
+	blackLine.minR = -14;
+	blackLine.maxR = 31;
+	blackLine.minG = -14;
+	blackLine.maxG = 31;
+	blackLine.minB = -14;
+	blackLine.maxB = 31;
 
 	whiteLine.minR = 20;
 	whiteLine.maxR = 300;

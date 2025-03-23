@@ -56,7 +56,7 @@ void scanHeights() {
         scannedHeights[cont] = detectHigh();
         leaveCubes(scannedHeights, scannedColors, cont);
         if (scannedHeights[cont] == 1) {k++;}
-        driveCM(40, 5, 60, 40);
+        driveCM(60, 2, 60, 60);
     }
 
     stopBC(0);
@@ -133,13 +133,19 @@ void grab4() {
 
     if (needCross < currCross) {currCross--;}
     navigate(currCross, needCross, 3, false, gottenDir);
-    driveCM(65, 8.9, 30, 30);
-    directions(gottenDir, 3);
-    align();
-
-    if (right) {takeLeftManip();}
-    else if (left) {takeRightManipWhenLeftIsBusy();}
-    else {takeLeftManip();}
+    if (right) {
+        driveCM(65, 8.9, 30, 30);
+        directions(gottenDir, 3);
+        align();
+        takeLeftManip();
+    }
+    else if (left) {
+        driveCM(65, 8.9, 30, 30);
+        turnLine180(70, 165, 35);
+        directions(oppositeDir(gottenDir), 3);
+        align();
+        takeRightManip();
+    }
 
     currCross = needCross;
     navigate(currCross, finishCross, 3, false, gottenDir);
@@ -198,12 +204,45 @@ void bringContsToShip() {
     else if (cellRight == 1 && cellLeft == 0) {right1left0();}
     else if (cellRight == 1 && cellLeft == 1) {twoSituations(true);} 
     else {twoSituations(false);}
-    turnLine180(55, 155, 60);
+    turnLine180(55, 165, 60);
     align();
+}
 
-    XCross(85, 1, 35);
-    XCross(85, 1, 85);
-    XCross(85, 1, 85);
+void takeRubbish() {
+    lineCM(75, 5, 75, 75);
+    XCross(100, 1, 35);
+    closeFullLeft();
+    closeFullRight();
+    XCross(100, 1, 100);
+    XCross(75, 1, 75, true, 6.9);
+    turnLineLeft(75, 65, 30);
+    for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
+    XCross(65, 1, 40, true, 7.6);
+    turnLineRight(70, 65, 30);
+    liftContLeft(0, true);
+    lineCM(35, 1.3, 35, 35);
+	align();
+	arc(63, 10, 90, 45, 45);
+	driveCM(62, 51, 20, 25);
+	openLeftRubbish(true);
+	arc(75, 15, 90, 45, 45);
+	driveCM(62, 43.5, 20, 25);
+	liftSomeLeft(true);
+	arc(85, 20, -90, 45, 45);
+    closeFullLeft();
+    closeFullRight();
+    turnLineRight(75, 65, 30);
+    align();
+    lineCM(75, 2, 75, 75);
+    XCross(75, 1, 40, true, 3);
+    XCross(75, 1, 75, true, 6.5);
+    turnLineRight(75, 65, 30);
+    lineCM(100, 14, 40, 75);
+    XCross(75, 1, 75, true, 6.8);
+    turnLineLeft(75, 65, 30);
+    XCross(75, 1, 40, false);
+    driveCM(45, 18, 20, 20);
+    while (true) {closeFullRight(true);}
 }
 
 void runner() {
@@ -212,4 +251,5 @@ void runner() {
     scanHeights();
     grab4();
     bringContsToShip();
+    takeRubbish();
 }

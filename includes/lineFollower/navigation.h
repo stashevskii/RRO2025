@@ -36,6 +36,13 @@ void directionsDeg(int currDir, int finishDir) {
     stopBC(20);
 }
 
+int oppositeDir(int currDir) {
+    if (currDir == 0) {return 2;}
+    if (currDir == 1) {return 3;}
+    if (currDir == 2) {return 0;}
+    if (currDir == 3) {return 1;}
+}
+
 void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, bool lineAtStart = false) {
     if (startX != finishX) {
         int delta = finishX - startX;

@@ -14,22 +14,23 @@ bool exit = true;
 task main() {
 	int rgbValsLeft[6];
 	int rgbValsRight[6];
-	for(int i = 0; i < 3; i++) {
-		rgbValsLeft[i] = 1000;
-		rgbValsRight[i] = 1000;
+  	setMotorBrakeMode(leftMotor, motorCoast);
+  	setMotorBrakeMode(rightMotor, motorCoast);
+
+  	for(int i = 0; i < 3; i++) {
+  		rgbValsLeft[i] = 1000;
+  		rgbValsRight[i] = 1000;
 	}
 
-	for(int i = 3; i < 6; i++) {
-		rgbValsLeft[i] = 0;
-		rgbValsRight[i] = 0;
+ 	for(int i = 3; i < 6; i++) {
+ 		rgbValsLeft[i] = 0;
+ 		rgbValsRight[i] = 0;
 	}
-
 	int rgbS1[3];
 	int rgbS2[3];
-	setMotorBrakeMode(motorB, motorCoast);
-	setMotorBrakeMode(motorC, motorCoast);
 	clearTimer(T1);
-	while (time1[T1] < 5000) {
+	while(time1[T1] < 5000) {
+		displayBigTextLine(0, "%d", time1[T1]);
 		getColorRawRGB(leftS, rgbS1[0], rgbS1[1], rgbS1[2]);
 		getColorRawRGB(rightS, rgbS2[0], rgbS2[1], rgbS2[2]);
 		for(int i = 0; i < 3; i++){
@@ -37,7 +38,8 @@ task main() {
 			rgbValsLeft[3 + i] = max(rgbS1[i], rgbValsLeft[3 + i]);
 
 			rgbValsRight[i] = min(rgbS2[i], rgbValsRight[i]);
-			rgbValsRight[3 + i] = max(rgbS2[i], rgbValsRight[3 + i]);}
+			rgbValsRight[3 + i] = max(rgbS2[i], rgbValsRight[3 + i]);
+		}
 	}
 	int r1min = rgbValsleft[0];
 	int g1min = rgbValsleft[1];
