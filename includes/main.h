@@ -16,11 +16,10 @@ void scan() {
         if (bEl == blackElement1 || bEl == blackElement2) {scannedColors[bEl] = 1;}
         else {scannedColors[bEl] = 6;}
     }
-    printNumbers(scannedColors, 6, 10000);
 }
 
 void toCubes() {
-    XCross(65, 1, 60, true, 7.2);
+    XCross(65, 1, 60, true, 6.1);
     turnLineRight(80, 70, 45);
     align();
     lineCM(70, 27.4, 50, 50);
@@ -31,11 +30,13 @@ void toCubes() {
     align();
     lineCM(35, 15, 30, 0);
     driveCM(35, -38, 40, 40);
-    stopBC(3100);
-    driveCM(75, 3, 75, 75);
-    lineCM(75, 9.5, 75, 75);
-    arc(80, -37.7, 84.5, 45, 45);
-    XCross(75, 1, 55, true, 7.15);
+    stopBC(3150);
+    driveCM(75, 4, 75, 75);
+    lineCM(75, 9.5, 75, 100);
+    XCross(85, 1, 100, true, 6);
+    turnLineLeft(80, 70, 30);
+    lineCM(100, 11.5, 100, 100);
+    XCross(75, 1, 100, true, 7.1);
 }
 
 void scanHeights() {

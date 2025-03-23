@@ -44,19 +44,19 @@ void swapConts() {
 }
 
 void takeRightManipWhenLeftIsBusy() {
-    turnOneMotor(leftMotor, 65, -33.5, 35, 35);
+    turnOneMotor(leftMotor, 40, -31.5, 20, 20);
     driveCM(70, -2, 70, 70);
     openFullRight(true);
-    driveCM(65, 14.5, 30, 30);
+    driveCM(65, 15.5, 30, 30);
     floorGrabRight(true);
-    driveCM(65, -13.5, 30, 30);
-    turnOneMotor(leftMotor, 65, 33.5, 35, 35);
+    driveCM(65, -14.5, 30, 30);
+    turnOneMotor(leftMotor, 55, 31.5, 35, 35);
 }
 
 void takeDuoCells() {
-    liftSomeLeft();
-    liftSomeRight();
     turnLeft(55, 92.5, 35, 20);
+    liftSomeLeft();
+    liftSomeRight(true, 300);
     driveCM(55, 17, 20, 40);
     closeFullLeft();
     closeFullRight(true);

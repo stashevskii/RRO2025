@@ -64,7 +64,7 @@ void closeFullRightLowSpeed(bool afk = false) {
 	if (afk) {stopBC(400);}
 }
 
-void liftSomeRight(bool afk = false) {
+void liftSomeRight(bool afk = false, int waiting = 400) {
 	manipKc2 = 0.65;
 	manipPos2 = -170;
 	if (afk) {stopBC(400);}
