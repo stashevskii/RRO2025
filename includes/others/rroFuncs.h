@@ -147,7 +147,7 @@ void twoSituations(bool big) {
 }
 
 void leaveCubes(int *heights, int *cols, int i) {
-    int waiting = 175; //55
+    int waiting = 160; //55
     if (cols[i] == 6) {
         if (heights[i] == 1) {
             peak();
