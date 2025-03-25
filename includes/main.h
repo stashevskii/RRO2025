@@ -13,41 +13,28 @@ void scan() {
 void toCubes() {
     XCross(65, 1, 60, true, 6.1);
     turnLineRight(80, 70, 45);
-    align();
-    lineCM(70, 27.4, 50, 50);
-    arc(100, -24, 178, 45, 45);
-    XCross(80, 1, 35, true, 5.5);
-    driveCM(75, -6, 30, 30);
-    turnLine180(75, 160, 35);
-    align();
-    lineCM(35, 15, 30, 0);
-    driveCM(35, -38, 40, 40);
-    stopBC(3150);
-    driveCM(75, 4, 75, 75);
-    lineCM(75, 9.5, 75, 100);
-    XCross(85, 1, 100, true, 6);
-    turnLineLeft(80, 70, 30);
-    lineCM(100, 11.5, 100, 100);
-    XCross(75, 1, 100, true, 7.1);
+    XCross(90, 1, 50, true, 6.1);
+    turnLineLeft(80, 70, 35);
+    XCross(100, 1, 80, true, 3);
+    XCross(80, 1, 100, true, 7);
 }
 
 void scanHeights() {
     reverseArray(scannedColors, 6);
-    reverseArray(scannedHeights, 6);
 
     int counter = 0;
-
-    turnLineLeft(70, 50, 15);
-    turnOneMotor(leftMotor, 50, -35, 30, 70);
-    turnOneMotor(rightMotor, 50, -35, 30, 70);
-    driveCM(90, -8, 15, 30);
+    
 
     int k = 0;
     for (int cont = 0; cont < 5; cont++) {
-        XCross1Sensor(60, 1, 40, false);
+        if (cont == 4) {
+            driveCM(60, 7, 25, 25);
+            scannedHeights[cont] = detectHigh();
+            driveCM(60, -10, 25, 25);
+            break;
+        }
+        XCross(60, 1, 40, false);
         scannedHeights[cont] = detectHigh();
-        leaveCubes(scannedHeights, scannedColors, cont);
-        if (scannedHeights[cont] == 1) {k++;}
         driveCM(60, 2, 60, 60);
     }
 

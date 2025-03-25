@@ -14,4 +14,4 @@ git clone https://github.com/stashevskii/RRO2025.git
 ```
 ## License
 
-MIT
+GPL-3.0
