@@ -3,8 +3,6 @@
 
 
 #include "drivers/common-light.h"
-#include "../../lineFollower/sensors.h"
-#include "math.h"
 
 int blueCnt = 0;
 

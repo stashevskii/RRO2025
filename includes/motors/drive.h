@@ -1,5 +1,3 @@
-#include "../others/stop.h"
-
 float getCmMotor(tMotor motor) {
 	float degr = getMotorEncoder(motor);
 	return fromDegToCm(degr);

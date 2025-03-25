@@ -45,7 +45,6 @@ void swapConts() {
 
 void takeRightManipWhenLeftIsBusy() {
     turnLine180(65, 165, 30);
-    directions()
     turnOneMotor(leftMotor, 65, -22, 35, 35);
     driveCM(70, -2, 70, 70);
     openFullRight(true);
@@ -79,13 +78,13 @@ void takeDuoManips() {
 }
 
 void takeRightManip() {
-    turnOneMotor(leftMotor, 65, -22, 35, 35);
+    turnOneMotor(leftMotor, 50, -17, 35, 35);
     driveCM(70, -2, 70, 70);
     openFullRight(true);
-    driveCM(65, 10.5, 30, 30);
+    driveCM(65, 12, 30, 30);
     floorGrabRight(true);
-    driveCM(65, -8.5, 30, 30);
-    turnOneMotor(leftMotor, 65, 22, 35, 35);
+    driveCM(65, -10, 30, 30);
+    turnOneMotor(leftMotor, 50, 17, 35, 35);
 }
 
 void takeLeftManip() {
@@ -124,11 +123,11 @@ void right1left0() {
 
 void twoSituations(bool big) {
     align();
-    if (big) {shipTurn += 2;}
+    if (big && !big) {shipTurn += 2;}
     turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
-    if (big) {shipTurn -= 3;}
+    if (big && !big) {shipTurn -= 3;}
     turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
-    toShipRun(55);
+    toShipRun(150);
     if (big) {openLeftNotFull(true);}
     else {openRightNotFull(true);}
     driveCM(75, -5, 60, 60);
@@ -136,10 +135,11 @@ void twoSituations(bool big) {
     turnOneMotor(leftMotor, turnPower, -shipTurn, 35, 25);
     if (big) {closeFullLeft();}
     else {closeFullRight();}
-    if (big) {shipTurn -= 5;}
+    if (big) {shipTurn -= 1;}
+    else {shipTurn -= 2;}
     turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
     turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
-    toShipRun(250);
+    toShipRun(300);
     if (big) {openRightNotFull(true);}
     else {openLeftNotFull(true);}
     driveCM(75, -5, 60, 60);

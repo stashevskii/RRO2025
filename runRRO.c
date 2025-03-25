@@ -7,25 +7,7 @@
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
 #pragma config(Motor,  motorD,          manipMotor,    tmotorEV3_Medium, PIDControl, encoder)
 
-#include "includes/sensors/hitechnic/drivers/hitechnic-colour-v2.h"
-tHTCS2 sensor;
-
-#include "includes/others/math.h"
-#include "includes/others/sound.h"
-#include "includes/data/settings.h"
-#include "includes/data/lineValues.h"
-#include "includes/others/structures.h"
-#include "includes/lineFollower/sensors.h"
-#include "includes/motors/acceleration.h"
-#include "includes/sensors/hitechnic/colorsCheckers.h"
-#include "includes/sensors/hitechnic/colorScan.h"
-#include "includes/lineFollower/line.h"
-#include "includes/manipulators/manipulatorLeft.h"
-#include "includes/manipulators/manipulatorRight.h"
-#include "includes/others/rroFuncs.h"
-#include "includes/lineFollower/navigation.h"
-#include "includes/others/screen.h"
-#include "includes/main.h"
+#include "includes/allHeaders.h"
 
 task main() {
 	initColors();

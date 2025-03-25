@@ -1,10 +1,6 @@
 #ifndef __LINE_H__
 #define __LINE_H__
 
-#include "../others/structures.h"
-#include "../motors/motorSync.h"
-#include "../motors/drive.h"
-
 const float lineKp = 0.65;
 const float lineKd = 5;
 const float lineKi = 0.01;

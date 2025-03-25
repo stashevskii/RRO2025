@@ -1,20 +1,12 @@
-bool left = false, right = false;
-int blackElement1, blackElement2;
-int scannedColors[6], scannedHeights[6];
-int sizeToLift;
-int manipLeft = -1, manipRight = -1;
-int cellLeft = -1, cellRight = -1;
-int currCross = 1;
-int needCross = 0;
-const int finishCross = 4;
+#include "init/globals.h"
 
 void scan() {
     driveCM(85, 18, 25, 85);
     lineCM(85, 18.6, 85, 75);
     lineReading(75, 75, blackElement1, blackElement2);
-    for (int bEl = 0; bEl < 6; bEl++) {
-        if (bEl == blackElement1 || bEl == blackElement2) {scannedColors[bEl] = 1;}
-        else {scannedColors[bEl] = 6;}
+    for (int i = 0; i < 6; i++) {
+        if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
+        else {scannedColors[i] = 6;}
     }
 }
 
@@ -99,14 +91,12 @@ void grab4() {
             if (cellRight == scannedHeights[i]) {
                 left = true;
                 manipLeft = scannedHeights[i];
-                sizeToLift = manipLeft;
                 for (int j = 0; j < 6; j++) {
                     if (scannedColors[j] == 6) {manipRight = scannedHeights[j]; break;}
                 }
             } else {
                 right = true;
                 manipRight = scannedHeights[i];
-                sizeToLift = manipRight;
                 for (int j = 0; j < 6; j++) {
                     if (scannedColors[j] == 6) {manipLeft = scannedHeights[j]; break;}
                 }
@@ -217,16 +207,16 @@ void takeRubbish() {
     XCross(75, 1, 75, true, 6.9);
     turnLineLeft(75, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
-    XCross(65, 1, 40, true, 7.1);
+    XCross(65, 1, 40, true, 7.2);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
     lineCM(35, 1, 35, 35);
 	align();
-	arc(63, 9, 91, 45, 45);
+	arc(50, 9, 93, 45, 45);
 	driveCM(62, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(75, 15, 90, 45, 45);
-	driveCM(62, 43.5, 20, 25);
+	driveCM(62, 42.5, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 	arc(85, 20, -90, 45, 45);
@@ -242,15 +232,15 @@ void takeRubbish() {
     XCross(75, 1, 75, true, 6.8);
     turnLineLeft(75, 65, 30);
     XCross(75, 1, 40, false);
-    driveCM(45, 18, 20, 20);
+    driveCM(45, 21.5, 20, 20);
     while (true) {closeFullRight(true);}
 }
 
 void runner() {
-    /*scan();
+    scan();
     toCubes();
     scanHeights();
     grab4();
-    bringContsToShip();*/
+    bringContsToShip();
     takeRubbish();
 }

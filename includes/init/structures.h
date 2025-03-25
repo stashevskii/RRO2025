@@ -45,7 +45,7 @@ void initColors() {
 }
 
 void initAll() {
-	initSensor(&sensor, S1);
+	// initSensor(&sensor, S1);
 	initColors();
 }
 
