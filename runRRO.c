@@ -15,5 +15,10 @@ task main() {
 	startTask(initManipRight);
 	startTask(PIDManipLeft);
 	startTask(initManipLeft);
+	openFullLeft();
+	openFullRight(true);
+	stopBC(5000);
+	floorGrabLeft(true);
+	floorGrabRight(true);
 	runner();
 }

@@ -130,14 +130,29 @@ void grab4() {
     else {turnLeft(70, 179, 35);}
     align();
 
-    XCross(100, 1, 35);
+    lineCM(80, 10, 35, 35);
     openFullLeft();
     openFullRight();
     lineCM(35, 5, 35, 35);
     floorGrabLeft();
     floorGrabRight();
-    XCross(100, 1, 100);
-    XCross(75, 1, 100);
+    XCross(75, 1, 100, true, 7);
+}
+
+void cubes() {
+    turnLineRight(75, 70, 25);
+    XCross(75, 1, 100, false);
+    driveCM(75, 13, 35, 53);
+    openFullLeft();
+    openFullRight(true);
+    driveCM(75, -6.5, 35, 53);
+    closeFullLeft();
+    closeFullRight(true);
+    stopBC(200);
+    liftSomeLeft();
+    liftContRight(true);
+    driveCM(75, 4, 35, 53);
+    driveCM(75, -10, 35, 53);
 }
 
 void bringContsToShip() {
@@ -224,10 +239,11 @@ void takeRubbish() {
 }
 
 void runner() {
-    scan();
+    /*scan();
     toCubes();
     scanHeights();
     grab4();
     bringContsToShip();
-    takeRubbish();
+    takeRubbish();*/
+    cubes();
 }
