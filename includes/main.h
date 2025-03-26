@@ -11,12 +11,13 @@ void scan() {
 }
 
 void toCubes() {
-    XCross(65, 1, 60, true, 6.1);
-    turnLineRight(80, 70, 45);
-    XCross(90, 1, 50, true, 6.1);
+    XCross(65, 1, 60, true, 3);
+    turnLineRight(80, 50, 45);
+    XCross(90, 1, 50, true, 4);
     turnLineLeft(80, 70, 35);
     XCross(100, 1, 80, true, 3);
-    XCross(80, 1, 100, true, 7);
+    XCross(70, 1, 100, true, 6.25);
+    turnLineLeft(80, 70, 35);
 }
 
 void scanHeights() {
@@ -24,32 +25,23 @@ void scanHeights() {
 
     int counter = 0;
     
-
     int k = 0;
-    for (int cont = 0; cont < 5; cont++) {
-        if (cont == 4) {
-            driveCM(60, 7, 25, 25);
+    for (int cont = 1; cont < 6; cont++) {
+        if (cont == 5) {
+            driveCM(60, 11, 25, 25);
             scannedHeights[cont] = detectHigh();
-            driveCM(60, -10, 25, 25);
+            driveCM(60, -4, 25, 25);
+            if (scannedHeights[cont] == 1) {counter++;}
             break;
         }
-        XCross(60, 1, 40, false);
+        XCross(50, 1, 50, false);
         scannedHeights[cont] = detectHigh();
-        driveCM(60, 2, 60, 60);
+        if (scannedHeights[cont] == 1) {counter++;}
+        driveCM(50, 2, 50, 50);
     }
-
-    stopBC(0);
-    if (scannedColors[5] == 6) {
-        driveCM(75, 10, 15, 35);
-        if (k == 1) {peak(); scannedHeights[5] = 1;}
-        else {whiteSound(); scannedHeights[5] = 0;}
-        leaveCubes(scannedHeights, scannedColors, 5);
-        stopBC(0);
-        driveCM(75, -15, 20, 35);
-    } else {driveCM(65, -7, 20, 35);}
-
-    turnOneMotor(rightMotor, 60, 35, 30, 40);
-    turnOneMotor(leftMotor, 60, 35, 30, 40);
+    if (counter == 2) {scannedHeights[0] = 0;}
+    else {scannedHeights[0] = 0;}
+    printNumbers(scannedHeights, 6);
     turnLine180(55, 110, 25);
 }
 
@@ -141,17 +133,18 @@ void grab4() {
 
 void cubes() {
     turnLineRight(75, 70, 25);
-    XCross(75, 1, 100, false);
-    driveCM(75, 13, 35, 53);
+    XCross(60, 1, 100, false);
+    driveCM(60, 13, 35, 35);
     openFullLeft();
     openFullRight(true);
     driveCM(75, -6.5, 35, 53);
     closeFullLeft();
     closeFullRight(true);
-    stopBC(200);
+    stopBC(350);
     liftSomeLeft();
     liftContRight(true);
-    driveCM(75, 4, 35, 53);
+    stopBC(100);
+    driveCM(60, 4, 35, 53);
     driveCM(75, -10, 35, 53);
 }
 
@@ -239,11 +232,11 @@ void takeRubbish() {
 }
 
 void runner() {
-    /*scan();
+    scan();
     toCubes();
     scanHeights();
     grab4();
-    bringContsToShip();
-    takeRubbish();*/
     cubes();
+    /*bringContsToShip();
+    takeRubbish();*/
 }
