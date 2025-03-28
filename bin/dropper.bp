@@ -1,10 +1,16 @@
+include "../dropper/dropperLib"
+
 flag = 1
 Program.Delay(750)
 LCD.Clear()
+
 While flag = 1
-  If Sensor4.Raw1() < 105 Then
-    Motor.Move("A", -5, 210, "true")
+  If Sensor1.Raw1() < 400 Then
+    up()
     flag = 0
   EndIf
-  LCD.Text(1, 0, 0, 2, EV3.BatteryVoltage)
+  LCD.Text(1, 0, 0, 2, Sensor1.Raw1())
 EndWhile
+
+stopBC(7500)
+down()

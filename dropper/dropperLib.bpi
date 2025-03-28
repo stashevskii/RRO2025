@@ -1,0 +1,42 @@
+Function arc(in number speedB, in number speedC, in number kp, in number kd, in number exitEncoder)
+  errold = 0
+  exit = 0
+  encoderB = 0
+  encoderC = 0
+  Motor.ResetCount("BC")
+  ratio = Math.Abs(speedB / speedC)
+  While exit = 0
+    encoderB = Motor.GetCount("B")
+    encoderC = Motor.GetCount("C")
+    currentEncoder = (Math.Abs(encoderB) + Math.Abs(encoderC)) / 2
+    If (currentEncoder >= exitEncoder) Then
+      exit = 1
+    EndIf
+    If speedB > 0 Then
+      err = encoderB * encoderC * ratio * -1
+    Else
+      err = encoderB * encoderC * ratio
+    EndIf
+    u = kp * err + kd * (err - errold)
+    mb = speedB - u
+    mc = speedC - u
+    Motor.StartPower("B", mb)
+    Motor.StartPower("C", mc)
+    LCD.Text(1, 0, 0, 2, mb)
+    errold = err
+  EndWhile
+EndFunction
+
+Function stopBC(in number w)
+  Motor.StartPower("B", 0)
+  Motor.StartPower("C", 0)
+  Program.Delay(w)
+EndFunction
+
+Function up()
+  arc(-65, -65, 0.1, 0.5, 1760)
+EndFunction
+
+Function down()
+  arc(65, 65, 0.1, 0.5, 1610)
+EndFunction

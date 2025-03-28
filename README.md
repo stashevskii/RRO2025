@@ -12,6 +12,6 @@
 ```sh
 git clone https://github.com/stashevskii/RRO2025.git
 ```
-## License
+## Лицензия
 
 GPL-3.0
