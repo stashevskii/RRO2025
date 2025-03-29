@@ -56,8 +56,8 @@ void takeRightManipWhenLeftIsBusy() {
 
 void takeDuoCells() {
     turnLeft(55, 92.5, 35, 20);
-    liftSomeLeft();
-    liftSomeRight(true, 300);
+    liftSomeLeft(true);
+    liftSomeRight(true);
     driveCM(55, 17, 20, 40);
     closeFullLeft();
     closeFullRight(true);

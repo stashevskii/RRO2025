@@ -16,16 +16,17 @@ void toCubes() {
     XCross(90, 1, 50, true, 4);
     turnLineLeft(80, 70, 35);
     XCross(100, 1, 80, true, 3);
-    XCross(70, 1, 100, true, 6.25);
+    XCross(70, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
+    driveCM(80, -4, 25, 25);
 }
 
 void scanHeights() {
     reverseArray(scannedColors, 6);
 
     int counter = 0;
-    
     int k = 0;
+
     for (int cont = 1; cont < 6; cont++) {
         if (cont == 5) {
             driveCM(60, 11, 25, 25);
@@ -40,7 +41,7 @@ void scanHeights() {
         driveCM(50, 2, 50, 50);
     }
     if (counter == 2) {scannedHeights[0] = 0;}
-    else {scannedHeights[0] = 0;}
+    else {scannedHeights[0] = 1;}
     printNumbers(scannedHeights, 6);
     turnLine180(55, 110, 25);
 }
@@ -133,7 +134,7 @@ void grab4() {
 
 void cubes() {
     turnLineRight(75, 70, 25);
-    XCross(60, 1, 100, false);
+    XCross(40, 1, 25, false);
     driveCM(60, 13, 35, 35);
     openFullLeft();
     openFullRight(true);
@@ -144,8 +145,8 @@ void cubes() {
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(60, 4, 35, 53);
-    driveCM(75, -10, 35, 53);
+    driveCM(60, 5, 35, 53);
+    driveCM(75, -11, 35, 53);
 }
 
 void bringContsToShip() {

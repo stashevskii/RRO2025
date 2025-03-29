@@ -1,16 +1,39 @@
 include "../dropper/dropperLib"
 
+Sensor.SetMode(4, 0)
+
 flag = 1
 Program.Delay(750)
 LCD.Clear()
 
 While flag = 1
-  If Sensor1.Raw1() < 400 Then
-    up()
-    flag = 0
-  EndIf
-  LCD.Text(1, 0, 0, 2, Sensor1.Raw1())
+  'If Sensor.ReadRawValue(1, 0) < 300 Then
+    'down()
+    'flag = 0
+  'EndIf
+  LCD.Clear()
+  LCD.Text(1, 0, 0, 2, Sensor.ReadRawValue(4, 0))
+  Program.Delay(20)
 EndWhile
 
 stopBC(7500)
 down()
+stopBC(0)
+
+For i = 0 To 1
+  rotate(0, i * 45)
+  dropCubeAndScan()
+EndFor
+
+rotate(1, 0)
+rotate(1, 45)
+
+For i = 0 To 1
+  rotate(1, i * 45)
+  dropCubeAndScan()
+EndFor
+
+rotate(0, 0)
+rotate(0, 45)
+
+up()
