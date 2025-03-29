@@ -1,0 +1,11 @@
+gv_flag = 0
+gv_flag = 1
+Program.Delay ( 750 )
+LCD.Clear ()
+While gv_flag = 1
+If Sensor4.Raw1 () < 105 Then
+Motor.Move ( "A" , - 5 , 210 , "true" )
+gv_flag = 0
+EndIf
+LCD.Text ( 1 , 0 , 0 , 2 , EV3.BatteryVoltage )
+EndWhile

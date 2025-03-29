@@ -1,16 +1,22 @@
 include "../dropper/dropperLib"
 
-Sensor.SetMode(4, 0)
+Sensor.SetMode(1,4)
 
 flag = 1
 Program.Delay(750)
 LCD.Clear()
-
+while "true"
+  rgb=Sensor.ReadRawValue(1,2)
+  val=rgb
+  LCD.Clear()
+  LCD.Text(1, 0, 0, 2, val)
+  Program.Delay(10)
+EndWhile
 While flag = 1
-  'If Sensor.ReadRawValue(1, 0) < 300 Then
-    'down()
-    'flag = 0
-  'EndIf
+  If Sensor.ReadRawValue(1, 0) < 200 Then
+    down()
+    flag = 0
+  EndIf
   LCD.Clear()
   LCD.Text(1, 0, 0, 2, Sensor.ReadRawValue(4, 0))
   Program.Delay(20)

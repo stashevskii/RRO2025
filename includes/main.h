@@ -8,6 +8,7 @@ void scan() {
         if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
         else {scannedColors[i] = 6;}
     }
+    
 }
 
 void toCubes() {
@@ -135,18 +136,44 @@ void grab4() {
 void cubes() {
     turnLineRight(75, 70, 25);
     XCross(40, 1, 25, false);
-    driveCM(60, 13, 35, 35);
+    driveCM(60, 16, 35, 35);
     openFullLeft();
     openFullRight(true);
-    driveCM(75, -6.5, 35, 53);
+    driveCM(75, -8.5, 35, 53);
     closeFullLeft();
     closeFullRight(true);
     stopBC(350);
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(60, 5, 35, 53);
-    driveCM(75, -11, 35, 53);
+    driveCM(60, 3, 35, 53);
+    driveCM(75, -15, 35, 53);
+    stopBC(3000);
+}
+
+void takecubes(){
+    stopBC(350);
+    liftContLeft(0,true)
+    liftContRight(1,true);
+    stopBC(100);
+    XCross(40, 1, 25, false);
+    driveCM(60, 10, 35, 35);
+    openFullLeft();
+    openFullRight(true);
+    stopBC(350);
+    driveCM(60, 7, 35, 35);  
+    stopBC(350);
+    liftSomeLeft();
+    liftContRight(true);
+    stopBC(100);
+    driveCM(75, -26, 35, 53);
+    stopBC(100);
+    turnLine180(65, 160, 25);
+    align();
+    XCross(40, 1, 25, true);
+    turnLineRight(75, 70, 25);
+    XCross(100, 1, 50, true);
+    XCross(100, 1, 50, true);
 }
 
 void bringContsToShip() {
@@ -233,11 +260,22 @@ void takeRubbish() {
 }
 
 void runner() {
-    scan();
-    toCubes();
+    /*scan();
+    toCubes();*/
+
+    scannedColors[0] = 6;
+    scannedColors[1] = 1;
+    scannedColors[2] = 1;
+    scannedColors[3] = 6;
+    scannedColors[4] = 6;
+    scannedColors[5] = 6;
+    XCross(70, 1, 100, true, 7.1);
+    turnLineLeft(80, 70, 35);
+    driveCM(80, -4, 25, 25);
     scanHeights();
     grab4();
     cubes();
+    takecubes();
     /*bringContsToShip();
     takeRubbish();*/
 }

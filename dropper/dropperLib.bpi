@@ -51,10 +51,10 @@ EndFunction
 Function dropCubeAndScan()
   LCD.Clear()
   Program.Delay(200)
-  value = Sensor.ReadPercent(1)
-  LCD.Text(1, 0, 0, 2, Sensor.ReadRawValue(1, 0))
+  value=Sensor.ReadRawValue(1,2)
+  LCD.Text(1, 0, 0, 2, value)
   Program.Delay(6500)
-  If Sensor.ReadRawValue(1, 0) < 150 Then
+  If value > 4 Then
     dropCube()
     dropCube()
   Else
