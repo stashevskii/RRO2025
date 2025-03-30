@@ -33,28 +33,26 @@ Function stopBC(in number w)
   Program.Delay(w)
 EndFunction
 
-Function up()
-  arc(-65, -65, 0.1, 0.5, 1660)
+Function down()
+  arc(-65, -65, 0.1, 0.5, 1800)
 EndFunction
 
-Function down()
-  arc(65, 65, 0.1, 0.5, 1660)
+Function up()
+  arc(65, 65, 0.1, 0.5, 1700)
 EndFunction
 
 Function dropCube()
-  Motor.StartPower("A", 100)
+  Motor.StartPower("A", 40)
   Program.Delay(600)
-  Motor.StartPower("A", -100)
+  Motor.StartPower("A", -40)
   Program.Delay(600)
 EndFunction
 
 Function dropCubeAndScan()
   LCD.Clear()
   Program.Delay(200)
-  value=Sensor.ReadRawValue(1,2)
-  LCD.Text(1, 0, 0, 2, value)
-  Program.Delay(6500)
-  If value > 4 Then
+  value = Sensor.ReadRawValue(4, 2)
+  If value > 3 Then
     dropCube()
     dropCube()
   Else
@@ -64,8 +62,8 @@ EndFunction
 
 Function rotate(in number a, in number add)
   If a = 1 Then
-    Motor.Move("D", -50, 85 + add, "true")
+    Motor.Move("D", -7, 95 + add, "true")
   Else
-    Motor.Move("D", 50, 85 + add, "true")
+    Motor.Move("D", 7, 95 + add, "true")
   EndIf
 EndFunction
