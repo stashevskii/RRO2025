@@ -146,7 +146,7 @@ void cubes() {
     liftContRight(true);
     stopBC(100);
     driveCM(60, 5.5, 35, 53);
-    driveCM(75, -23, 35, 53);
+    driveCM(75, -26, 35, 53);
     stopBC(20000);
 }
 
@@ -156,8 +156,8 @@ void takeCubes(){
     stopBC(300);
     liftSomeLeft(true);
     liftSomeRight(true);
-    stopBC(100);
-    XCross(50, 1, 25, false);
+    stopBC(100); 
+    XCross(35, 1, 25, false);
     driveCM(30, 15, 35, 35);
     closeFullLeft();
     closeFullRight(true);

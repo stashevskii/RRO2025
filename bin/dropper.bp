@@ -1,18 +1,20 @@
 include "../dropper/dropperLib"
 
 Sensor.SetMode(3, 0)
-Sensor.SetMode(4, 4)
+Sensor.SetMode(4, 0)
+Sensor.SetMode(2, 4)
 
 flag = 1
 Program.Delay(750)
 LCD.Clear()
 
 While flag = 1
-  value = Sensor.ReadRawValue(3, 0)
+  value = Sensor.ReadRawValue(4, 0)
   If value < 200 Then
     stopBC(3250)
     down()
     stopBC(0)
+    resetGyro()
     flag = 0
   EndIf
   LCD.Clear()
@@ -21,19 +23,22 @@ While flag = 1
 EndWhile
 
 For i = 0 To 1
-  rotate(0, i * 45)
+  rotateLeft(40)
+  LCD.Clear()
+  LCD.Text(1, 0, 0, 2, Sensor.ReadRawValue(4, 0))
+  Program.Delay(5000)
   dropCubeAndScan()
 EndFor
 
-rotate(1, 0)
-rotate(1, 50)
+'rotate(1, 0)
+'rotate(1, 50)
 
-For i = 0 To 1
-  rotate(1, i * 35)
-  dropCubeAndScan()
-EndFor
+'For i = 0 To 1
+  'rotate(1, i * 35)
+  'dropCubeAndScan()
+'EndFor
 
-rotate(0, 0)
-rotate(0, 70)
+'rotate(0, 0)
+'rotate(0, 70)
 
-up()
+'up()
