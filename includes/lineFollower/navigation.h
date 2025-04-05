@@ -1,19 +1,19 @@
 void directions(int currDir, int finishDir) {
-    if (currDir == 0 && finishDir == 1) {turnLineRight(75);}
+    if (currDir == 0 && finishDir == 1) {turnLineRight(75, 70);}
     if (currDir == 0 && finishDir == 2) {turnLine180(75);}
-    if (currDir == 0 && finishDir == 3) {turnLineLeft(75);}
+    if (currDir == 0 && finishDir == 3) {turnLineLeft(75, 70);}
 
-    if (currDir == 1 && finishDir == 0) {turnLineLeft(75);}
-    if (currDir == 1 && finishDir == 2) {turnLineRight(75);}
+    if (currDir == 1 && finishDir == 0) {turnLineLeft(75, 70);}
+    if (currDir == 1 && finishDir == 2) {turnLineRight(75, 70);}
     if (currDir == 1 && finishDir == 3) {turnLine180(75);}
 
     if (currDir == 2 && finishDir == 0) {turnLine180(75);}
-    if (currDir == 2 && finishDir == 1) {turnLineLeft(75);}
-    if (currDir == 2 && finishDir == 3) {turnLineRight(75);}
+    if (currDir == 2 && finishDir == 1) {turnLineLeft(75, 70);}
+    if (currDir == 2 && finishDir == 3) {turnLineRight(75, 70);}
 
-    if (currDir == 3 && finishDir == 0) {turnLineRight(75);}
+    if (currDir == 3 && finishDir == 0) {turnLineRight(75, 70);}
     if (currDir == 3 && finishDir == 1) {turnLine180(75);}
-    if (currDir == 3 && finishDir == 2) {turnLineLeft(75);}
+    if (currDir == 3 && finishDir == 2) {turnLineLeft(75, 70);}
     stopBC(20);
 }
 

@@ -30,7 +30,7 @@ EndFunction
 Function resetGyro()
   Sensor.SetMode(4, 0)
   Sensor.ReadRawValue(4, 0)
-  gyroResetData[0] = 0
+  gyroResetData[0] = 17
   Sensor.SendUARTData(4, 1, gyroResetData)
   Sensor.Wait(4)
 EndFunction
@@ -50,16 +50,17 @@ Function up()
 EndFunction
 
 Function dropCube()
-  Motor.StartPower("A", 40)
-  Program.Delay(600)
-  Motor.StartPower("A", -40)
-  Program.Delay(600)
+  Motor.StartPower("A", 25)
+  Program.Delay(700)
+  Motor.StartPower("A", -25)
+  Program.Delay(700)
 EndFunction
 
 Function dropCubeAndScan()
   LCD.Clear()
-  Program.Delay(200)
-  value = Sensor.ReadRawValue(4, 2)
+  Motor.StartPower("D", 0)
+  stopBC(200)
+  value = Sensor.ReadRawValue(2, 2)
   If value > 3 Then
     dropCube()
     dropCube()
@@ -68,19 +69,10 @@ Function dropCubeAndScan()
   EndIf
 EndFunction
 
-rotated = 0
 Function rotateLeft(in number value)
-  resetGyro()
-  While Math.Abs(Sensor.ReadRawValue(4, 0)) < value + @rotated
-    Motor.StartPower("D", 35)
-  EndWhile
-  @rotated += value
+  Motor.Move("D", 20, value, "true")
 EndFunction
 
 Function rotateRight(in number value)
-  resetGyro()
-  While Math.Abs(Sensor.ReadRawValue(4, 0)) < value + @rotated
-    Motor.StartPower("D", -35)
-  EndWhile
-  @rotated -= value
+  Motor.Move("D", -20, value, "true")
 EndFunction

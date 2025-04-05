@@ -15,5 +15,9 @@ task main() {
 	startTask(initManipRight);
 	startTask(PIDManipLeft);
 	startTask(initManipLeft);
-	runner();
+	openFullRight(true);
+	stopBC(5000);
+	closeFullRight(true);
+	stopBC(1000);
+	openFullRightLowSpeed(true);
 }

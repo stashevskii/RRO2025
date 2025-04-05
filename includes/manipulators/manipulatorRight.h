@@ -47,9 +47,9 @@ void openFullRight(bool afk = false) {
 }
 
 void openFullRightLowSpeed(bool afk = false) {
-	manipKc2 = 0.1;
-	manipPos2 = -750;
-	if (afk) {stopBC(400);}
+	manipKc2 = 0.01;
+	manipPos2 = -1000;
+	if (afk) {stopBC(750);}
 }
 
 void openFullRightLowLowSpeed(bool afk = false) {

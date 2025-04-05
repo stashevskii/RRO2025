@@ -9,12 +9,11 @@ Program.Delay(750)
 LCD.Clear()
 
 While flag = 1
-  value = Sensor.ReadRawValue(4, 0)
+  value = Sensor.ReadRawValue(3, 0)
   If value < 200 Then
     stopBC(3250)
     down()
     stopBC(0)
-    resetGyro()
     flag = 0
   EndIf
   LCD.Clear()
@@ -22,23 +21,17 @@ While flag = 1
   Program.Delay(20)
 EndWhile
 
-For i = 0 To 1
-  rotateLeft(40)
-  LCD.Clear()
-  LCD.Text(1, 0, 0, 2, Sensor.ReadRawValue(4, 0))
-  Program.Delay(5000)
-  dropCubeAndScan()
-EndFor
+rotateLeft(100)
+dropCubeAndScan()
 
-'rotate(1, 0)
-'rotate(1, 50)
+rotateLeft(150)
+dropCubeAndScan()
 
-'For i = 0 To 1
-  'rotate(1, i * 35)
-  'dropCubeAndScan()
-'EndFor
+rotateRight(335)
+dropCubeAndScan()
 
-'rotate(0, 0)
-'rotate(0, 70)
+rotateRight(160)
+dropCubeAndScan()
+rotateLeft(300)
 
-'up()
+up()
