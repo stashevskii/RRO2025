@@ -126,7 +126,7 @@ void grab4() {
     lineCM(80, 10, 35, 35);
     openFullLeft();
     openFullRight();
-    lineCM(35, 5, 35, 35);
+    lineCM(35, 7.5, 35, 35);
     floorGrabLeft();
     floorGrabRight();
     XCross(60, 1, 100, true, 6.5);
@@ -135,7 +135,7 @@ void grab4() {
 void cubes() {
     turnLineRight(60, 70, 25);
     XCross(40, 1, 25, false);
-    driveCM(60, 16.5, 35, 35);
+    driveCM(50, 16, 35, 35);
     openFullLeft();
     openFullRight(true);
     driveCM(75, -10, 35, 53);
@@ -145,18 +145,22 @@ void cubes() {
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(60, 5.5, 35, 53);
+    driveCM(60, 7.2, 35, 53);
     driveCM(75, -29, 35, 53);
-    stopBC(20000);
+    turnLine180(55, 165, 30);
+    XCross(50, 1, 30, true, 7);
+    turnLineLeft(65, 70, 30);
 }
 
-void takeCubes(){
+void takeCubes() {
+    turnLineRight(60, 70, 30);
     closeFullLeft();
     closeFullRight(true);
-    stopBC(300);
+    stopBC(1);
     liftSomeLeft();
     liftSomeRight(true);
-    stopBC(100); 
+    stopBC(20);
+    lineCM(70, 10, 25, 25);
     XCross(30, 1, 25, false);
     driveCM(30, 15, 35, 35);
     closeFullLeft();
@@ -195,11 +199,11 @@ void bringContsToShip() {
     else if (manipRight == 1 && manipLeft == 1) {twoSituations(true);} 
     else {twoSituations(false);}
 
-    turnLine180(55, 150, 30);
+    turnLine180(55, 160, 30);
     align();
     openFullLeft();
     openFullRight(true);
-    stopBC(500);
+    stopBC(250);
     XCross(35, 1, 35);
     floorGrabLeft();
     floorGrabRight(true);
@@ -222,41 +226,39 @@ void bringContsToShip() {
 }
 
 void takeRubbish() {
-    lineCM(75, 5, 75, 75);
-    XCross(100, 1, 35);
     closeFullLeft();
     closeFullRight();
-    XCross(100, 1, 100);
     XCross(75, 1, 75, true, 6.9);
     turnLineLeft(75, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
     XCross(65, 1, 40, true, 7.2);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
-    lineCM(35, 2.4, 35, 35);
+    lineCM(30, 2.7, 35, 35);
 	align();
-	arc(45, 9, 90, 45, 45);
+	arc(45, 9, 91.5, 45, 45);
 	driveCM(62, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(75, 15, 90, 45, 45);
 	driveCM(62, 42.5, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
-	arc(85, 20, -90, 45, 45);
+	arc(85, 21, -90, 45, 45);
     closeFullLeft();
     closeFullRight();
     turnLineRight(75, 65, 30);
     align();
-    lineCM(75, 2, 75, 75);
-    XCross(75, 1, 40, true, 3);
     XCross(75, 1, 75, true, 6.5);
-    turnLineRight(75, 65, 30);
-    lineCM(100, 14, 40, 75);
-    XCross(75, 1, 75, true, 6.8);
-    turnLineLeft(75, 65, 30);
-    XCross(75, 1, 40, false);
-    driveCM(45, 21.5, 20, 20);
-    while (true) {closeFullRight(true);}
+}
+
+void finish() {
+    lineCM(30, 6, 25, 25);
+    arc(80, -27.4, 179, 50, 50);
+    lineCM(80, 5, 80, 100);
+    closeFullLeft();
+    closeFullRight();
+    XCross(65, 1, 100, false);
+    driveCM(40, 18, 40, 40);
 }
 
 void runner() {
@@ -265,7 +267,8 @@ void runner() {
     scanHeights();
     grab4();
     cubes();
+    takeRubbish();
     takeCubes();
     bringContsToShip();
-    takeRubbish();
+    finish();
 }

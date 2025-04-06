@@ -30,13 +30,13 @@ task initManipRight() {
 
 void floorGrabRight(bool afk = false) {
 	manipKc2 = 1;
-	manipPos2 = -375;
+	manipPos2 = -390;
 	if (afk) {stopBC(400);}
 }
 
 void openRightNotFull(bool afk = false) {
 	manipKc2 = 0.1;
-	manipPos2 = -520;
+	manipPos2 = -535;
 	if (afk) {stopBC(400);}
 }
 
@@ -65,7 +65,7 @@ void closeFullRightLowSpeed(bool afk = false) {
 }
 
 void liftSomeRight(bool afk = false, int waiting = 400) {
-	manipKc2 = 0.65;
+	manipKc2 = 0.55;
 	manipPos2 = -170;
 	if (afk) {stopBC(400);}
 }

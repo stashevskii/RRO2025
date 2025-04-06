@@ -1,8 +1,7 @@
 include "../dropper/dropperLib"
 
 Sensor.SetMode(3, 0)
-Sensor.SetMode(4, 0)
-Sensor.SetMode(2, 4)
+Sensor.SetMode(4, 4)
 
 flag = 1
 Program.Delay(750)
@@ -27,11 +26,11 @@ dropCubeAndScan()
 rotateLeft(150)
 dropCubeAndScan()
 
-rotateRight(335)
+rotateRight(325)
 dropCubeAndScan()
 
-rotateRight(160)
+rotateRight(170)
 dropCubeAndScan()
-rotateLeft(300)
+rotateLeft(250)
 
 up()

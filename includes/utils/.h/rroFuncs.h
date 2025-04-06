@@ -143,8 +143,8 @@ void twoSituations(bool big) {
     if (big) {openRightNotFull(true);}
     else {openLeftNotFull(true);}
     driveCM(75, -5, 60, 60);
-    turnOneMotor(leftMotor, turnPower, -shipTurn, 35, 25);
-    turnOneMotor(rightMotor, turnPower, -shipTurn, 35, 25);
+    turnOneMotor(leftMotor, turnPower, -shipTurn - 3, 35, 25);
+    turnOneMotor(rightMotor, turnPower, -shipTurn - 3, 35, 25);
     shipTurn = copyST;
 }
 
