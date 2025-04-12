@@ -11,9 +11,9 @@
 
 task main() {
 	initColors();
-	startTask(PIDManipRight);
-	startTask(initManipRight);
 	startTask(PIDManipLeft);
 	startTask(initManipLeft);
+	startTask(PIDManipRight);
+	startTask(initManipRight);
 	runner();
 }

@@ -23,13 +23,13 @@ EndWhile
 rotateLeft(100)
 dropCubeAndScan()
 
-rotateLeft(150)
+rotateLeft(145)
 dropCubeAndScan()
 
-rotateRight(325)
+rotateRight(347)
 dropCubeAndScan()
 
-rotateRight(170)
+rotateRight(146)
 dropCubeAndScan()
 rotateLeft(250)
 

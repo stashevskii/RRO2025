@@ -70,9 +70,9 @@ Function dropCubeAndScan()
 EndFunction
 
 Function rotateLeft(in number value)
-  Motor.Move("D", 14, value, "true")
+  Motor.Move("D", 10.5, value, "true")
 EndFunction
 
 Function rotateRight(in number value)
-  Motor.Move("D", -14, value, "true")
+  Motor.Move("D", -10.5, value, "true")
 EndFunction

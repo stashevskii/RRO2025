@@ -174,9 +174,9 @@ void takeCubes() {
     floorGrabRight(true);
     driveCM(60, -30, 35, 35);
     turnLine180(65, 165, 30);
-    XCross(80, 1, 40, true, 6);
-    turnLineRight(70, 75, 30);
-    XCross(80, 1, 40, true, 6);
+    XCross(80, 1, 40, true, 5.8);
+    turnLineRight(50, 75, 30);
+    XCross(80, 1, 30, true, 6);
     XCross(80, 1, 40, true, 6);
 }
 
@@ -231,16 +231,16 @@ void takeRubbish() {
     XCross(75, 1, 75, true, 6.9);
     turnLineLeft(75, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
-    XCross(65, 1, 40, true, 7.2);
+    XCross(50, 1, 40, true, 7.2);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
-    lineCM(30, 2.7, 35, 35);
+    lineCM(29, 2.4, 35, 35);
 	align();
-	arc(45, 9, 91.5, 45, 45);
+	arc(40, 9, 92.5, 45, 45);
 	driveCM(62, 51, 20, 25);
 	openLeftRubbish(true);
-	arc(75, 15, 90, 45, 45);
-	driveCM(62, 42.5, 20, 25);
+	arc(65, 15, 90, 45, 45);
+	driveCM(62, 44, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 	arc(85, 21, -90, 45, 45);
@@ -258,7 +258,8 @@ void finish() {
     closeFullLeft();
     closeFullRight();
     XCross(65, 1, 100, false);
-    driveCM(40, 18, 40, 40);
+    driveCM(40, 20, 40, 40);
+    while (true) {}
 }
 
 void runner() {
