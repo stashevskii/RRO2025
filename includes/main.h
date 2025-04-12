@@ -228,22 +228,22 @@ void bringContsToShip() {
 void takeRubbish() {
     closeFullLeft();
     closeFullRight();
-    XCross(75, 1, 75, true, 6.9);
-    turnLineLeft(75, 65, 30);
+    XCross(48, 1, 35, true, 6.9);
+    turnLineLeft(55, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
     XCross(50, 1, 40, true, 7.2);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
     lineCM(29, 2.4, 35, 35);
 	align();
-	arc(40, 9, 92.5, 45, 45);
-	driveCM(62, 51, 20, 25);
+	arc(38, 9, 92.5, 45, 45);
+	driveCM(49, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);
-	driveCM(62, 44, 20, 25);
+	driveCM(55, 44, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
-	arc(85, 21, -90, 45, 45);
+	arc(50, 21, -90, 45, 45);
     closeFullLeft();
     closeFullRight();
     turnLineRight(75, 65, 30);
@@ -259,6 +259,7 @@ void finish() {
     closeFullRight();
     XCross(65, 1, 100, false);
     driveCM(40, 20, 40, 40);
+    stopBC(0);
     while (true) {}
 }
 

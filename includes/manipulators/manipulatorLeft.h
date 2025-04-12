@@ -17,7 +17,7 @@ task PIDManipLeft() {
 		float u = e * manipKp + (e - eoldManip) * manipKd + isum;
 		motor[manipMotor] = u * manipKc;
 		eoldManip = e;
-		sleep(1);
+		sleep(2);
 	}
 }
 
@@ -61,11 +61,11 @@ void liftSomeLeft(bool afk = false) {
 
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
-		manipKc = 0.1;
-		manipPos = 226;
+		manipKc = 0.085;
+		manipPos = 235.5;
 	} else {
-		manipKc = 0.1;
-		manipPos = 230;
+		manipKc = 0.085;
+		manipPos = 229;
 	}
 	if (afk) {stopBC(500);}
 }
