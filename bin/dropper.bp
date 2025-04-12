@@ -26,10 +26,10 @@ dropCubeAndScan()
 rotateLeft(145)
 dropCubeAndScan()
 
-rotateRight(355)
+rotateRight(351)
 dropCubeAndScan()
 
-rotateRight(146)
+rotateRight(149)
 dropCubeAndScan()
 rotateLeft(255)
 

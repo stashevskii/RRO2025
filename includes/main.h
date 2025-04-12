@@ -1,6 +1,7 @@
 #include "init/globals.h"
 
 void scan() {
+    clearTimer(T3);
     driveCM(85, 18, 25, 85);
     lineCM(85, 18.6, 85, 75);
     lineReading(75, 75, blackElement1, blackElement2);
@@ -160,8 +161,8 @@ void takeCubes() {
     liftSomeLeft();
     liftSomeRight(true);
     stopBC(20);
-    lineCM(70, 10, 25, 25);
-    XCross(30, 1, 25, false);
+    lineCM(35, 10, 25, 25);
+    XCross(35, 1, 25, false);
     driveCM(30, 15, 35, 35);
     closeFullLeft();
     closeFullRight(true);
@@ -174,7 +175,7 @@ void takeCubes() {
     floorGrabRight(true);
     driveCM(60, -30, 35, 35);
     turnLine180(65, 165, 30);
-    XCross(80, 1, 40, true, 5.8);
+    XCross(55, 1, 40, true, 5.8);
     turnLineRight(50, 75, 30);
     XCross(80, 1, 30, true, 6);
     XCross(80, 1, 40, true, 6);
@@ -221,7 +222,7 @@ void bringContsToShip() {
     else if (cellRight == 1 && cellLeft == 0) {right1left0();}
     else if (cellRight == 1 && cellLeft == 1) {twoSituations(true);} 
     else {twoSituations(false);}
-    turnLine180(55, 165, 60);
+    turnLine180(45, 150, 60);
     align();
 }
 
@@ -237,7 +238,7 @@ void takeRubbish() {
     lineCM(29, 2.4, 35, 35);
 	align();
 	arc(38, 9, 92.5, 45, 45);
-	driveCM(49, 51, 20, 25);
+	driveCM(40, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);
 	driveCM(55, 44, 20, 25);
@@ -248,11 +249,11 @@ void takeRubbish() {
     closeFullRight();
     turnLineRight(75, 65, 30);
     align();
-    XCross(75, 1, 75, true, 6.5);
+    XCross(50, 1, 75, true, 6.5);
 }
 
 void finish() {
-    lineCM(30, 6, 25, 25);
+    lineCM(27, 8, 25, 25);
     arc(80, -27.4, 179, 50, 50);
     lineCM(80, 5, 80, 100);
     closeFullLeft();
@@ -260,7 +261,8 @@ void finish() {
     XCross(65, 1, 100, false);
     driveCM(40, 20, 40, 40);
     stopBC(0);
-    while (true) {}
+    int time = time1[T3] / 1000;
+    while (true) {displayBigStringAt(0, 120, "%d secs", time);}
 }
 
 void runner() {

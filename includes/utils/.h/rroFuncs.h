@@ -81,6 +81,7 @@ void takeRightManip() {
     turnOneMotor(leftMotor, 50, -17, 35, 35);
     driveCM(70, -2, 70, 70);
     openFullRight(true);
+    stopBC(300);
     driveCM(65, 12, 30, 30);
     floorGrabRight(true);
     driveCM(65, -10, 30, 30);
@@ -91,6 +92,7 @@ void takeLeftManip() {
     turnOneMotor(rightMotor, 65, -22, 35, 35);
     driveCM(70, -2, 70, 70);
     openFullLeft(true);
+    stopBC(300);
     driveCM(65, 10.5, 30, 30);
     floorGrabLeft(true);
     driveCM(65, -8.5, 30, 30);
