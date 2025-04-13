@@ -1,6 +1,6 @@
 float shipTurn = 67.5;
 const float copyST = 67.5;
-const float turnPower = 35;
+const float turnPower = 42;
 
 void r() {
     stopBC(2.5);
@@ -150,23 +150,11 @@ void twoSituations(bool big) {
     shipTurn = copyST;
 }
 
-void leaveCubes(int *heights, int *cols, int i) {
-    int waiting = 160; //55
-    if (cols[i] == 6) {
-        if (heights[i] == 1) {
-            peak();
-            openFullRightLowLowSpeed(true);
-            delay(waiting);
-            closeFullRightLowSpeed(true);
-            delay(waiting);
-            openFullRightLowLowSpeed(true);
-            delay(waiting);
-            closeFullRightLowSpeed(true);
-        }
-        else {
-            openFullRightLowLowSpeed(true);
-            delay(waiting);
-            closeFullRightLowSpeed(true);
-        }
-    }
+void retakeConts() {
+    lineCM(80, 10, 35, 35);
+    openFullLeft();
+    openFullRight();
+    lineCM(35, 7.5, 35, 35);
+    floorGrabLeft();
+    floorGrabRight();
 }

@@ -87,7 +87,7 @@ void lineReading(int power, int startPower = startDefault, int &i1, int &i2) {
 	int cols[6];
 	int i = 0, buffer;
 	int degr = 150;
-	while (i < 6){
+	while (i < 5){
 		float speedB = SmoothB(startPower, power, 0, 0);
 		float speedC = SmoothC(startPower, power, 0, 0);
 		float u = line(speedC);
@@ -109,27 +109,23 @@ void lineReading(int power, int startPower = startDefault, int &i1, int &i2) {
 	}
 	int bufferi1 = -1;
 	int bufferi2 = -1;
-    for (int i = 0; i < 6; i++) {
+	int count = 0;
+    for (int i = 0; i < 5; i++) {
         if (cols[i] == 1) {
             if (bufferi1 == -1) {
                 bufferi1 = i; 
+				count++;
             } else if (bufferi2 == -1) {
                 bufferi2 = i;
+				count++;
                 break;
             }
         }
     }
+	if (count < 2) {bufferi2 = 5;}
 	i1 = bufferi1;
 	i2 = bufferi2;
-	/*stopBC(0);
-    displayBigStringAt(0, 120, "%d", cols[0]);
-    displayBigStringAt(0, 100, "%d", cols[1]);
-    displayBigStringAt(0, 80, "%d", cols[2]);
-    displayBigStringAt(0, 60, "%d", cols[3]);
-    displayBigStringAt(0, 40, "%d", cols[4]);
-    displayBigStringAt(0, 20, "%d", cols[5]);
-    waitForButtonPress();
-*/
+
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 }

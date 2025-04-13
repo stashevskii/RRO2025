@@ -2,23 +2,21 @@
 
 void scan() {
     clearTimer(T3);
-    driveCM(85, 18, 25, 85);
-    lineCM(85, 18.6, 85, 75);
-    lineReading(75, 75, blackElement1, blackElement2);
+    driveCM(100, 18, 25, 85);
+    lineCM(95, 18.6, 85, 80);
+    lineReading(90, 90, blackElement1, blackElement2);
     for (int i = 0; i < 6; i++) {
         if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
         else {scannedColors[i] = 6;}
     }
-    
 }
 
 void toCubes() {
-    XCross(65, 1, 60, true, 3);
-    turnLineRight(80, 50, 45);
-    XCross(90, 1, 50, true, 4);
-    turnLineLeft(80, 70, 35);
-    XCross(100, 1, 80, true, 3);
-    XCross(70, 1, 100, true, 7.1);
+    arc(70, 20, 37, 25, 25);
+	driveCM(85, 81, 70, 70);
+	arc(50, -20, 39, 70, 70);
+	lineCM(75, 5, 50, 75);
+    XCross(75, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
     driveCM(80, -4, 25, 25);
 }
@@ -37,14 +35,14 @@ void scanHeights() {
             if (scannedHeights[cont] == 1) {counter++;}
             break;
         }
-        XCross(50, 1, 50, false);
+        XCross(65, 1, 65, false);
         scannedHeights[cont] = detectHigh();
         if (scannedHeights[cont] == 1) {counter++;}
-        driveCM(50, 2, 50, 50);
+        driveCM(65, 2, 50, 50);
     }
     if (counter == 2) {scannedHeights[0] = 0;}
     else {scannedHeights[0] = 1;}
-    turnLine180(55, 110, 25);
+    turnLine180(65, 110, 25);
 }
 
 void grab4() {
@@ -124,30 +122,25 @@ void grab4() {
     else {turnLeft(70, 179, 35);}
     align();
 
-    lineCM(80, 10, 35, 35);
-    openFullLeft();
-    openFullRight();
-    lineCM(35, 7.5, 35, 35);
-    floorGrabLeft();
-    floorGrabRight();
-    XCross(60, 1, 100, true, 6.5);
+    retakeConts();
+    XCross(80, 1, 100, true, 6.5);
 }
 
 void cubes() {
     turnLineRight(60, 70, 25);
-    XCross(40, 1, 25, false);
-    driveCM(50, 16, 35, 35);
+    XCross(50, 1, 25, false);
+    driveCM(45, 16, 35, 35);
     openFullLeft();
     openFullRight(true);
-    driveCM(75, -10, 35, 53);
+    driveCM(55, -10, 35, 53);
     closeFullLeft();
     closeFullRight(true);
     stopBC(350);
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(60, 7.2, 35, 53);
-    driveCM(75, -29, 35, 53);
+    driveCM(48, 7.2, 35, 53);
+    driveCM(65, -29, 35, 53);
     turnLine180(55, 165, 30);
     XCross(50, 1, 30, true, 7);
     turnLineLeft(65, 70, 30);
@@ -158,16 +151,16 @@ void takeCubes() {
     closeFullLeft();
     closeFullRight(true);
     stopBC(1);
-    liftSomeLeft();
+    liftSomeLeft(true);
     liftSomeRight(true);
     stopBC(20);
     lineCM(35, 10, 25, 25);
     XCross(35, 1, 25, false);
-    driveCM(30, 15, 35, 35);
+    driveCM(30, 16.5, 35, 35);
     closeFullLeft();
     closeFullRight(true);
     stopBC(100);
-    driveCM(60, -8, 35, 35);  
+    driveCM(60, -9.5, 35, 35);  
     openFullLeft()
     openFullRight(true)
     driveCM(60, 11, 35, 35);
@@ -177,8 +170,9 @@ void takeCubes() {
     turnLine180(65, 165, 30);
     XCross(55, 1, 40, true, 5.8);
     turnLineRight(50, 75, 30);
-    XCross(80, 1, 30, true, 6);
-    XCross(80, 1, 40, true, 6);
+    XCross(80, 1, 50, true, 6);
+    retakeConts();
+    XCross(90, 1, 80, true, 5.7);
 }
 
 void bringContsToShip() {
@@ -222,7 +216,7 @@ void bringContsToShip() {
     else if (cellRight == 1 && cellLeft == 0) {right1left0();}
     else if (cellRight == 1 && cellLeft == 1) {twoSituations(true);} 
     else {twoSituations(false);}
-    turnLine180(45, 150, 60);
+    turnLine180(45, 165, 50);
     align();
 }
 
@@ -232,12 +226,12 @@ void takeRubbish() {
     XCross(48, 1, 35, true, 6.9);
     turnLineLeft(55, 65, 30);
     for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
-    XCross(50, 1, 40, true, 7.2);
+    XCross(50, 1, 40, true, 7.5);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
-    lineCM(29, 2.4, 35, 35);
+    lineCM(26.5, 2.2, 35, 35);
 	align();
-	arc(38, 9, 92.5, 45, 45);
+	arc(38, 9, 92.4, 45, 45);
 	driveCM(40, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);
@@ -253,13 +247,13 @@ void takeRubbish() {
 }
 
 void finish() {
-    lineCM(27, 8, 25, 25);
-    arc(80, -27.4, 179, 50, 50);
+    lineCM(30, 17, 25, 25);
+    arc(90, -27.52, 179, 60, 60);
     lineCM(80, 5, 80, 100);
     closeFullLeft();
     closeFullRight();
-    XCross(65, 1, 100, false);
-    driveCM(40, 20, 40, 40);
+    XCross(100, 1, 100, false);
+    driveCM(75, 20, 40, 40);
     stopBC(0);
     int time = time1[T3] / 1000;
     while (true) {displayBigStringAt(0, 120, "%d secs", time);}

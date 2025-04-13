@@ -1,6 +1,6 @@
-const float manipKp = 1.9;
+const float manipKp = 2;
 const float manipKd = 5;
-const float manipKi = 1;
+const float manipKi = 0.001;
 float manipKc = 1;
 
 int manipPos = 0;
@@ -14,10 +14,10 @@ task PIDManipLeft() {
 		float e = manipPos - nMotorEncoder[manipMotor];
 		isumManip = isumManip + e * manipKi;
 		isumManip = lim(isumManip, -60, 60);
-		float u = e * manipKp + (e - eoldManip) * manipKd + isum;
+		float u = e * manipKp + (e - eoldManip) * manipKd;
 		motor[manipMotor] = u * manipKc;
 		eoldManip = e;
-		sleep(7);
+		sleep(1);
 	}
 }
 
@@ -31,13 +31,13 @@ task initManipLeft() {
 
 void floorGrabLeft(bool afk = false) {
 	manipKc = 0.71;
-	manipPos = 430;
+	manipPos = 460;
 	if (afk) {stopBC(400);}
 }
 
 void openLeftNotFull(bool afk = false) {
 	manipKc = 0.1;
-	manipPos = 559;
+	manipPos = 570;
 	if (afk) {stopBC(400);}
 }
 
@@ -55,17 +55,17 @@ void openFullLeft(bool afk = false) {
 
 void liftSomeLeft(bool afk = false) {
 	manipKc = 0.5;
-	manipPos = 170;
+	manipPos = 180;
 	if (afk) {stopBC(400);}
 }
 
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
-		manipKc = 0.063;
-		manipPos = 244;
+		manipKc = 0.08;
+		manipPos = 270;
 	} else {
-		manipKc = 0.063;
-		manipPos = 229;
+		manipKc = 0.1;
+		manipPos = 266;
 	}
 	if (afk) {stopBC(500);}
 }

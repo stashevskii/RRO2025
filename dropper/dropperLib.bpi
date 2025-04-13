@@ -42,7 +42,7 @@ Function stopBC(in number w)
 EndFunction
 
 Function down()
-  arc(-65, -65, 0.1, 0.5, 1800)
+  arc(-65, -65, 0.1, 0.5, 1806)
 EndFunction
 
 Function up()
@@ -50,9 +50,9 @@ Function up()
 EndFunction
 
 Function dropCube()
-  Motor.StartPower("A", 30)
+  Motor.StartPower("A", 28)
   Program.Delay(700)
-  Motor.StartPower("A", -30)
+  Motor.StartPower("A", -28)
   Program.Delay(700)
 EndFunction
 

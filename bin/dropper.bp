@@ -10,7 +10,7 @@ LCD.Clear()
 While flag = 1
   value = Sensor.ReadRawValue(3, 0)
   If value < 200 Then
-    stopBC(3250)
+    stopBC(3000)
     down()
     stopBC(0)
     flag = 0

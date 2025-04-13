@@ -13,7 +13,7 @@ task PIDManipRight() {
 		float e2 = manipPos2 - nMotorEncoder[manipMotor2];
 		isumManip2 = isumManip2 + e2 * manipKi2;
 		isumManip2 = lim(isumManip2, -60, 60);
-		float u2 = e2 * manipKp2 + (e2 - eoldManip2) * manipKd2 + isum;
+		float u2 = e2 * manipKp2 + (e2 - eoldManip2) * manipKd2 + isumManip2;
 		motor[manipMotor2] = u2 * manipKc2;
 		eoldManip2 = e2;
 		sleep(1);
@@ -72,11 +72,11 @@ void liftSomeRight(bool afk = false, int waiting = 400) {
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		manipKc2 = 0.15;
-		manipPos2 = -197;
+		manipKc2 = 0.16;
+		manipPos2 = -195;
 	} else {
 		manipKc2 = 0.23;
-		manipPos2 = -202.5;
+		manipPos2 = -200.5;
 	}
 	if (afk) {stopBC(425);}
 }
