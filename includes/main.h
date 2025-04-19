@@ -4,7 +4,7 @@ void scan() {
     clearTimer(T3);
     driveCM(100, 18, 25, 85);
     lineCM(95, 18.6, 85, 80);
-    lineReading(80, 80, blackElement1, blackElement2);
+    lineReading(70, 70, blackElement1, blackElement2);
     for (int i = 0; i < 6; i++) {
         if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
         else {scannedColors[i] = 6;}
@@ -12,7 +12,7 @@ void scan() {
 }
 
 void toCubes() {
-    arc(70, 20, 37, 25, 25);
+    arc(70, 20, 39, 25, 25);
 	driveCM(85, 81, 70, 70);
 	arc(70, -20, 39, 70, 70);
 	lineCM(75, 5, 50, 75);
@@ -231,7 +231,7 @@ void takeRubbish() {
     liftSomeLeft(true);
     lineCM(26.5, 2.2, 35, 35);
 	align();
-	arc(38, 9, 92.5, 45, 45);
+	arc(38, 9, 92.43, 45, 45);
 	driveCM(40, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);
@@ -256,7 +256,7 @@ void finish() {
     driveCM(75, 20, 40, 40);
     stopBC(0);
     int time = time1[T3] / 1000;
-    while (true) {displayBigStringAt(0, 120, "%d secs", time);}
+    while (true) {displayBigStringAt(0, 120, "%d seconds", time);}
 }
 
 void runner() {
