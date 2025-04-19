@@ -113,14 +113,14 @@ void right0left1() {
 
 void right1left0() {
     align();
-    turnOneMotor(rightMotor, turnPower, shipTurn + 2, 35, 25);
-    turnOneMotor(leftMotor, turnPower, shipTurn + 2, 35, 25);
+    turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
+    turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
     toShipRun();
     openLeftNotFull();
     openRightNotFull(true);
     driveCM(65, -5, 30, 30);
-    turnOneMotor(leftMotor, turnPower, -shipTurn + 4, 35, 25);
-    turnOneMotor(rightMotor, turnPower, -shipTurn + 5, 35, 25);
+    turnOneMotor(leftMotor, turnPower, -shipTurn + 2, 35, 25);
+    turnOneMotor(rightMotor, turnPower, -shipTurn + 3, 35, 25);
 }
 
 void twoSituations(bool big) {

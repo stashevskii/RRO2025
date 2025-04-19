@@ -25,7 +25,7 @@ task initManipRight() {
 	while(time1[T1] < 80) {
 		motor[manipMotor2] = 100;
 	}
-	nMotorEncoder[manipMotor2] = 0;
+	resetMotorEncoder(manipMotor2)
 }
 
 void floorGrabRight(bool afk = false) {
@@ -36,7 +36,7 @@ void floorGrabRight(bool afk = false) {
 
 void openRightNotFull(bool afk = false) {
 	manipKc2 = 0.1;
-	manipPos2 = -535;
+	manipPos2 = -550;
 	if (afk) {stopBC(400);}
 }
 
@@ -73,10 +73,10 @@ void liftSomeRight(bool afk = false, int waiting = 400) {
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
 		manipKc2 = 0.16;
-		manipPos2 = -195;
+		manipPos2 = -190;
 	} else {
 		manipKc2 = 0.23;
-		manipPos2 = -200.5;
+		manipPos2 = -195.5;
 	}
 	if (afk) {stopBC(425);}
 }

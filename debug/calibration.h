@@ -7,11 +7,9 @@
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
 #pragma config(Motor,  motorD,          liftMotor,     tmotorEV3_Medium, openLoop, encoder)
 
-#include "../includes/others/math.h"
+#include "../includes/utils/.h/math.h"
 
-bool exit = true;
-
-task main() {
+void calibrate() {
 	int rgbValsLeft[6];
 	int rgbValsRight[6];
   	setMotorBrakeMode(leftMotor, motorCoast);
@@ -26,8 +24,10 @@ task main() {
  		rgbValsLeft[i] = 0;
  		rgbValsRight[i] = 0;
 	}
+
 	int rgbS1[3];
 	int rgbS2[3];
+
 	clearTimer(T1);
 	while(time1[T1] < 5000) {
 		displayBigTextLine(0, "%d", time1[T1]);
@@ -41,6 +41,7 @@ task main() {
 			rgbValsRight[3 + i] = max(rgbS2[i], rgbValsRight[3 + i]);
 		}
 	}
+
 	int r1min = rgbValsleft[0];
 	int g1min = rgbValsleft[1];
 	int b1min = rgbValsleft[2];
@@ -55,6 +56,7 @@ task main() {
 	int g2max=rgbValsRight[4];
 	int b2max=rgbValsRight[5];
 
+	eraseDisplay();
 	displayBigStringAt(0, 120, "r1Min %d", r1min);
 	displayBigStringAt(0, 100, "g1Min %d", g1min);
 	displayBigStringAt(0, 80,  "b1Min %d", b1min);
@@ -69,5 +71,5 @@ task main() {
 	displayBigStringAt(120, 40, " %d", g2max);
 	displayBigStringAt(120, 20, " %d", b2max);
 
-	waitForButtonPress();
+	while (!getButtonPress(buttonAny)) {}
 }

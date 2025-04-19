@@ -4,7 +4,7 @@ void scan() {
     clearTimer(T3);
     driveCM(100, 18, 25, 85);
     lineCM(95, 18.6, 85, 80);
-    lineReading(90, 90, blackElement1, blackElement2);
+    lineReading(80, 80, blackElement1, blackElement2);
     for (int i = 0; i < 6; i++) {
         if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
         else {scannedColors[i] = 6;}
@@ -14,7 +14,7 @@ void scan() {
 void toCubes() {
     arc(70, 20, 37, 25, 25);
 	driveCM(85, 81, 70, 70);
-	arc(50, -20, 39, 70, 70);
+	arc(70, -20, 39, 70, 70);
 	lineCM(75, 5, 50, 75);
     XCross(75, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
@@ -129,18 +129,18 @@ void grab4() {
 void cubes() {
     turnLineRight(60, 70, 25);
     XCross(50, 1, 25, false);
-    driveCM(45, 16, 35, 35);
+    driveCM(45, 16.8, 35, 35);
     openFullLeft();
     openFullRight(true);
-    driveCM(55, -10, 35, 53);
+    driveCM(55, -10.8, 35, 53);
     closeFullLeft();
     closeFullRight(true);
     stopBC(350);
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(48, 7.2, 35, 53);
-    driveCM(65, -29, 35, 53);
+    driveCM(48, 7.5, 35, 53);
+    driveCM(65, -29.3, 35, 53);
     turnLine180(55, 165, 30);
     XCross(50, 1, 30, true, 7);
     turnLineLeft(65, 70, 30);
@@ -231,7 +231,7 @@ void takeRubbish() {
     liftSomeLeft(true);
     lineCM(26.5, 2.2, 35, 35);
 	align();
-	arc(38, 9, 92.4, 45, 45);
+	arc(38, 9, 92.5, 45, 45);
 	driveCM(40, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);

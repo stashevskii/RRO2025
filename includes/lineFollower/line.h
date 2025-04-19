@@ -16,7 +16,6 @@ float eoldInner = 0;
 float isum = 0;
 float isumInner = 0;
 
-// return values
 float line(int power) {
 	float r1, g1, b1, r2, g2, b2;
 	sensorRGB(leftS, r1, g1, b1);
@@ -32,21 +31,6 @@ float line(int power) {
 	eold = e;
 	return u;
 }
-
-/*float lineBlueGray(int power) {
-	float r1, g1, b1, r2, g2, b2;
-	sensorRGBBlueGray(rightS, r2, g2, b2);
-
-	float e = 50 - (r2 + g2 + b2) / 3;
-	float kp = calcCoefficient(power, lineKpOne, cSOne);
-	float kd = calcCoefficient(power, lineKdOne, cSOne);
-	float ki = calcCoefficient(power, lineKiOne, cSOne);
-	isum = isum + e * ki;
-	isum = lim(isum, -60, 60);
-	float u = kp * e + (e - eold) * kd + isum;
-	eold = e;
-	return u;
-}*/
 
 float lineS2Inner(int power, int gray = 20) {
 	float r1, g1, b1;
