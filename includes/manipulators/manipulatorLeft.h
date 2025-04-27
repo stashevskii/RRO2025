@@ -55,14 +55,14 @@ void openFullLeft(bool afk = false) {
 
 void liftSomeLeft(bool afk = false) {
 	manipKc = 0.5;
-	manipPos = 165;
+	manipPos = 172;
 	if (afk) {stopBC(400);}
 }
 
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
 		manipKc = 0.125;
-		manipPos = 270;
+		manipPos = 262;
 	} else {
 		manipKc = 0.125;
 		manipPos = 265;

@@ -126,7 +126,7 @@ void grab4() {
     XCross(80, 1, 100, true, 6.5);
 }
 
-void cubes() {
+void leaveCubes() {
     turnLineRight(60, 70, 25);
     XCross(50, 1, 25, false);
     driveCM(45, 16.8, 35, 35);
@@ -144,6 +144,32 @@ void cubes() {
     turnLine180(55, 165, 30);
     XCross(50, 1, 30, true, 7);
     turnLineLeft(65, 70, 30);
+}
+
+void takeRubbish() {
+    closeFullLeft();
+    closeFullRight();
+    XCross(48, 1, 35, true, 6.9);
+    turnLineLeft(55, 65, 30);
+    for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
+    XCross(50, 1, 40, true, 7.5);
+    turnLineRight(70, 65, 30);
+    liftSomeLeft(true);
+    lineCM(26.5, 2.3, 35, 35);
+	align();
+	arc(38, 9, 92.4, 45, 45);
+	driveCM(40, 51, 20, 25);
+	openLeftRubbish(true);
+	arc(65, 15, 90, 45, 45);
+	driveCM(55, 44, 20, 25);
+	liftContLeft(0, true);
+    driveCM(62, -3.5, 20, 25);
+	arc(50, 21, -90, 45, 45);
+    closeFullLeft();
+    closeFullRight();
+    turnLineRight(75, 65, 30);
+    align();
+    XCross(50, 1, 75, true, 6.5);
 }
 
 void takeCubes() {
@@ -220,32 +246,6 @@ void bringContsToShip() {
     align();
 }
 
-void takeRubbish() {
-    closeFullLeft();
-    closeFullRight();
-    XCross(48, 1, 35, true, 6.9);
-    turnLineLeft(55, 65, 30);
-    for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
-    XCross(50, 1, 40, true, 7.5);
-    turnLineRight(70, 65, 30);
-    liftSomeLeft(true);
-    lineCM(26.5, 2.2, 35, 35);
-	align();
-	arc(38, 9, 92.5, 45, 45);
-	driveCM(40, 51, 20, 25);
-	openLeftRubbish(true);
-	arc(65, 15, 90, 45, 45);
-	driveCM(55, 44, 20, 25);
-	liftContLeft(0, true);
-    driveCM(62, -3.5, 20, 25);
-	arc(50, 21, -90, 45, 45);
-    closeFullLeft();
-    closeFullRight();
-    turnLineRight(75, 65, 30);
-    align();
-    XCross(50, 1, 75, true, 6.5);
-}
-
 void finish() {
     lineCM(30, 17, 25, 25);
     arc(90, -27.52, 179, 60, 60);
@@ -264,7 +264,7 @@ void runner() {
     toCubes();
     scanHeights();
     grab4();
-    cubes();
+    leaveCubes();
     takeRubbish();
     takeCubes();
     bringContsToShip();
