@@ -12,9 +12,9 @@ void scan() {
 }
 
 void toCubes() {
-    arc(70, 20, 37, 25, 25);
-	driveCM(85, 81, 70, 70);
-	arc(70, -20, 39, 70, 70);
+    arc(80, 20, 37, 25, 25);
+	driveCM(95, 80.5, 70, 70);
+	arc(80, -20, 39, 70, 70);
 	lineCM(75, 5, 50, 75);
     XCross(75, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
@@ -29,16 +29,16 @@ void scanHeights() {
 
     for (int cont = 1; cont < 6; cont++) {
         if (cont == 5) {
-            driveCM(60, 11, 25, 25);
+            driveCM(60, 11, 85, 25);
             scannedHeights[cont] = detectHigh();
-            driveCM(60, -4, 25, 25);
+            driveCM(60, -4, 85, 25);
             if (scannedHeights[cont] == 1) {counter++;}
             break;
         }
-        XCross(65, 1, 65, false);
+        XCross(85, 1, 85, false);
         scannedHeights[cont] = detectHigh();
         if (scannedHeights[cont] == 1) {counter++;}
-        driveCM(65, 2, 50, 50);
+        driveCM(85, 2, 75, 85);
     }
     if (counter == 2) {scannedHeights[0] = 0;}
     else {scannedHeights[0] = 1;}
@@ -130,8 +130,8 @@ void leaveCubes() {
     turnLineRight(60, 70, 25);
     XCross(50, 1, 25, false);
     driveCM(45, 16.8, 35, 35);
-    openFullLeft();
-    openFullRight(true);
+    openFullLeftLowSpeed();
+    openFullRightLowSpeed(true);
     driveCM(55, -10.8, 35, 53);
     closeFullLeft();
     closeFullRight(true);
@@ -255,8 +255,8 @@ void finish() {
     XCross(100, 1, 100, false);
     driveCM(75, 20, 40, 40);
     stopBC(0);
-    int time = time1[T3] / 1000;
-    while (true) {displayBigStringAt(0, 120, "%d secs", time);}
+    displayBigStringAt(0, 120, "%d secs", time1[T3] / 1000);
+    while (true) {}
 }
 
 void runner() {

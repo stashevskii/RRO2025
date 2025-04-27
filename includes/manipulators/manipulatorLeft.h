@@ -30,8 +30,8 @@ task initManipLeft() {
 }
 
 void floorGrabLeft(bool afk = false) {
-	manipKc = 0.71;
-	manipPos = 460;
+	manipKc = 0.73;
+	manipPos = 392;
 	if (afk) {stopBC(400);}
 }
 
@@ -49,6 +49,12 @@ void openLeftRubbish(bool afk = false) {
 
 void openFullLeft(bool afk = false) {
 	manipKc = 1;
+	manipPos = 1000;
+	if (afk) {stopBC(400);}
+}
+
+void openFullLeftLowSpeed(bool afk = false) {
+	manipKc = 0.4;
 	manipPos = 1000;
 	if (afk) {stopBC(400);}
 }

@@ -1,6 +1,6 @@
 float shipTurn = 67.5;
 const float copyST = 67.5;
-const float turnPower = 42;
+const float turnPower = 55;
 
 void r() {
     stopBC(2.5);
