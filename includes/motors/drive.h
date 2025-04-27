@@ -1,7 +1,7 @@
-float getCmMotor(tMotor motor) {
-	float degr = getMotorEncoder(motor);
-	return fromDegToCm(degr);
-}
+#include "acceleration.h"
+#include "motorSync.h"
+#include "../sensors/colorSensor/colorScan.h"
+#include "../data/settings.h"
 
 void driveCM(float power, float cm, int startPower = startDefault, int endPower = 15) {
 	syncEold = 0;
@@ -16,44 +16,8 @@ void driveCM(float power, float cm, int startPower = startDefault, int endPower 
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc))
 		drive(power, power, enc, enc, startPower, endPower);
 
-	//localDistB = nMotorEncoder[leftMotor];
-	//localDistC = nMotorEncoder[rightMotor];
-
-	//if(startPower != 0) {
-	//	globalDistB = nMotorEncoder[leftMotor];
-	//	globalDistC = nMotorEncoder[rightMotor];
-	//}
-
 	localDistB -= enc;
 	localDistC += enc;
-}
-
-void drive2col(float power, float startPower = startDefault, tSensors stopS = rightS, lineColor stopColor = whiteLine) {
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
-		globalDistC = nMotorEncoder[rightMotor];
-	}
-
-	while (true) {
-		float speedB = SmoothB(startPower, power, 0, 0);
-		float speedC = SmoothC(startPower, power, 0, 0);
-
-		float powerB =  -speedB;
-		float powerC =  speedC;
-		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
-		powerB /= ratio;
-		powerC /= ratio;
-
-		motor[motorB] = powerB;
-		motor[motorC] = powerC;
-		if (checkColor(stopS, stopColor)) {break;}
-	}
-
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
 }
 
 void arc(float power, float r, float angle, int startPower = 35, int endPower = 20) {
@@ -106,7 +70,7 @@ void arc(float power, float r, float angle, int startPower = 35, int endPower = 
 	localDistC += encC;
 }
 
-//DONT USE IN .c PROGRAMS ONLY FOR LIBS
+// useable only in .h files
 void turn(float power, float angle, int startPower = startDefault, int endPower = stopDefault) {
 	syncEold = 0;
 	syncIsum = 0;
@@ -157,15 +121,6 @@ void turnLeft(float power, float angle, int startPower = startDefault, int endPo
 
 	localDistB -= enc;
 	localDistC -= enc;
-}
-
-void drivetobl(float power) {
-	bool exx = true;
-	while(exx) {
-		motor[motorB] = -power;
-		motor[motorC] = power;
-		if (checkColor(leftS, blackLine) && checkColor(rightS, blackLine)) {exx = false;}
-	}
 }
 
 void turnOneMotor(tMotor m, int power, float angle, int startPower = startDefault, int endPower = stopDefault) {

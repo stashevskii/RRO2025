@@ -1,3 +1,5 @@
+#include "../hardware/stop.h"
+
 void printNumbers(int *nums, int n, int w = 5600) {
     stopBC(0);
     eraseDisplay();

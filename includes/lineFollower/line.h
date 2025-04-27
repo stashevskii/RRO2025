@@ -1,6 +1,11 @@
 #ifndef __LINE_H__
 #define __LINE_H__
 
+#include "../utils/software/math.h"
+#include "../motors/acceleration.h"
+#include "../sensors/colorSensor/colorScan.h"
+#include "sensors.h"
+
 const float lineKp = 0.65;
 const float lineKd = 5;
 const float lineKi = 0.01;
@@ -91,9 +96,11 @@ void lineReading(int power, int startPower = startDefault, int &i1, int &i2) {
 			i++;
 		}
 	}
+
 	int bufferi1 = -1;
 	int bufferi2 = -1;
 	int count = 0;
+
     for (int i = 0; i < 5; i++) {
         if (cols[i] == 1) {
             if (bufferi1 == -1) {
@@ -109,38 +116,6 @@ void lineReading(int power, int startPower = startDefault, int &i1, int &i2) {
 	if (count < 2) {bufferi2 = 5;}
 	i1 = bufferi1;
 	i2 = bufferi2;
-
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-}
-
-void lineCMReverse(int power, float cm, int startPower = startDefault, int endPower = stopDefault) {
-	eold = 0;
-	isum = 0;
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
-		globalDistC = nMotorEncoder[rightMotor];
-	}
-
-	float enc = fromCmToDeg(cm);
-
-	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
-		float speedB = SmoothB(startPower, power, endPower, enc);
-		float speedC = SmoothC(startPower, power, endPower, enc);
-		float u = line(speedC);
-
-		float powerB =  -(-speedB + u);
-		float powerC =  -(speedC + u);
-		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
-		powerB /= ratio;
-		powerC /= ratio;
-
-		motor[motorB] = powerB;
-		motor[motorC] = powerC;
-	}
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
@@ -176,83 +151,6 @@ void lineCM(int power, float cm, int startPower = startDefault, int endPower = s
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
-}
-
-void lineCM1sensor(int power, float cm, int startPower = startDefault, int endPower = stopDefault) {
-	eold = 0;
-	isum = 0;
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
-		globalDistC = nMotorEncoder[rightMotor];
-	}
-
-	float enc = fromCmToDeg(cm);
-
-	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
-		float speedB = SmoothB(startPower, power, endPower, enc);
-		float speedC = SmoothC(startPower, power, endPower, enc);
-		float u = lineS2Inner(speedC, -5);
-
-		float powerB =  -speedB - u;
-		float powerC =  speedC - u;
-		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
-		powerB /= ratio;
-		powerC /= ratio;
-
-		motor[motorB] = powerB;
-		motor[motorC] = powerC;
-	}
-
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-}
-
-void XCross1Sensor(int power, int n, int startPower = startDefault, bool toWheels = true, int dist = 8, lineColor stopColorLeft = blackLine, lineColor stopColorRight = blackLine) {
-	eold = 0;
-	isum = 0;
-	int cur = 0;
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
-		globalDistC = nMotorEncoder[rightMotor];
-	}
-	bool flag = false;
-	if (n == 0) {return;}
-	while(cur < n) {
-		float speedB = SmoothB(startPower, power, 0, 0);
-		float speedC = SmoothC(startPower, power, 0, 0);
-		float u = lineS2Inner(speedC);
-
-		float powerB =  -speedB - u;
-		float powerC =  speedC - u;
-		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
-		powerB /= ratio;
-		powerC /= ratio;
-
-		motor[leftMotor] = powerB;
-		motor[rightMotor] = powerC;
-
-		if(checkColor(leftS, stopColorLeft) && checkColor(rightS, stopColorRight)) {
-			if (!flag) {
-				cur++;
-				flag = true;
-			}
-		} else {
-			flag = false;
-		}
-		delay(1);
-	}
-
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-	if (toWheels) {
-		driveCM(power, dist, 50, 50);
-	}
 }
 
 void align() {
@@ -324,41 +222,6 @@ void QCross(int power, int n, int startPower = startDefault, bool last2wheels = 
 		else {XCross(power, 1, startPower, true, dist)}
 	}
 }
-
-//Gcross FUNCTIYA NE ALLIANCA
-
-
-/*void lineBlueGrayCM(int power, float cm, int startPower = startDefault, int endPower = stopDefault) {
-	eold = 0;
-	isum = 0;
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
-		globalDistC = nMotorEncoder[rightMotor];
-	}
-
-	float enc = fromCmToDeg(cm);
-
-	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
-		float speedB = SmoothB(startPower, power, endPower, enc);
-		float speedC = SmoothC(startPower, power, endPower, enc);
-		float u = lineBlueGray(speedC);
-
-		float powerB =  -speedB - u;
-		float powerC =  speedC - u;
-		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
-		powerB /= ratio;
-		powerC /= ratio;
-
-		motor[leftMotor] = powerB;
-		motor[rightMotor] = powerC;
-	}
-
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-}*/
 
 void crossS2Inner(int power, int n, int startPower = startDefault) {
 	eold = 0;

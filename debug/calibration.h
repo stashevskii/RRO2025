@@ -49,12 +49,12 @@ void calibrate() {
 	int g1max = rgbValsleft[4];
 	int b1max = rgbValsleft[5];
 
-	int r2min=rgbValsRight[0];
-	int g2min= rgbValsRight[1];
-	int b2min=rgbValsRight[2];
-	int r2max=rgbValsRight[3];
-	int g2max=rgbValsRight[4];
-	int b2max=rgbValsRight[5];
+	int r2min = rgbValsRight[0];
+	int g2min = rgbValsRight[1];
+	int b2min = rgbValsRight[2];
+	int r2max = rgbValsRight[3];
+	int g2max = rgbValsRight[4];
+	int b2max = rgbValsRight[5];
 
 	eraseDisplay();
 	displayBigStringAt(0, 120, "r1Min %d", r1min);

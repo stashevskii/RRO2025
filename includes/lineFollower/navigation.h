@@ -1,3 +1,6 @@
+#include "../motors/drive.h"
+#include "../lineFollower/line.h"
+
 void directions(int currDir, int finishDir) {
     if (currDir == 0 && finishDir == 1) {turnLineRight(75, 70);}
     if (currDir == 0 && finishDir == 2) {turnLine180(75);}
@@ -40,7 +43,7 @@ int oppositeDir(int currDir) {
     if (currDir == 0) {return 2;}
     if (currDir == 1) {return 3;}
     if (currDir == 2) {return 0;}
-    if (currDir == 3) {return 1;}
+    return 1;
 }
 
 void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, bool lineAtStart = false) {
@@ -61,16 +64,4 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
         outDir = dir;
     }
     outDir = dir;
-    /*if (startY != finishY) {
-        int delta = finishY - startY;
-        if (delta < 0) {
-            directions(dir, 3);
-            dir = 3;
-        } else if (delta > 0) {
-            directions(dir, 1);
-            dir = 1;
-        }
-        XCrossManyCrosses(100, fabs(delta), 60);
-        startY = finishY;
-    }*/
 }
