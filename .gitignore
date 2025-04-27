@@ -33,5 +33,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-bin/~dropper
-~dropper
+~dropper/
+*.tmp
