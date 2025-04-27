@@ -14,7 +14,7 @@ void scan() {
 void toCubes() {
     arc(70, 20, 39, 25, 25);
 	driveCM(85, 81, 70, 70);
-	arc(70, -20, 42, 70, 70);
+	arc(70, -20, 39, 70, 70);
 	lineCM(75, 5, 50, 75);
     XCross(75, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
