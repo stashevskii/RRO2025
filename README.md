@@ -1,11 +1,12 @@
 # РРО 2025
-## _Разработчики [@stashevskii](https://github.com/stashevskii) и [@Leshechkagit](https://github.com/Leshechkagit)_
+## _Senior EV3 разработчики данного ПО [@stashevskii](https://github.com/stashevskii) и [@Leshechkagit](https://github.com/Leshechkagit)_
+## _Team Lead [@posy9](https://github.com/stashevskii)_
 
 Код для Российской Робототехнической Олимпиады 2025 на RobotC.
 
 ## TODO:
 
-- Сделать чтобы при заборе последнего контейнера соседний не менял свое положение;
+- Пофиксить закрывание манипулятора (В конструкции);
 
 Установка:
 ```sh
