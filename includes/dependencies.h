@@ -23,6 +23,7 @@
 #include "utils/software/array.h"
 #include "utils/software/take.h"
 #include "utils/software/unload.h"
+#include "sensors/ultrasonic/ultrasonic.h"
 #include "main.h"
 
 #endif
