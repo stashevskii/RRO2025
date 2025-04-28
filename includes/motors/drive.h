@@ -1,8 +1,3 @@
-#include "acceleration.h"
-#include "motorSync.h"
-#include "../sensors/colorSensor/colorScan.h"
-#include "../data/settings.h"
-
 void driveCM(float power, float cm, int startPower = startDefault, int endPower = 15) {
 	syncEold = 0;
 	syncIsum = 0;

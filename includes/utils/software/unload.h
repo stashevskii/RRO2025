@@ -1,8 +1,3 @@
-#include "../../motors/drive.h"
-#include "../../manipulators/manipulatorLeft.h"
-#include "../../manipulators/manipulatorRight.h"
-#include "../hardware/stop.h"
-
 float shipTurn = 67.5;
 const float copyST = 67.5;
 const float turnPower = 55;

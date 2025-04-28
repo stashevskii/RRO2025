@@ -1,8 +1,3 @@
-#include "../../motors/drive.h"
-#include "../../manipulators/manipulatorLeft.h"
-#include "../../manipulators/manipulatorRight.h"
-
-
 void takeDuoCells() {
     turnLeft(55, 92.5, 35, 20);
     liftSomeLeft(true);

@@ -1,13 +1,3 @@
-#include "init/globals.h"
-#include "utils/hardware/sound.h"
-#include "utils/hardware/screen.h"
-#include "lineFollower/sensors.h"
-#include "lineFollower/navigation.h"
-#include "utils/software/array.h"
-#include "utils/software/take.h"
-#include "utils/software/unload.h"
-#include "sensors/ultrasonic/utltrasonic.h"
-
 void scan() {
     clearTimer(T3);
     driveCM(100, 18, 25, 85);

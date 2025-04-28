@@ -1,9 +1,6 @@
 #ifndef __SENSORS_H__
 #define __SENSORS_H__
 
-#include "../data/lineValues.h"
-#include "../utils/software/math.h"
-
 void sensorRGB(tSensors sensor, float &r, float &g, float &b) {
 	int r1, g1, b1;
 	if(sensor == leftS) {

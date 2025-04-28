@@ -1,6 +1,3 @@
-#include "../motors/drive.h"
-#include "../lineFollower/line.h"
-
 void directions(int currDir, int finishDir) {
     if (currDir == 0 && finishDir == 1) {turnLineRight(75, 70);}
     if (currDir == 0 && finishDir == 2) {turnLine180(75);}

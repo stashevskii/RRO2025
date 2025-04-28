@@ -1,10 +1,6 @@
 #ifndef __COLORSCHECKERS_H__
 #define __COLORSCHECKERS_H__
 
-#include "../../init/structures.h"
-#include "../../utils/software/math.h"
-
-
 bool checkColor(tSensors sensor, lineColor color) {
 	float r, g, b;
 	sensorRGB(sensor, r, g, b);
