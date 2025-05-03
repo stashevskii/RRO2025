@@ -99,18 +99,18 @@ void getFirstContHigh(int *colsArr, int c) {
     else {colsArr[0] = 1;}
 }
 
-void scanFiveConts(int &counter) {
+void scanFiveConts(int *h, int &counter) {
     for (int i = 1; i < 6; i++) {
         if (i == 5) {
             driveCM(75, 11, 85, 25);
-            scannedHeights[i] = detectHigh();
+            h[i] = detectHigh();
             driveCM(75, -4, 85, 25);
-            if (scannedHeights[i] == 1) {counter++;}
+            if (h[i] == 1) {counter++;}
             break;
         }
         XCross(95, 1, 85, false);
-        scannedHeights[i] = detectHigh();
-        if (scannedHeights[i] == 1) {counter++;}
+        h[i] = detectHigh();
+        if (h[i] == 1) {counter++;}
         driveCM(85, 2, 95, 85);
     }
 }

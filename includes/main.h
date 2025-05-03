@@ -21,7 +21,7 @@ void toCubes() {
 void scanHeights() {
     int counter = 0;
     reverseArray(scannedColors, 6);
-    scanFiveConts(counter);
+    scanFiveConts(scannedHeights, counter);
     getFirstContHigh(scannedColors, counter);
     turnLine180(65, 110, 25);
 }
@@ -78,7 +78,8 @@ void takeRubbish() {
     closeFullRight();
     XCross(48, 1, 35, true, 6.9);
     turnLineLeft(55, 65, 30);
-    QCross(65, 3, 50, true, 3);
+    for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
+    XCross(50, 1, 40, true, 7.5);
     XCross(50, 1, 40, true, 7.5);
     turnLineRight(70, 65, 30);
     liftSomeLeft(true);
