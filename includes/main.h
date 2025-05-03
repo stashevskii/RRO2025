@@ -1,7 +1,7 @@
 void scan() {
     clearTimer(T3);
-    driveCM(100, 18, 25, 85);
-    lineCM(95, 18.6, 85, 80);
+    driveCM(100, 18, 30, 85);
+    lineCM(90, 18.6, 85, 90);
     lineReading(80, 80, blackElement1, blackElement2);
     for (int i = 0; i < 6; i++) {
         if (i == blackElement1 || i == blackElement2) {scannedColors[i] = 1;}
@@ -11,13 +11,13 @@ void scan() {
 }
 
 void toCubes() {
-    arc(80, 20, 37, 25, 25);
+    arc(90, 20, 37, 25, 25);
 	driveCM(95, 80.5, 70, 70);
-	arc(80, -20, 39, 70, 70);
+	arc(90, -20, 39, 70, 70);
 	lineCM(75, 5, 50, 75);
     XCross(75, 1, 100, true, 7.1);
     turnLineLeft(80, 70, 35);
-    driveCM(80, -4, 25, 25);
+    driveCM(90, -4, 25, 25);
 }
 
 void scanHeights() {
@@ -28,16 +28,16 @@ void scanHeights() {
 
     for (int cont = 1; cont < 6; cont++) {
         if (cont == 5) {
-            driveCM(60, 11, 85, 25);
+            driveCM(75, 11, 85, 25);
             scannedHeights[cont] = detectHigh();
-            driveCM(60, -4, 85, 25);
+            driveCM(75, -4, 85, 25);
             if (scannedHeights[cont] == 1) {counter++;}
             break;
         }
-        XCross(85, 1, 85, false);
+        XCross(95, 1, 85, false);
         scannedHeights[cont] = detectHigh();
         if (scannedHeights[cont] == 1) {counter++;}
-        driveCM(85, 2, 75, 85);
+        driveCM(85, 2, 95, 85);
     }
     if (counter == 2) {scannedHeights[0] = 0;}
     else {scannedHeights[0] = 1;}
@@ -85,7 +85,7 @@ void grab4() {
     if (needCross < currCross) {currCross--;}
 
     navigate(currCross, needCross, 3, true, gottenDir, true);
-    driveCM(65, 8.9, 30, 30);
+    driveCM(75, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
     if (left) {takeLeftManip();}
@@ -102,13 +102,13 @@ void grab4() {
     if (needCross < currCross) {currCross--;}
     navigate(currCross, needCross, 3, false, gottenDir);
     if (right) {
-        driveCM(65, 8.9, 30, 30);
+        driveCM(90, 8.9, 30, 30);
         directions(gottenDir, 3);
         align();
         takeLeftManip();
     }
     else if (left) {
-        driveCM(65, 8.9, 30, 30);
+        driveCM(90, 8.9, 30, 30);
         turnLine180(70, 165, 35);
         directions(oppositeDir(gottenDir), 3);
         align();
@@ -128,18 +128,19 @@ void grab4() {
 void leaveCubes() {
     turnLineRight(60, 70, 25);
     XCross(50, 1, 25, false);
-    driveCM(45, 16.8, 35, 35);
+    driveCM(35, 16.1, 35, 35);
     openFullLeftLowSpeed();
     openFullRightLowSpeed(true);
-    driveCM(55, -10.8, 35, 53);
+    driveCM(35, -9.2, 35, 35);
+    stopBC(0);
     closeFullLeft();
     closeFullRight(true);
     stopBC(350);
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(48, 7.5, 35, 53);
-    driveCM(65, -29.3, 35, 53);
+    driveCM(35, 7.5, 35, 35);
+    driveCM(35, -29.3, 35, 35);
     turnLine180(55, 165, 30);
     XCross(50, 1, 30, true, 7);
     turnLineLeft(65, 70, 30);
@@ -156,7 +157,7 @@ void takeRubbish() {
     liftSomeLeft(true);
     lineCM(26.5, 2.3, 35, 35);
 	align();
-	arc(38, 9, 92.4, 45, 45);
+	arc(38, 9, 92.25, 45, 45);
 	driveCM(40, 51, 20, 25);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 45, 45);
@@ -181,11 +182,11 @@ void takeCubes() {
     stopBC(20);
     lineCM(35, 10, 25, 25);
     XCross(35, 1, 25, false);
-    driveCM(30, 16.5, 35, 35);
+    driveCM(20, 17.6, 35, 35);
     closeFullLeft();
     closeFullRight(true);
     stopBC(100);
-    driveCM(60, -9.5, 35, 35);  
+    driveCM(60, -11, 35, 35);  
     openFullLeft()
     openFullRight(true)
     driveCM(60, 11, 35, 35);
@@ -206,13 +207,13 @@ void bringContsToShip() {
     align();
     liftContLeft(manipLeft, true);
     liftContRight(manipRight, true);
-    lineCM(80, 26, 50, 50);
-    driveCM(65, -15, 50, 50);
+    lineCM(90, 28, 50, 50);
+    driveCM(80, -18, 50, 50);
     stopBC(100);
-    turnLine180(55, 165, 30);
+    turnLine180(60, 165, 30);
     align();
-    XCross(70, 1, 45, false);
-    lineCM(70, 6.1, 35, 35);
+    XCross(85, 1, 60, false);
+    lineCM(80, 6.1, 60, 60);
 
     if (manipRight == 0 && manipLeft == 1) {right0left1();}
     else if (manipRight == 1 && manipLeft == 0) {right1left0();}
@@ -233,8 +234,8 @@ void bringContsToShip() {
     liftContLeft(cellLeft, true);
     liftContRight(cellRight, true);
 
-    XCross(75, 1, 35, false);
-    lineCM(70, 6, 35, 35);
+    XCross(75, 1, 60, false);
+    lineCM(70, 6, 60, 60);
     stopBC(100);
 
     if (cellRight == 0 && cellLeft == 1) {right0left1();}
@@ -246,13 +247,13 @@ void bringContsToShip() {
 }
 
 void finish() {
-    lineCM(30, 17, 25, 25);
+    lineCM(35, 17, 25, 25);
     arc(90, -27.52, 179, 60, 60);
-    lineCM(80, 5, 80, 100);
+    lineCM(90, 5, 80, 100);
     closeFullLeft();
     closeFullRight();
     XCross(100, 1, 100, false);
-    driveCM(75, 20, 40, 40);
+    driveCM(70, 19, 100, 100);
     stopBC(0);
     displayBigStringAt(0, 120, "%d secs", time1[T3] / 1000);
     while (true) {}

@@ -55,8 +55,8 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
             else {directionsDeg(dir, 0);}
             dir = 0;
         }
-        if (lineAtStart) {lineCM(70, 4.1, 45, 45);}
-        QCross(65, fabs(delta), 40);
+        if (lineAtStart) {lineCM(80, 4.1, 45, 45);}
+        QCross(85, fabs(delta), 80, false, 3.5);
         startX = finishX;
         outDir = dir;
     }
