@@ -7,26 +7,12 @@ typedef struct {
 	long minB, maxB;
 } lineColor;
 
-typedef struct {
-	float minH, maxH;
-	float minH2, maxH2;
-	float minS, maxS;
-	float minV, maxV;
-} colorHSV;
-
 lineColor blackLine;
 lineColor whiteLine;
 lineColor grayLineLeft;
 lineColor grayLineRight;
 lineColor whiteLineLeft;
 lineColor whiteLineRight;
-
-colorHSV blue;
-colorHSV green;
-colorHSV yellow;
-colorHSV red;
-colorHSV black;
-colorHSV white;
 
 void initColors() {
 	blackLine.minR = -14;
