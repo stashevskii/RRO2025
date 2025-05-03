@@ -182,6 +182,7 @@ void takeCubes() {
     stopBC(20);
     lineCM(35, 10, 25, 25);
     XCross(35, 1, 25, false);
+    turnOneMotor(leftMotor, 35, 1.7, 35, 35);
     driveCM(20, 17.6, 35, 35);
     closeFullLeft();
     closeFullRight(true);

@@ -29,8 +29,8 @@ void right0left1() {
 
 void right1left0() {
     align();
-    turnOneMotor(rightMotor, turnPower, shipTurn, 35, 25);
-    turnOneMotor(leftMotor, turnPower, shipTurn, 35, 25);
+    turnOneMotor(rightMotor, turnPower, shipTurn - 2, 35, 25);
+    turnOneMotor(leftMotor, turnPower, shipTurn - 2, 35, 25);
     toShipRun();
     openLeftNotFull();
     openRightNotFull(true);
