@@ -6,3 +6,8 @@ void printNumbers(int *nums, int n, int w = 5600) {
     }
     delay(w);
 }
+
+void printTime() {
+    displayBigStringAt(0, 120, "%d secs", time1[T3] / 1000);
+    while (true) {}
+}

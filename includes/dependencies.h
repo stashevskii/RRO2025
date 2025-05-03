@@ -24,6 +24,7 @@
 #include "utils/software/take.h"
 #include "utils/software/unload.h"
 #include "sensors/ultrasonic/ultrasonic.h"
+#include "utils/software/service.h"
 #include "main.h"
 
 #endif
