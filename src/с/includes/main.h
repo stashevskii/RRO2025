@@ -81,7 +81,7 @@ void takeRubbish() {
     closeFullRight();
     XCross(48, 1, 35, true, 6.9);
     turnLineLeft(55, 65, 30);
-    for (int i = 0; i < 3; i++) {XCross(65, 1, 50, true, 3);}
+    for (int i = 0; i < 2; i++) {XCross(65, 1, 50, true, 3);}
     XCross(50, 1, 40, true, 7.5);
     XCross(50, 1, 40, true, 7.5);
     turnLineRight(70, 65, 30);
