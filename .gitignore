@@ -35,3 +35,5 @@ Mkfile.old
 dkms.conf
 ~dropper/
 *.tmp
+*.lmsb
+*.rbf
