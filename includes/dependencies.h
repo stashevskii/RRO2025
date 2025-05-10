@@ -2,7 +2,6 @@
 #define _DEPENDENCIES_H_
 
 #include "data/settings.h"
-#include "data/lineValues.h"
 #include "data/globals.h"
 #include "utils/software/math.h"
 #include "utils/software/structures.h"

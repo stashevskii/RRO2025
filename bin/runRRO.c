@@ -11,6 +11,7 @@
 
 task main() {
 	initColors();
+	initLineValues();
 	startTask(PIDManipLeft);
 	startTask(initManipLeft);
 	startTask(PIDManipRight);

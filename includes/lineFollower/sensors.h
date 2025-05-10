@@ -5,11 +5,11 @@ void sensorRGB(tSensors sensor, float &r, float &g, float &b) {
 	int rawR, rawG, rawB, rMin, gMin, bMin, rMax, gMax, bMax;
 	getColorRawRGB(sensor, rawR, rawG, rawB);
 	if (sensor == rightS) {
-		rMin = r2Min; gMin = g2Min; bMin = b2Min;
-		rMax = r2Max; gMax = g2Max; bMax = b2Max;
+		rMin = lv.r2Min; gMin = lv.g2Min; bMin = lv.b2Min;
+		rMax = lv.r2Max; gMax = lv.g2Max; bMax = lv.b2Max;
 	} else {
-		rMin = r1Min; gMin = g1Min; bMin = b1Min;
-		rMax = r1Max; gMax = g1Max; bMax = b1Max;
+		rMin = lv.r1Min; gMin = lv.g1Min; bMin = lv.b1Min;
+		rMax = lv.r1Max; gMax = lv.g1Max; bMax = lv.b1Max;
 	}
 	r = map(rawR, rMin, rMax, 100);
 	g = map(rawG, gMin, gMax, 100);
