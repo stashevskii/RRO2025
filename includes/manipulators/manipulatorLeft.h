@@ -1,3 +1,6 @@
+#ifndef _MANIPULATORLEFT_H_
+#define _MANIPULATORLEFT_H_
+
 const float manipKp = 2;
 const float manipKd = 5;
 const float manipKi = 0.001;
@@ -6,7 +9,6 @@ float manipKc = 1;
 int manipPos = 0;
 float eoldManip = 0;
 float isumManip = 0;
-const float lslPos = 135;
 
 task PIDManipLeft() {
 	sleep(550);
@@ -81,3 +83,5 @@ void closeFullLeft(bool afk = false) {
 	manipPos = -500;
 	if (afk) {stopBC(400);}
 }
+
+#endif

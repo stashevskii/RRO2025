@@ -1,3 +1,6 @@
+#ifndef _UNLOAD_H_
+#define _UNLOAD_h
+
 float shipTurn = 67.5;
 const float copyST = 67.5;
 const float turnPower = 55;
@@ -65,3 +68,5 @@ void twoSituations(bool big) {
     turnOneMotor(rightMotor, turnPower, -shipTurn - 3, 35, 25);
     shipTurn = copyST;
 }
+
+#endif

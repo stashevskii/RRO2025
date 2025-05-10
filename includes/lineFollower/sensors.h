@@ -1,24 +1,19 @@
-#ifndef __SENSORS_H__
-#define __SENSORS_H__
+#ifndef _SENSORS_H_
+#define _SENSORS_H_
 
 void sensorRGB(tSensors sensor, float &r, float &g, float &b) {
-	int r1, g1, b1;
-	if(sensor == leftS) {
-		getColorRawRGB(sensor, r1, g1, b1);
-		r = map(r1, r1Min, r1Max, 100);
-		g = map(g1, g1Min, g1Max, 100);
-		b = map(b1, b1Min, b1Max, 100);
-	} else if (sensor == rightS){
-		getColorRawRGB(sensor, r1, g1, b1);
-		r = map(r1, r2Min, r2Max, 100);
-		g = map(g1, g2Min, g2Max, 100);
-		b = map(b1, b2Min, b2Max, 100);
+	int rawR, rawG, rawB, rMin, gMin, bMin, rMax, gMax, bMax;
+	getColorRawRGB(sensor, rawR, rawG, rawB);
+	if (sensor == rightS) {
+		rMin = r2Min; gMin = g2Min; bMin = b2Min;
+		rMax = r2Max; gMax = g2Max; bMax = b2Max;
 	} else {
-		getColorRawRGB(sensor, r1, g1, b1);
-		r = map(r1, r1Min, r1Max, 100);
-		g = map(g1, g1Min, g1Max, 100);
-		b = map(b1, b1Min, b1Max, 100);
+		rMin = r1Min; gMin = g1Min; bMin = b1Min;
+		rMax = r1Max; gMax = g1Max; bMax = b1Max;
 	}
+	r = map(rawR, rMin, rMax, 100);
+	g = map(rawG, gMin, gMax, 100);
+	b = map(rawB, bMin, bMax, 100);
 }
 
 #endif

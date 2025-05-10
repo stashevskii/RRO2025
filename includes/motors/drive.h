@@ -1,3 +1,6 @@
+#ifndef _DRIVE_H_
+#define _DRIVE_H_
+
 void driveCM(float power, float cm, int startPower = startDefault, int endPower = 15) {
 	syncEold = 0;
 	syncIsum = 0;
@@ -205,3 +208,5 @@ void turnLine180(int power, int angle = defaultAngle180, int startPower = startD
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 }
+
+#endif

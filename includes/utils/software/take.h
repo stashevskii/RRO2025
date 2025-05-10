@@ -1,3 +1,6 @@
+#ifndef _TAKE_H_
+#define _TAKE_H_
+
 void takeDuoCells() {
     turnLeft(55, 92.5, 35, 20);
     liftSomeLeft(true);
@@ -38,3 +41,5 @@ void retakeConts() {
     floorGrabLeft();
     floorGrabRight();
 }
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _ACCELERATION_H_
+#define _ACCELERATION_H_
+
 float globalDistB = 0;
 float globalDistC = 0;
 
@@ -38,3 +41,5 @@ float SmoothC(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ra
 		finalSpeed *= sgn(enc);
 	return finalSpeed;
 }
+
+#endif

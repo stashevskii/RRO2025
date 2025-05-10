@@ -1,3 +1,6 @@
+#ifndef _MOTORSYNC_H_
+#define _MOTORSYNC_H_
+
 const float driveKp = 5;
 const float driveKd = 8;
 const float driveKi = 0.05;
@@ -36,3 +39,5 @@ void drive(float powerB, float powerC, float encB = 0, float encC = 0, int start
 
 	delay(2);
 }
+
+#endif

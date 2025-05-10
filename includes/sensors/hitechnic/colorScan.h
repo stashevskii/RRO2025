@@ -1,3 +1,6 @@
+#ifndef _HITECHCOLORSCAN_H_
+#define _HITECHCOLORSCAN_H_
+
 #include "drivers/hitechnic-colour-v2.h"
 
 void getRGB(tHTCS2 sensor, float &r, float &g, float &b) {
@@ -58,3 +61,5 @@ int getColorFarHT(tHTCS2 sensor, bool withZero = true) {
         else {return 2;}
     }
 }
+
+#endif

@@ -1,5 +1,5 @@
-#ifndef __MATH_H__
-#define __MATH_H__
+#ifndef _MATH_H_
+#define _MATH_H_
 
 const float diametr = 6.24;
 const float base = 17.657;

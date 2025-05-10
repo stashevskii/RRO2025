@@ -1,3 +1,6 @@
+#ifndef _MAIN_H_
+#define _MAIN_H_
+
 void scan() {
     int blackElement1, blackElement2;
     clearTimer(T3);
@@ -187,3 +190,5 @@ void runner() {
     bringContsToShip();
     finish();
 }
+
+#endif

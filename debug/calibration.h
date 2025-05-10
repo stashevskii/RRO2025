@@ -1,11 +1,5 @@
-#pragma config(Sensor, S1,     colorS,         sensorNone)
-#pragma config(Sensor, S2,     leftS,          sensorEV3_Color, modeEV3Color_RGB_Raw)
-#pragma config(Sensor, S3,     rightS,         sensorEV3_Color, modeEV3Color_RGB_Raw)
-#pragma config(Sensor, S4,     ebat,           sensorNone)
-#pragma config(Motor,  motorA,          manipMotor,    tmotorEV3_Medium, openLoop, encoder)
-#pragma config(Motor,  motorB,          leftMotor,     tmotorEV3_Medium, openLoop, encoder)
-#pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
-#pragma config(Motor,  motorD,          liftMotor,     tmotorEV3_Medium, openLoop, encoder)
+#ifndef _CALIBRATION_H_
+#define _CALIBRATION_H_
 
 #include "../includes/utils/.h/math.h"
 
@@ -73,3 +67,5 @@ void calibrate() {
 
 	while (!getButtonPress(buttonAny)) {}
 }
+
+#endif

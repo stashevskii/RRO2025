@@ -1,3 +1,6 @@
+#ifndef _STOP_H_
+#define _STOP_H_
+
 void stopB(int t = 200) {
 	motor[leftMotor] = 0;
 	sleep(t);
@@ -13,3 +16,5 @@ void stopBC(int t = 200) {
 	motor[rightMotor] = 0;
 	sleep(t);
 }
+
+#endif

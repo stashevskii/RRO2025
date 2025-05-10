@@ -1,5 +1,5 @@
-#ifndef DEPENDENCIES_H
-#define DEPENDENCIES_H
+#ifndef _DEPENDENCIES_H_
+#define _DEPENDENCIES_H_
 
 #include "data/settings.h"
 #include "data/lineValues.h"

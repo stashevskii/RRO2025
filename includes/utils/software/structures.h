@@ -1,5 +1,5 @@
-#ifndef __STRUCTURES_H__
-#define __STRUCTURES_H__
+#ifndef _STRUCTURES_H_
+#define _STRUCTURES_H_
 
 typedef struct {
 	long minR, maxR;
@@ -9,10 +9,6 @@ typedef struct {
 
 lineColor blackLine;
 lineColor whiteLine;
-lineColor grayLineLeft;
-lineColor grayLineRight;
-lineColor whiteLineLeft;
-lineColor whiteLineRight;
 
 void initColors() {
 	blackLine.minR = -14;

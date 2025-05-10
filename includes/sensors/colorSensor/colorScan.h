@@ -1,5 +1,5 @@
-#ifndef __COLORSCHECKERS_H__
-#define __COLORSCHECKERS_H__
+#ifndef _COLORSCAN_H_
+#define _COLORSCAN_H_
 
 bool checkColor(tSensors sensor, lineColor color) {
 	float r, g, b;

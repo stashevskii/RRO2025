@@ -1,3 +1,6 @@
+#ifndef _SERVICE_H_
+#define _SERVICE_H_
+
 void findDuoAndCross(int *colsArr, int &nc, int &cr, int &cl) {
     for (int i = 0; i < 6; i++) {
         if (colsArr[i] == 6 && colsArr[i + 1] == 6) {
@@ -121,3 +124,5 @@ void writeColorsArr(int *colsArr, int be1, int be2) {
         else {colsArr[i] = 6;}
     }
 }
+
+#endif

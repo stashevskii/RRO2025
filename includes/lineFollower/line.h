@@ -1,5 +1,5 @@
-#ifndef __LINE_H__
-#define __LINE_H__
+#ifndef _LINE_H_
+#define _LINE_H_
 
 const float lineKp = 0.65;
 const float lineKd = 5;

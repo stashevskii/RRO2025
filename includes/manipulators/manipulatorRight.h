@@ -1,3 +1,6 @@
+#ifndef _MANIPULATORRIGHT_H_
+#define _MANIPULATORRIGHT_H_
+
 const float manipKp2 = 2;
 const float manipKd2 = 5;
 const float manipKi2 = 0.001;
@@ -86,3 +89,5 @@ void closeFullRight(bool afk = false) {
 	manipPos2 = 500;
 	if (afk) {stopBC(400);}
 }
+
+#endif
