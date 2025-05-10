@@ -7,7 +7,7 @@
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
 #pragma config(Motor,  motorD,          manipMotor,    tmotorEV3_Medium, PIDControl, encoder)
 
-#include "../includes/dependencies.h"
+#include "includes/dependencies.h"
 
 task main() {
 	initColors();
