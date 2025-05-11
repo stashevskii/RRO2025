@@ -16,6 +16,7 @@ void findDuoAndCross(int *colsArr, int &nc, int &cr, int &cl) {
 
 void findManipsAndCross(
     int *colsArr,
+    int *h,
     int currCross,
     int needCross,
     int cellRight,
@@ -33,15 +34,15 @@ void findManipsAndCross(
             needCross = i;
             if (cellRight == colsArr[i]) {
                 outLeft = true;
-                outManipLeft = colsArr[i];
+                outManipLeft = h[i];
                 for (int j = 0; j < 6; j++) {
-                    if (colsArr[j] == 6) {outManipRight = colsArr[j]; break;}
+                    if (colsArr[j] == 6) {outManipRight = h[j]; break;}
                 }
             } else {
                 outRight = true;
-                outManipRight = colsArr[i];
+                outManipRight = h[i];
                 for (int j = 0; j < 6; j++) {
-                    if (colsArr[j] == 6) {outManipLeft = colsArr[j]; break;}
+                    if (colsArr[j] == 6) {outManipLeft = h[j]; break;}
                 }
             }
             break;
@@ -97,31 +98,24 @@ void leaveContsAtShip(int r, int l) {
     else {twoSituations(false);}
 }
 
-void getFirstContHigh(int *colsArr, int c) {
-    if (c == 2) {colsArr[0] = 0;}
-    else {colsArr[0] = 1;}
+void getFirstContHigh(int *h, int c) {
+    if (c == 2) {h[0] = 0;}
+    else {h[0] = 1;}
 }
 
 void scanFiveConts(int *h, int &counter) {
     for (int i = 1; i < 6; i++) {
         if (i == 5) {
-            driveCM(75, 11, 85, 25);
+            driveCM(75, 10.5, 85, 25);
             h[i] = detectHigh();
-            driveCM(75, -4, 85, 25);
+            driveCM(75, -3.5, 85, 25);
             if (h[i] == 1) {counter++;}
             break;
         }
-        XCross(95, 1, 85, false);
+        XCross(90, 1, 85, false);
         h[i] = detectHigh();
         if (h[i] == 1) {counter++;}
-        driveCM(85, 2, 95, 85);
-    }
-}
-
-void writeColorsArr(int *colsArr, int be1, int be2) {
-    for (int i = 0; i < 6; i++) {
-        if (i == be1 || i == be2) {colsArr[i] = 1;}
-        else {colsArr[i] = 6;}
+        driveCM(90, 2, 85, 100);
     }
 }
 

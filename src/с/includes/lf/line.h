@@ -47,70 +47,48 @@ float lineS2Inner(int power, int gray = 20) {
 	return u;
 }
 
-void stabilize() {
-	clearTimer(T4);
-	while(time1[T4] < 200) {
-		float u = line(0);
-		motor[leftMotor] = -u;
-		motor[rightMotor] = -u;
-	}
-}
-
-void lineReading(int power, int startPower = startDefault, int &i1, int &i2) {
+void lineReading(int power, int startPower = startDefault, int *cols) {
 	nMotorEncoder[motorC] = 0;
+
 	eold = 0;
 	isum = 0;
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 
-	if(startPower != 0) {
+	if (startPower != 0) {
 		globalDistB = nMotorEncoder[leftMotor];
 		globalDistC = nMotorEncoder[rightMotor];
 	}
 
-	int cols[6];
-	int i = 0, buffer;
-	int degr = 150;
-	while (i < 5){
+	int i = 0, count = 0, degr = 160;
+
+	while (i < 5) {
 		float speedB = SmoothB(startPower, power, 0, 0);
 		float speedC = SmoothC(startPower, power, 0, 0);
 		float u = line(speedC);
-
 		float powerB =  -speedB - u;
 		float powerC =  speedC - u;
 		float ratio = max(max(1, fabs(powerB / 100)), fabs(powerC / 100));
+
 		powerB /= ratio;
 		powerC /= ratio;
 
 		motor[motorB] = powerB;
 		motor[motorC] = powerC;
+
 		if (nMotorEncoder[motorC] > i * degr) {
-			cols[i] = getColorReflected(colorS);
-			if (cols[i] < 5) {cols[i] = 1;}
+			peak();
+			if (getRGBSum(colorS) < 15) {
+				cols[i] = 1;
+				count++;
+			}
 			else {cols[i] = 6;}
 			i++;
 		}
 	}
 
-	int bufferi1 = -1;
-	int bufferi2 = -1;
-	int count = 0;
-
-    for (int i = 0; i < 5; i++) {
-        if (cols[i] == 1) {
-            if (bufferi1 == -1) {
-                bufferi1 = i; 
-				count++;
-            } else if (bufferi2 == -1) {
-                bufferi2 = i;
-				count++;
-                break;
-            }
-        }
-    }
-	if (count < 2) {bufferi2 = 5;}
-	i1 = bufferi1;
-	i2 = bufferi2;
+	if (count < 2) {cols[5] = 1;}
+	else {cols[5] = 6;}
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
@@ -207,7 +185,7 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 	if (toWheels) {
-		driveCM(power, dist, 50, 50);
+		driveCM(power, dist, 30, 30);
 	}
 }
 

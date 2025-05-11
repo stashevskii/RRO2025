@@ -76,7 +76,7 @@ void liftSomeRight(bool afk = false, int waiting = 400) {
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
 		manipKc2 = 0.16;
-		manipPos2 = -190;
+		manipPos2 = -195.5;
 	} else {
 		manipKc2 = 0.23;
 		manipPos2 = -195.5;

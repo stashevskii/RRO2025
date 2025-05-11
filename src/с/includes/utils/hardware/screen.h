@@ -10,7 +10,15 @@ void printNumbers(int *nums, int n, int w = 5600) {
     delay(w);
 }
 
+void printNumber(int n, int w = 5600) {
+    stopBC(0);
+    eraseDisplay();
+    displayBigStringAt(0, 120, "%f", n);
+    delay(w);
+}
+
 void printTime() {
+    stopBC(0);
     displayBigStringAt(0, 120, "%d secs", time1[T3] / 1000);
     while (true) {}
 }

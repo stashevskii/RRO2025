@@ -33,7 +33,7 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
 
     int delta = finishX - startX;
     int targetDir = (delta < 0) ? 2 : 0;
-    
+
     if (!degr) {
         directions(dir, targetDir);
     } else {
@@ -46,7 +46,7 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
         lineCM(80, 4.1, 45, 45);
     }
     
-    QCross(85, abs(delta), 80, false, 2.71);
+    QCross(70, abs(delta), 70, false, 2.71);
     outDir = dir;
 }
 

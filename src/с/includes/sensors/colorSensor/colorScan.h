@@ -8,11 +8,13 @@ bool checkColor(tSensors sensor, lineColor color) {
 }
 
 void getRGBcs(tSensors sensor, long &r, long &g, long &b) {
-    long r1, g1, b1;
-    getColorRawRGB(sensor, r1, g1, b1);
-    r = r1;
-    g = g1;
-    b = b1;
+    getColorRawRGB(sensor, r, g, b);
+}
+
+long getRGBSum(tSensors sensor) {
+    long r, g, b;
+    getRGBcs(sensor, r, g, b);
+    return r + g + b;
 }
 
 void getHSVLcs(tSensors sensor, float &h, float &s, float &v, float &l) {
