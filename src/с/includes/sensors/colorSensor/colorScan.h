@@ -39,14 +39,12 @@ int getColorCS(tSensors sensor) {
     float h, s, v, l;
     getHSVLcs(sensor, h, s, v, l);
     if (v < 20) {return 5;}
+    if (s < 0.3) {return 6}
     else {
-        if (s < 0.3) {return 6}
-        else {
-            if ((h >= 300 && h <= 360) || (h < 20) ) {return 1;}
-            else if (h >= 20 && h < 90) {return 2;}
-            else if (h >= 90 && h < 160) {return 3;}
-            else if (h >= 160 && h < 300) {return 4;}
-        }
+        if ((h >= 300 && h <= 360) || (h < 20) ) {return 1;}
+        else if (h >= 20 && h < 90) {return 2;}
+        else if (h >= 90 && h < 160) {return 3;}
+        else if (h >= 160 && h < 300) {return 4;}
     }
 }
 

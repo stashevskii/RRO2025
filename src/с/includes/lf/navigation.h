@@ -3,24 +3,20 @@
 
 void directions(int currDir, int finishDir) {
     int diff = (finishDir - currDir + 4) % 4;
-    
     switch (diff) {
         case 1: turnLineRight(75, 70); break;
         case 2: turnLine180(75); break;
         case 3: turnLineLeft(75, 70); break;
     }
-    stopBC(20);
 }
 
 void directionsDeg(int currDir, int finishDir) {
     int diff = (finishDir - currDir + 4) % 4;
-    
     switch (diff) {
         case 1: turnRight(75, 91, 35); break;
         case 2: turnLine180(75); break;
         case 3: turnLeft(75, 91, 35); break;
     }
-    stopBC(20);
 }
 
 int oppositeDir(int currDir) {return (currDir + 2) % 4;}
@@ -39,14 +35,15 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
     } else {
         directionsDeg(dir, targetDir);
     }
+    stopBC(20);
     
     dir = targetDir;
     
     if (lineAtStart) {
-        lineCM(80, 4.1, 45, 45);
+        lineCM(80, 4.1, 25, 25);
     }
-    
-    QCross(70, abs(delta), 70, false, 2.71);
+
+    QCross(70, abs(delta), 70, false, 2.7);
     outDir = dir;
 }
 

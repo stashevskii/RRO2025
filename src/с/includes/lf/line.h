@@ -1,10 +1,10 @@
 #ifndef _LINE_H_
 #define _LINE_H_
 
-const float lineKp = 0.65;
-const float lineKd = 5;
-const float lineKi = 0.01;
-const float cS = 50;
+const float lineKp = 0.45;
+const float lineKd = 4.3;
+const float lineKi = 0.001;
+const float cS = 40;
 
 const float lineKpOne = 1.2;
 const float lineKdOne = 6;
@@ -49,7 +49,6 @@ float lineS2Inner(int power, int gray = 20) {
 
 void lineReading(int power, int startPower = startDefault, int *cols) {
 	nMotorEncoder[motorC] = 0;
-
 	eold = 0;
 	isum = 0;
 	localDistB = nMotorEncoder[leftMotor];
@@ -60,9 +59,9 @@ void lineReading(int power, int startPower = startDefault, int *cols) {
 		globalDistC = nMotorEncoder[rightMotor];
 	}
 
-	int i = 0, count = 0, degr = 160;
+	int i = 0, count = 0, degr = 150;
 
-	while (i < 5) {
+	while (i < 6) {
 		float speedB = SmoothB(startPower, power, 0, 0);
 		float speedC = SmoothC(startPower, power, 0, 0);
 		float u = line(speedC);
@@ -77,18 +76,12 @@ void lineReading(int power, int startPower = startDefault, int *cols) {
 		motor[motorC] = powerC;
 
 		if (nMotorEncoder[motorC] > i * degr) {
-			peak();
-			if (getRGBSum(colorS) < 15) {
-				cols[i] = 1;
-				count++;
-			}
-			else {cols[i] = 6;}
+			cols[i] = getSum(s);
 			i++;
 		}
 	}
 
-	if (count < 2) {cols[5] = 1;}
-	else {cols[5] = 6;}
+	rewriteColors(cols);
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
@@ -146,7 +139,7 @@ void align() {
 void XCross(int power, int n, int startPower = startDefault, bool toWheels = true, int dist = 8, lineColor stopColorLeft = blackLine, lineColor stopColorRight = blackLine) {
 	eold = 0;
 	isum = 0;
-	int cur = 0;
+
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 
@@ -154,7 +147,10 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 		globalDistB = nMotorEncoder[leftMotor];
 		globalDistC = nMotorEncoder[rightMotor];
 	}
+
 	bool flag = false;
+	int cur = 0;
+
 	if (n == 0) {return;}
 	while(cur < n) {
 		float speedB = SmoothB(startPower, power, 0, 0);
@@ -171,7 +167,6 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 		motor[rightMotor] = powerC;
 
 		if(checkColor(leftS, stopColorLeft) && checkColor(rightS, stopColorRight)) {
-			//peak();
 			if (!flag) {
 				cur++;
 				flag = true;
@@ -207,9 +202,10 @@ void crossS2Inner(int power, int n, int startPower = startDefault) {
 		globalDistB = nMotorEncoder[leftMotor];
 		globalDistC = nMotorEncoder[rightMotor];
 	}
+
 	bool flag = false;
 
-	while(cur < n) {
+	while (cur < n) {
 		float speedB = SmoothB(startPower, power, 0, 0);
 		float speedC = SmoothC(startPower, power, 0, 0);
 		float u = lineS2Inner(speedC);

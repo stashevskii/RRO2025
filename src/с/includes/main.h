@@ -3,19 +3,19 @@
 
 void scan() {
     clearTimer(T3);
-    /*driveCM(90, 10.5, 15, 75);
-    lineCM(75, 23, 90, 40);*/
-    lineReading(80, 40, scannedColors);
-    printNumbers(scannedColors, 6)
+    driveCM(100, 10.5, 15, 0);
+    lineCM(90, 20, 0, 0);
+    lineReading(60, 40, scannedColors);
+    // printNumbers(scannedColors, 6);
 }
 
 void toCubes() {
-    arc(80, 20, 41, 20, 30);
-	driveCM(100, 70.5, 30, 70);
-	arc(90, -20, 39, 70, 20);
-	lineCM(75, 5, 20, 100);
-    XCross(100, 1, 100, true, 7.1);
-    turnLineLeft(50, 70, 100);
+    arc(95, 20, 41, 35, 35);
+	driveCM(100, 69, 100, 70);
+	arc(95, -20, 39, 70, 30);
+	lineCM(95, 8, 30, 100);
+    XCross(100, 1, 100, true, 6.9);
+    turnLineLeft(95, 70, 35);
     driveCM(85, -4, 25, 25);
 }
 
@@ -25,7 +25,7 @@ void scanHeights() {
     scanFiveConts(scannedHeights, counter);
     getFirstContHigh(scannedHeights, counter);
     turnLine180(65, 110, 25);
-    printNumbers(scannedHeights, 6);
+    // printNumbers(scannedHeights, 6);
 }
 
 void grab4() {
@@ -55,12 +55,12 @@ void grab4() {
 }
 
 void leaveCubes() {
-    turnLineRight(60, 70, 20);
-    XCross(50, 1, 25, false);
-    driveCM(35, 16.1, 35, 35);
+    turnLineRight(70, 70, 20);
+    XCross(60, 1, 25, false);
+    driveCM(60, 16.1, 15, 15);
     openFullLeftLowSpeed();
     openFullRightLowSpeed(true);
-    driveCM(35, -9.2, 35, 35);
+    driveCM(60, -9.2, 35, 35);
     stopBC(0);
     closeFullLeft();
     closeFullRight(true);
@@ -68,11 +68,11 @@ void leaveCubes() {
     liftSomeLeft();
     liftContRight(true);
     stopBC(100);
-    driveCM(35, 7.5, 20, 20);
-    driveCM(35, -29.3, 20, 20);
+    driveCM(70, 7.5, 20, 20);
+    driveCM(70, -29.3, 20, 20);
     turnLine180(60, 165, 20);
     XCross(50, 1, 30, true, 7);
-    turnLineLeft(70, 70, 20);
+    turnLineLeft(90, 70, 20);
 }
 
 void takeRubbish() {
@@ -80,13 +80,13 @@ void takeRubbish() {
     closeFullRight();
     XCross(55, 1, 20, true, 6.9);
     turnLineLeft(60, 65, 20);
-    for (int i = 0; i < 3; i++) {XCross(65, 1, 65, true, 3);}
+    for (int i = 0; i < 3; i++) {XCross(80, 1, 80, true, 3);}
     XCross(65, 1, 20, true, 7);
     turnLineRight(75, 65, 20);
     liftSomeLeft(true);
     lineCM(26.5, 2.3, 35, 35);
 	align();
-	arc(38, 9, 92.25, 20, 20);
+	arc(38, 9, 93, 20, 20);
 	driveCM(55, 51, 20, 20);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 25, 25);
@@ -124,8 +124,8 @@ void takeCubes() {
     floorGrabRight(true);
     driveCM(80, -30, 17, 17);
     turnLine180(65, 165, 30);
-    XCross(55, 1, 40, true, 5.8);
-    turnLineRight(50, 75, 30);
+    XCross(55, 1, 40, true, 7);
+    turnLineRight(65, 75, 30);
     XCross(80, 1, 50, true, 6);
     retakeConts();
     XCross(90, 1, 30, true, 5.7);
@@ -140,12 +140,12 @@ void bringContsToShip() {
     lineCM(90, 28, 20, 20);
     driveCM(80, -18, 20, 20);
     stopBC(100);
-    turnLine180(80, 165, 20);
+    turnLine180(70, 165, 20);
     align();
     XCross(85, 1, 35, false);
     lineCM(80, 6.1, 30, 30);
     leaveContsAtShip(manipRight, manipLeft);
-    turnLine180(65, 160, 20);
+    turnLine180(70, 160, 20);
     align();
     openFullLeft();
     openFullRight(true);
@@ -153,7 +153,7 @@ void bringContsToShip() {
     XCross(35, 1, 35);
     floorGrabLeft();
     floorGrabRight(true);
-    turnLine180(60, 170, 20);
+    turnLine180(70, 170, 20);
     align();
     liftContLeft(cellLeft, true);
     liftContRight(cellRight, true);
@@ -161,13 +161,13 @@ void bringContsToShip() {
     lineCM(70, 6, 30, 30);
     stopBC(100);
     leaveContsAtShip(cellRight, cellLeft);
-    turnLine180(55, 165, 20);
+    turnLine180(70, 165, 20);
     align();
 }
 
 void finish() {
     lineCM(45, 17, 25, 25);
-    arc(100, -27.52, 179, 25, 30);
+    arc(100, -27.52, 179, 100, 100);
     lineCM(90, 5, 30, 100);
     closeFullLeft();
     closeFullRight();

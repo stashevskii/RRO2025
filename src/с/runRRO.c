@@ -10,11 +10,12 @@
 #include "includes/headers.h"
 
 task main() {
+	initSensor(&s, colorS);
 	initColors();
 	initLineValues();
-	startTask(PIDManipLeft);
 	startTask(initManipLeft);
-	startTask(PIDManipRight);
+	startTask(PIDManipLeft);
 	startTask(initManipRight);
+	startTask(PIDManipRight);
 	runner();
 }

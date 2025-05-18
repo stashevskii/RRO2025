@@ -106,16 +106,16 @@ void getFirstContHigh(int *h, int c) {
 void scanFiveConts(int *h, int &counter) {
     for (int i = 1; i < 6; i++) {
         if (i == 5) {
-            driveCM(75, 10.5, 85, 25);
+            driveCM(95, 10.5, 95, 25);
             h[i] = detectHigh();
-            driveCM(75, -3.5, 85, 25);
+            driveCM(95, -3.5, 95, 25);
             if (h[i] == 1) {counter++;}
             break;
         }
-        XCross(90, 1, 85, false);
+        XCross(95, 1, 95, false);
         h[i] = detectHigh();
         if (h[i] == 1) {counter++;}
-        driveCM(90, 2, 85, 100);
+        driveCM(95, 1.7, 95, 95);
     }
 }
 
