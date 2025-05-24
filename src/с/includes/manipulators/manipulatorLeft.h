@@ -31,57 +31,42 @@ task initManipLeft() {
 	resetMotorEncoder(manipMotor);
 }
 
+void funcTemplate(float p, float k, bool afk, int w = 400) {
+	manipKc = p;
+	manipPos = k;
+	if (afk) {stopBC(w);}
+}
+
 void floorGrabLeft(bool afk = false) {
-	manipKc = 0.73;
-	manipPos = 392;
-	if (afk) {stopBC(400);}
+	funcTemplate(0.7, 395, afk);
 }
 
 void openLeftNotFull(bool afk = false) {
-	manipKc = 0.1;
-	manipPos = 570;
-	if (afk) {stopBC(400);}
+	funcTemplate(0.1, 585, afk);
 }
 
 void openLeftRubbish(bool afk = false) {
-	manipKc = 0.7;
-	manipPos = 380;
-	if (afk) {stopBC(400);}
+	funcTemplate(0.7, 380, afk);
 }
 
 void openFullLeft(bool afk = false) {
-	manipKc = 1;
-	manipPos = 1000;
-	if (afk) {stopBC(400);}
+	funcTemplate(1.2, 1000, afk);
 }
 
 void openFullLeftLowSpeed(bool afk = false) {
-	manipKc = 0.4;
-	manipPos = 1000;
-	if (afk) {stopBC(400);}
+	funcTemplate(0.4, 1000, afk);
 }
 
 void liftSomeLeft(bool afk = false) {
-	manipKc = 0.5;
-	manipPos = 172;
-	if (afk) {stopBC(400);}
+	funcTemplate(0.55, 185, afk);
 }
 
 void liftContLeft(int size, bool afk = false) {
-	if (size == 0) {
-		manipKc = 0.125;
-		manipPos = 258;
-	} else {
-		manipKc = 0.125;
-		manipPos = 259;
-	}
-	if (afk) {stopBC(500);}
+	funcTemplate(0.13, 268, afk, 500);
 }
 
 void closeFullLeft(bool afk = false) {
-	manipKc = 1;
-	manipPos = -500;
-	if (afk) {stopBC(400);}
+	funcTemplate(1.5, -500, afk);
 }
 
 #endif

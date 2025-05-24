@@ -7,8 +7,8 @@ float globalDistC = 0;
 float localDistB = 0;
 float localDistC = 0;
 
-float boost = 23;
-float slow = -12;
+float boost = 19.5;
+float slow = -9.8;
 
 float SmoothB(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ratio = 1, float boostK = boost, float slowK = slow){
 	if (ratio > 1) ratio = 1;

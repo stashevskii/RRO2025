@@ -1,8 +1,8 @@
 #ifndef _LINE_H_
 #define _LINE_H_
 
-const float lineKp = 0.45;
-const float lineKd = 4.3;
+const float lineKp = 0.4;
+const float lineKd = 4.15;
 const float lineKi = 0.001;
 const float cS = 40;
 
@@ -139,20 +139,17 @@ void align() {
 void XCross(int power, int n, int startPower = startDefault, bool toWheels = true, int dist = 8, lineColor stopColorLeft = blackLine, lineColor stopColorRight = blackLine) {
 	eold = 0;
 	isum = 0;
-
+	int cur = 0;
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 
 	if(startPower != 0) {
-		globalDistB = nMotorEncoder[leftMotor];
+		globalDistB = nMotorEncoder[leftMotor];s
 		globalDistC = nMotorEncoder[rightMotor];
 	}
-
 	bool flag = false;
-	int cur = 0;
 
-	if (n == 0) {return;}
-	while(cur < n) {
+	while (cur < n) {
 		float speedB = SmoothB(startPower, power, 0, 0);
 		float speedC = SmoothC(startPower, power, 0, 0);
 		float u = line(speedC);
@@ -166,21 +163,22 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 		motor[leftMotor] = powerB;
 		motor[rightMotor] = powerC;
 
-		if(checkColor(leftS, stopColorLeft) && checkColor(rightS, stopColorRight)) {
+		if (checkColor(leftS, stopColorLeft) && checkColor(rightS, stopColorRight)) {
 			if (!flag) {
+				// driveCM(power, 2, power, power);
 				cur++;
 				flag = true;
 			}
 		} else {
 			flag = false;
 		}
-		delay(1);
 	}
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
+
 	if (toWheels) {
-		driveCM(power, dist, 30, 30);
+		driveCM(power, dist, power, startPower)
 	}
 }
 

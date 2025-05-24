@@ -43,7 +43,7 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
         lineCM(80, 4.1, 25, 25);
     }
 
-    QCross(70, abs(delta), 70, false, 2.7);
+    QCross(80, abs(delta), 80, false, 2.7);
     outDir = dir;
 }
 

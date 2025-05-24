@@ -39,7 +39,7 @@ void floorGrabRight(bool afk = false) {
 
 void openRightNotFull(bool afk = false) {
 	manipKc2 = 0.1;
-	manipPos2 = -550;
+	manipPos2 = -565;
 	if (afk) {stopBC(400);}
 }
 

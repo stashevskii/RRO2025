@@ -27,23 +27,16 @@ void initColors() {
 	blackLine.maxG = 31;
 	blackLine.minB = -14;
 	blackLine.maxB = 31;
-
-	whiteLine.minR = 20;
-	whiteLine.maxR = 300;
-	whiteLine.minG = 20;
-	whiteLine.maxG = 300;
-	whiteLine.minB = 20;
-	whiteLine.maxB = 300;
 }
 
 void initLineValues() {
-	lv.r1Min = 1;
+	lv.r1Min = 0;
 	lv.g1Min = 38;
 	lv.b1Min = 39;
 	lv.r1Max = 263;
 	lv.g1Max = 278;
 	lv.b1Max = 336;
-	
+
 	lv.r2Min = 22;
 	lv.g2Min = 47;
 	lv.b2Min = 42;

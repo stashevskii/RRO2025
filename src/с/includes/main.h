@@ -3,19 +3,19 @@
 
 void scan() {
     clearTimer(T3);
-    driveCM(100, 10.5, 15, 0);
-    lineCM(90, 20, 0, 0);
-    lineReading(60, 40, scannedColors);
+    driveCM(100, 10.5, 20, 25);
+    lineCM(100, 20, 20, 35);
+    lineReading(60, 35, scannedColors);
     // printNumbers(scannedColors, 6);
 }
 
 void toCubes() {
-    arc(95, 20, 41, 35, 35);
-	driveCM(100, 69, 100, 70);
-	arc(95, -20, 39, 70, 30);
+    arc(100, 20, 41, 80, 80);
+	driveCM(100, 67.2, 100, 70);
+	arc(100, -20, 39, 80, 80);
 	lineCM(95, 8, 30, 100);
-    XCross(100, 1, 100, true, 6.9);
-    turnLineLeft(95, 70, 35);
+    XCross(100, 1, 100, true, 6);
+    turnLineLeft(90, 70, 35);
     driveCM(85, -4, 25, 25);
 }
 
@@ -51,23 +51,21 @@ void grab4() {
     turnBasedOnDirection(gottenDir);
     align();
     retakeConts();
-    XCross(100, 1, 50, true, 6.5);
+    XCross(100, 1, 50, true, 5.8);
 }
 
 void leaveCubes() {
-    turnLineRight(70, 70, 20);
+    turnLineRight(70, 70, 25);
     XCross(60, 1, 25, false);
     driveCM(60, 16.1, 15, 15);
     openFullLeftLowSpeed();
     openFullRightLowSpeed(true);
     driveCM(60, -9.2, 35, 35);
-    stopBC(0);
     closeFullLeft();
     closeFullRight(true);
-    stopBC(350);
+    stopBC(155);
     liftSomeLeft();
     liftContRight(true);
-    stopBC(100);
     driveCM(70, 7.5, 20, 20);
     driveCM(70, -29.3, 20, 20);
     turnLine180(60, 165, 20);
@@ -78,15 +76,15 @@ void leaveCubes() {
 void takeRubbish() {
     closeFullLeft();
     closeFullRight();
-    XCross(55, 1, 20, true, 6.9);
+    XCross(70, 1, 20, true, 7.1);
     turnLineLeft(60, 65, 20);
-    for (int i = 0; i < 3; i++) {XCross(80, 1, 80, true, 3);}
-    XCross(65, 1, 20, true, 7);
+    QCross(80, 3, 80, false, 2.5);
+    XCross(70, 1, 20, true, 7);
     turnLineRight(75, 65, 20);
     liftSomeLeft(true);
-    lineCM(26.5, 2.3, 35, 35);
+    lineCM(30, 2.3, 35, 35);
 	align();
-	arc(38, 9, 93, 20, 20);
+	arc(38, 9, 91.9, 20, 20);
 	driveCM(55, 51, 20, 20);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 25, 25);
@@ -98,17 +96,15 @@ void takeRubbish() {
     closeFullRight();
     turnLineRight(75, 65, 20);
     align();
+    closeFullLeft();
+    closeFullRight();
     XCross(75, 1, 30, true, 6.5);
 }
 
 void takeCubes() {
     turnLineRight(70, 70, 20);
-    closeFullLeft();
-    closeFullRight(true);
-    stopBC(1);
-    liftSomeLeft(true);
-    liftSomeRight(true);
-    stopBC(20);
+    liftSomeLeft();
+    liftSomeRight();
     lineCM(35, 10, 25, 25);
     XCross(35, 1, 25, false);
     turnOneMotor(leftMotor, 40, 1.7, 20, 20);
@@ -132,20 +128,19 @@ void takeCubes() {
 }
 
 void bringContsToShip() {
-    stopBC(100);
-    turnLine180(65, 160, 25);
+    turnLine180(60, 160, 35);
     align();
     liftContLeft(manipLeft, true);
     liftContRight(manipRight, true);
     lineCM(90, 28, 20, 20);
     driveCM(80, -18, 20, 20);
     stopBC(100);
-    turnLine180(70, 165, 20);
+    turnLine180(60, 165, 35);
     align();
     XCross(85, 1, 35, false);
     lineCM(80, 6.1, 30, 30);
     leaveContsAtShip(manipRight, manipLeft);
-    turnLine180(70, 160, 20);
+    turnLine180(60, 165, 35);
     align();
     openFullLeft();
     openFullRight(true);
@@ -153,7 +148,7 @@ void bringContsToShip() {
     XCross(35, 1, 35);
     floorGrabLeft();
     floorGrabRight(true);
-    turnLine180(70, 170, 20);
+    turnLine180(60, 165, 35);
     align();
     liftContLeft(cellLeft, true);
     liftContRight(cellRight, true);
@@ -161,7 +156,7 @@ void bringContsToShip() {
     lineCM(70, 6, 30, 30);
     stopBC(100);
     leaveContsAtShip(cellRight, cellLeft);
-    turnLine180(70, 165, 20);
+    turnLine180(60, 165, 35);
     align();
 }
 
