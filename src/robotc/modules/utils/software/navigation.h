@@ -19,7 +19,7 @@ void directionsDeg(int currDir, int finishDir) {
     }
 }
 
-int oppositeDir(int currDir) {return (currDir + 2) % 4;}
+int opposite(int currDir) {return (currDir + 2) % 4;}
 
 void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, bool lineAtStart = false) {
     if (startX == finishX) {

@@ -10,7 +10,7 @@ float localDistC = 0;
 float boost = 19.5;
 float slow = -9.8;
 
-float SmoothB(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ratio = 1, float boostK = boost, float slowK = slow){
+float smoothB(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ratio = 1, float boostK = boost, float slowK = slow){
 	if (ratio > 1) ratio = 1;
 	boostK *= ratio;
 	slowK *= ratio;
@@ -26,7 +26,7 @@ float SmoothB(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ra
 	return finalSpeed;
 }
 
-float SmoothC(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ratio = 1, float boostK = boost, float slowK = slow) {
+float smoothC(int startSpeed, int maxSpeed, int stopSpeed, int enc = 0, float ratio = 1, float boostK = boost, float slowK = slow) {
 	if (ratio > 1) ratio = 1;
 	boostK *= ratio;
 	slowK *= ratio;

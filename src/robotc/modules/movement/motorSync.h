@@ -23,8 +23,8 @@ float sync(float speedB, float speedC) {
 }
 
 void drive(float powerB, float powerC, float encB = 0, float encC = 0, int startPower = 20, int endPower = 20) {
-	float speedB = SmoothB(startPower, powerB, endPower, encB, fabs(powerB / powerC));
-	float speedC = SmoothC(startPower, powerC, endPower, encC, fabs(powerC / powerB));
+	float speedB = smoothB(startPower, powerB, endPower, encB, fabs(powerB / powerC));
+	float speedC = smoothC(startPower, powerC, endPower, encC, fabs(powerC / powerB));
 
 	float u = sync(powerB * sgn(encB), powerC * sgn(encC));
 

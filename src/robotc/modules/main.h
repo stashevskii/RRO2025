@@ -58,13 +58,13 @@ void leaveCubes() {
     turnLineRight(70, 70, 25);
     XCross(60, 1, 25, false);
     driveCM(60, 16.1, 15, 15);
-    openFullLeftLowSpeed();
-    openFullRightLowSpeed(true);
+    openLeft();
+    openRight(true);
     driveCM(60, -9.2, 35, 35);
-    closeFullLeft();
-    closeFullRight(true);
+    closeLeft();
+    closeRight(true);
     stopBC(155);
-    liftSomeLeft();
+    liftLeft45();
     liftContRight(true);
     driveCM(70, 7.5, 20, 20);
     driveCM(70, -29.3, 20, 20);
@@ -74,14 +74,14 @@ void leaveCubes() {
 }
 
 void takeRubbish() {
-    closeFullLeft();
-    closeFullRight();
+    closeLeft();
+    closeRight();
     XCross(70, 1, 20, true, 7.1);
     turnLineLeft(60, 65, 20);
     QCross(80, 3, 80, false, 2.5);
     XCross(70, 1, 20, true, 7);
     turnLineRight(75, 65, 20);
-    liftSomeLeft(true);
+    liftLeft45(true);
     lineCM(30, 2.3, 35, 35);
 	align();
 	arc(38, 9, 91.9, 20, 20);
@@ -92,32 +92,32 @@ void takeRubbish() {
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 	arc(60, 21, -90, 25, 25);
-    closeFullLeft();
-    closeFullRight();
+    closeLeft();
+    closeRight();
     turnLineRight(75, 65, 20);
     align();
-    closeFullLeft();
-    closeFullRight();
+    closeLeft();
+    closeRight();
     XCross(75, 1, 30, true, 6.5);
 }
 
 void takeCubes() {
     turnLineRight(70, 70, 20);
-    liftSomeLeft();
-    liftSomeRight();
+    liftLeft45();
+    liftRight45();
     lineCM(35, 10, 25, 25);
     XCross(35, 1, 25, false);
     turnOneMotor(leftMotor, 40, 1.7, 20, 20);
     driveCM(20, 17.6, 20, 20);
-    closeFullLeft();
-    closeFullRight(true);
+    closeLeft();
+    closeRight(true);
     stopBC(100);
     driveCM(70, -11, 20, 20);  
-    openFullLeft()
-    openFullRight(true)
+    openLeft()
+    openRight(true)
     driveCM(70, 11, 20, 20);
-    floorGrabLeft();
-    floorGrabRight(true);
+    grabLowLeft();
+    grabLowRight(true);
     driveCM(80, -30, 17, 17);
     turnLine180(65, 165, 30);
     XCross(55, 1, 40, true, 7);
@@ -142,12 +142,12 @@ void bringContsToShip() {
     leaveContsAtShip(manipRight, manipLeft);
     turnLine180(60, 165, 35);
     align();
-    openFullLeft();
-    openFullRight(true);
+    openLeft();
+    openRight(true);
     stopBC(250);
     XCross(35, 1, 35);
-    floorGrabLeft();
-    floorGrabRight(true);
+    grabLowLeft();
+    grabLowRight(true);
     turnLine180(60, 165, 35);
     align();
     liftContLeft(cellLeft, true);
@@ -164,8 +164,8 @@ void finish() {
     lineCM(45, 17, 25, 25);
     arc(100, -27.52, 179, 100, 100);
     lineCM(90, 5, 30, 100);
-    closeFullLeft();
-    closeFullRight();
+    closeLeft();
+    closeRight();
     XCross(100, 1, 100, false);
     driveCM(70, 19, 100, 15);
     printTime();

@@ -3,21 +3,21 @@
 
 void takeDuoCells() {
     turnLeft(75, 92, 20, 20);
-    liftSomeLeft(true);
-    liftSomeRight(true);
+    liftLeft45(true);
+    liftRight45(true);
     driveCM(80, 16, 20, 20);
-    closeFullLeft();
-    closeFullRight(true);
+    closeLeft();
+    closeRight(true);
     driveCM(80, -14.5, 20, 20);
 }
 
 void takeRightManip() {
     turnOneMotor(leftMotor, 80, -17, 30, 30);
     driveCM(70, -2, 70, 70);
-    openFullRight(true);
+    openRight(true);
     stopBC(300);
     driveCM(70, 12, 20, 20);
-    floorGrabRight(true);
+    grabLowRight(true);
     driveCM(65, -10, 15, 15);
     turnOneMotor(leftMotor, 70, 17, 30, 30);
 }
@@ -25,21 +25,21 @@ void takeRightManip() {
 void takeLeftManip() {
     turnOneMotor(rightMotor, 70, -22, 30, 30);
     driveCM(70, -2, 70, 70);
-    openFullLeft(true);
+    openLeft(true);
     stopBC(300);
     driveCM(65, 10.5, 20, 20);
-    floorGrabLeft(true);
+    grabLowLeft(true);
     driveCM(65, -8.5, 20, 20);
     turnOneMotor(rightMotor, 70, 22, 30, 30);
 }
 
 void retakeConts() {
     lineCM(80, 10, 20, 20);
-    openFullLeft();
-    openFullRight();
+    openLeft();
+    openRight();
     lineCM(50, 7.5, 20, 20);
-    floorGrabLeft();
-    floorGrabRight();
+    grabLowLeft();
+    grabLowRight();
 }
 
 #endif

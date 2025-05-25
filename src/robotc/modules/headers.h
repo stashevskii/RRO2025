@@ -1,5 +1,5 @@
-#ifndef _DEPENDENCIES_H_
-#define _DEPENDENCIES_H_
+#ifndef _HEADERS_H_
+#define _HEADERS_H_
 
 #include "data/settings.h"
 #include "data/globals.h"
@@ -9,17 +9,17 @@
 #include "utils/hardware/screen.h"
 #include "utils/software/array.h"
 #include "utils/hardware/sound.h"
-#include "lf/sensors.h"
+#include "sensors/colorSensor/sensors.h"
 #include "sensors/colorSensor/colorScan.h"
-#include "lf/sensors.h"
+#include "sensors/colorSensor/sensors.h"
 #include "sensors/hitechnic/colorScan.h"
-#include "motors/acceleration.h"
-#include "motors/motorSync.h"
-#include "motors/drive.h"
-#include "lf/line.h"
-#include "lf/navigation.h"
-#include "manipulators/manipulatorLeft.h"
-#include "manipulators/manipulatorRight.h"
+#include "movement/acceleration.h"
+#include "movement/motorSync.h"
+#include "movement/drive.h"
+#include "sensors/colorSensor/line.h"
+#include "utils/software/navigation.h"
+#include "grabbers/left.h"
+#include "grabbers/right.h"
 #include "utils/software/take.h"
 #include "utils/software/unload.h"
 #include "sensors/ultrasonic/ultrasonic.h"

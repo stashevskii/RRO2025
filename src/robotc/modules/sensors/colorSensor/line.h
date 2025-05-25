@@ -2,12 +2,12 @@
 #define _LINE_H_
 
 const float lineKp = 0.4;
-const float lineKd = 4.15;
+const float lineKd = 4.1;
 const float lineKi = 0.001;
 const float cS = 40;
 
-const float lineKpOne = 1.2;
-const float lineKdOne = 6;
+const float lineKpOne = 1.1;
+const float lineKdOne = 5.8;
 const float lineKiOne = 0.01;
 const float cSOne = 50;
 
@@ -62,8 +62,8 @@ void lineReading(int power, int startPower = startDefault, int *cols) {
 	int i = 0, count = 0, degr = 150;
 
 	while (i < 6) {
-		float speedB = SmoothB(startPower, power, 0, 0);
-		float speedC = SmoothC(startPower, power, 0, 0);
+		float speedB = smoothB(startPower, power, 0, 0);
+		float speedC = smoothC(startPower, power, 0, 0);
 		float u = line(speedC);
 		float powerB =  -speedB - u;
 		float powerC =  speedC - u;
@@ -101,8 +101,8 @@ void lineCM(int power, float cm, int startPower = startDefault, int endPower = s
 	float enc = fromCmToDeg(cm);
 
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
-		float speedB = SmoothB(startPower, power, endPower, enc);
-		float speedC = SmoothC(startPower, power, endPower, enc);
+		float speedB = smoothB(startPower, power, endPower, enc);
+		float speedC = smoothC(startPower, power, endPower, enc);
 		float u = line(speedC);
 
 		float powerB =  -speedB - u;
@@ -150,8 +150,8 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 	bool flag = false;
 
 	while (cur < n) {
-		float speedB = SmoothB(startPower, power, 0, 0);
-		float speedC = SmoothC(startPower, power, 0, 0);
+		float speedB = smoothB(startPower, power, 0, 0);
+		float speedC = smoothC(startPower, power, 0, 0);
 		float u = line(speedC);
 
 		float powerB =  -speedB - u;
@@ -204,8 +204,8 @@ void crossS2Inner(int power, int n, int startPower = startDefault) {
 	bool flag = false;
 
 	while (cur < n) {
-		float speedB = SmoothB(startPower, power, 0, 0);
-		float speedC = SmoothC(startPower, power, 0, 0);
+		float speedB = smoothB(startPower, power, 0, 0);
+		float speedC = smoothC(startPower, power, 0, 0);
 		float u = lineS2Inner(speedC);
 
 		float powerB =  -speedB - u;
@@ -246,8 +246,8 @@ void lineS2InnerCM(int power, float cm, int startPower = startDefault, int endPo
 	float enc = fromCmToDeg(cm);
 
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc)) {
-		float speedB = SmoothB(startPower, power, endPower, enc);
-		float speedC = SmoothC(startPower, power, endPower, enc);
+		float speedB = smoothB(startPower, power, endPower, enc);
+		float speedC = smoothC(startPower, power, endPower, enc);
 		float u = lineS2Inner(speedC);
 
 		float powerB =  -speedB - u;

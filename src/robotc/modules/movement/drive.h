@@ -133,12 +133,12 @@ void turnOneMotor(tMotor m, int power, float angle, int startPower = startDefaul
 	}
 
 	float enc = d2d(angle) * 2;
-	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < fabs(enc)) {
+	while (fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < fabs(enc)) {
 		float speed = 0;
 		if(m == leftMotor)
-			speed = SmoothB(startPower, power, endPower, -enc);
+			speed = smoothB(startPower, power, endPower, -enc);
 		else
-			speed = SmoothC(startPower, power, endPower, enc);
+			speed = smoothC(startPower, power, endPower, enc);
 		motor[m] = speed;
 	}
 

@@ -80,7 +80,7 @@ void setDirectionByRightOrLeft(int gd, bool r, bool l) {
     } else if (l) {
         driveCM(90, 8.9, 30, 30);
         turnLine180(70, 165, 35);
-        directions(oppositeDir(gd), 3);
+        directions(opposite(gd), 3);
         align();
         takeRightManip();
     }
