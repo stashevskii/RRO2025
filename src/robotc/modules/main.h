@@ -32,26 +32,95 @@ void grab4() {
     int needCross = 0, currCross = 0, _, gottenDir = 0;
     const int finishCross = 4;
     bool left = false, right = false;
+
     reverseArray(scannedColors, 6);
     reverseArray(scannedHeights, 6);
-    findDuoAndCross(scannedColors, needCross, cellRight, cellLeft);
+
+    for (int i = 0; i < 6; i++) {
+        if (scannedColors[i] == 6 && scannedColors[i + 1] == 6) {
+            needCross = i + 1;
+            scannedColors[i] = -1;
+            scannedColors[i + 1] = -1;
+            cellLeft = scannedHeights[i];
+            cellRight = scannedHeights[i + 1];
+            break;
+        }
+    }
+
     navigate(0, needCross, 0, false, _);
     takeDuoCells();
-    findManipsAndCross(scannedColors, scannedHeights, currCross, needCross, cellRight, currCross, needCross, left, right, manipRight, manipLeft);
+
+    currCross = needCross;
+
+    for (int i = 0; i < 6; i++) {
+        if (scannedColors[i] == 6) {
+            scannedColors[i] = -1;
+            needCross = i;
+            if (cellRight == scannedHeights[i]) {
+                left = true;
+                manipLeft = scannedHeights[i];
+                for (int j = 0; j < 6; j++) {
+                    if (scannedColors[j] == 6) {manipRight = scannedHeights[j]; break;}
+                }
+            } else {
+                right = true;
+                manipRight = scannedHeights[i];
+                for (int j = 0; j < 6; j++) {
+                    if (scannedColors[j] == 6) {manipLeft = scannedHeights[j]; break;}
+                }
+            }
+            break;
+        }
+    }
+    if (needCross < currCross) {currCross--;}
+
     navigate(currCross, needCross, 3, true, gottenDir, true);
     driveCM(75, 8.9, 30, 30);
     directions(gottenDir, 3);
     align();
-    takeRightOrLeft(left);
-    updateCurrAndNeedCross(currCross, needCross, currCross, needCross)
+
+    if (left) {takeLeftManip();}
+    else {takeRightManip();}
+
+    currCross = needCross; 
+    for (int i = 0; i < 6; i++) {
+        if (scannedColors[i] == 6) {
+            needCross = i;
+            break;
+        }
+    }
+
+    if (needCross < currCross) {currCross--;}
     navigate(currCross, needCross, 3, false, gottenDir);
-    setDirectionByRightOrLeft(gottenDir, right, left);
+    if (right) {
+        driveCM(90, 8.9, 30, 30);
+        directions(gottenDir, 3);
+        align();
+        takeLeftManip();
+    }
+    else if (left) {
+        driveCM(90, 8.9, 30, 30);
+        turnLine180(70, 165, 35);
+        directions(opposite(gottenDir), 3);
+        align();
+        takeRightManip();
+    }
+
     currCross = needCross;
+
     navigate(currCross, finishCross, 3, false, gottenDir);
-    turnBasedOnDirection(gottenDir);
+    if (gottenDir != 3) {
+        lineCM(60, 7.25, 35, 35);
+        directions(gottenDir, 1);
+        align();
+    }
+    else {
+        turnLeft(70, 179, 35);
+    }
+
     align();
     retakeConts();
-    XCross(100, 1, 50, true, 5.8);
+    XCross(80, 1, 100, true, 6.5);
 }
 
 void leaveCubes() {
@@ -65,7 +134,7 @@ void leaveCubes() {
     closeRight(true);
     stopBC(155);
     liftLeft45();
-    liftContRight(true);
+    liftRight45(true);
     driveCM(70, 7.5, 20, 20);
     driveCM(70, -29.3, 20, 20);
     turnLine180(60, 165, 20);
@@ -78,13 +147,12 @@ void takeRubbish() {
     closeRight();
     XCross(70, 1, 20, true, 7.1);
     turnLineLeft(60, 65, 20);
-    QCross(80, 3, 80, false, 2.5);
-    XCross(70, 1, 20, true, 7);
+    QCross(80, 4, 80, true, 2.8);
+    XCross(40, 1, 70, true, 7.5);
     turnLineRight(75, 65, 20);
     liftLeft45(true);
     lineCM(30, 2.3, 35, 35);
-	align();
-	arc(38, 9, 91.9, 20, 20);
+	arc(35, 9, 92.5, 20, 20);
 	driveCM(55, 51, 20, 20);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 25, 25);
