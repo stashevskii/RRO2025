@@ -124,7 +124,8 @@ void grab4() {
 }
 
 void leaveCubes() {
-    turnLineRight(70, 70, 25);
+    turnLineRight(70, 90, 25);
+    lineCM(100, 5, 20, 35);
     XCross(60, 1, 25, false);
     driveCM(60, 16.1, 15, 15);
     openLeft();
