@@ -7,7 +7,7 @@
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
 #pragma config(Motor,  motorD,           ,             tmotorEV3_Medium, openLoop, encoder)
 
-#include "../src/ñ/includes/utils/software/math.h"
+#include "../src/robotc/includes/utils/software/math.h"
 #include "calibration.h"
 
 const int space = 20;

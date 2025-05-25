@@ -1,4 +1,3 @@
-
 #pragma config(Sensor, S1,     colorS,         sensorEV3_Color, modeEV3Color_RGB_Raw)
 #pragma config(Sensor, S2,     leftS,          sensorEV3_Color, modeEV3Color_RGB_Raw)
 #pragma config(Sensor, S3,     rightS,         sensorEV3_Color, modeEV3Color_RGB_Raw)
@@ -8,7 +7,7 @@
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Medium, openLoop, encoder)
 #pragma config(Motor,  motorD,          manipMotor,    tmotorEV3_Medium, PIDControl, encoder)
 
-#include "includes/headers.h"
+#include "modules/headers.h"
 
 task main() {
 	initSensor(&s, colorS);
