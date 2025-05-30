@@ -3,15 +3,15 @@
 
 void scan() {
     clearTimer(T3);
-    driveCM(100, 10.5, 20, 25);
-    lineCM(100, 20, 20, 35);
-    lineReading(60, 35, scannedColors);
+    driveCM(100, 10.5, 45, 100);
+    lineCM(100, 20, 100, 100);
+    lineReading(90, 70, scannedColors);
     // printNumbers(scannedColors, 6);
 }
 
 void toCubes() {
-    arc(100, 20, 41, 80, 80);
-	driveCM(100, 67.2, 100, 70);
+    arc(100, 16.5, 50, 80, 80);
+	driveCM(100, 60.2, 100, 70);
 	arc(100, -20, 39, 80, 80);
 	lineCM(95, 8, 30, 100);
     XCross(100, 1, 100, true, 6);
@@ -153,7 +153,7 @@ void takeRubbish() {
     turnLineRight(75, 65, 20);
     liftLeft45(true);
     lineCM(30, 2.3, 35, 35);
-	arc(35, 9, 92.5, 20, 20);
+	arc(35, 9, 92.75, 35, 35);
 	driveCM(55, 51, 20, 20);
 	openLeftRubbish(true);
 	arc(65, 15, 90, 25, 25);

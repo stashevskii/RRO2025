@@ -4,7 +4,7 @@
 int startDefault = 30;
 int stopDefault = 30;
 
-int defaultAngle90 = 55;
+int defaultAngle90 = 70;
 int defaultAngle180 = 150;
 
 #endif

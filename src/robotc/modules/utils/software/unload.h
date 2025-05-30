@@ -4,7 +4,7 @@
 float shipTurn = 73;
 const float turnPower = 80;
 
-void toShipRun(int w = 110) {
+void goShip(int w = 110) {
     localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 
@@ -21,7 +21,7 @@ void right0left1() {
     align();
     turnOneMotor(leftMotor, turnPower, shipTurn, 26, 26);
     turnOneMotor(rightMotor, turnPower, shipTurn, 26, 26);
-    toShipRun();
+    goShip();
     openLeftShip();
     openRightShip(true);
     driveCM(65, -6, 30, 30);
@@ -31,21 +31,21 @@ void right0left1() {
 
 void right1left0() {
     align();
-    turnOneMotor(rightMotor, turnPower, shipTurn, 26, 26);
-    turnOneMotor(leftMotor, turnPower, shipTurn, 26, 26);
-    toShipRun();
+    turnOneMotor(rightMotor, turnPower, shipTurn - 3, 26, 26);
+    turnOneMotor(leftMotor, turnPower, shipTurn - 3, 26, 26);
+    goShip();
     openLeftShip();
     openRightShip(true);
     driveCM(65, -5, 30, 30);
-    turnOneMotor(leftMotor, turnPower, -shipTurn, 26, 26);
-    turnOneMotor(rightMotor, turnPower, -shipTurn, 26, 26);
+    turnOneMotor(leftMotor, turnPower, -shipTurn + 3, 26, 26);
+    turnOneMotor(rightMotor, turnPower, -shipTurn + 3, 26, 26);
 }
 
 void twoSituations(bool big) {
     align();
     turnOneMotor(leftMotor, turnPower, shipTurn, 26, 26);
     turnOneMotor(rightMotor, turnPower, shipTurn, 26, 26);
-    toShipRun(150);
+    goShip(150);
     if (big) {openLeftShip(true);}
     else {openRightShip(true);}
     driveCM(75, -5, 60, 60);
@@ -53,9 +53,9 @@ void twoSituations(bool big) {
     turnOneMotor(leftMotor, turnPower, -shipTurn, 26, 26);
     if (big) {closeLeft();}
     else {closeRight();}
-    turnOneMotor(rightMotor, turnPower, shipTurn - 3, 26, 26);
-    turnOneMotor(leftMotor, turnPower, shipTurn - 3, 26, 26);
-    toShipRun(300);
+    turnOneMotor(rightMotor, turnPower, shipTurn, 26, 26);
+    turnOneMotor(leftMotor, turnPower, shipTurn, 26, 26);
+    goShip(300);
     if (big) {openRightShip(true);}
     else {openLeftShip(true);}
     driveCM(75, -5, 60, 60);

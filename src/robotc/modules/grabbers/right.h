@@ -38,11 +38,11 @@ void funcTemplateRight(float p, float k, bool afk, int w = 400) {
 }
 
 void grabLowRight(bool afk = false) {
-	funcTemplateRight(1, -390, afk);
+	funcTemplateRight(1, -397, afk);
 }
 
 void openRightShip(bool afk = false) {
-	funcTemplateRight(0.1, -565, afk);
+	funcTemplateRight(0.1, -585, afk);
 }
 
 void openRight(bool afk = false) {
@@ -55,7 +55,7 @@ void liftRight45(bool afk = false, int waiting = 400) {
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		funcTemplateRight(0.15, -190, afk);
+		funcTemplateRight(0.15, -160, afk);
 	} else {
 		funcTemplateRight(0.25, -195, afk);
 	}
