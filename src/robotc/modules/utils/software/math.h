@@ -4,64 +4,19 @@
 const float diametr = 6.24;
 const float base = 17.657;
 
-float min(float a, float b) {
-	if (a > b) return b;
-	return a;
-}
+float min(float a, float b) {return a < b ? a : b; }
+float max(float a, float b) {return a > b ? a : b; }
 
-float max(float a, float b) {
-	if (a < b) return b;
-	return a;
-}
+float min3(float a, float b, float c) {return min(a, min(b, c));}
+float max3(float a, float b, float c) {return max(a, max(b, c));}
 
-float min3(float a, float b, float c) {
-	if (a <= b && a <= c) {
-        return a;
-    } else if (b <= a && b <= c) {
-        return b;
-    } else {
-        return c;
-    }
-}
+float fromCmToDeg(float cm) {return (cm * 360) / (diametr * PI);}
+float fromDegToCm(float deg) {return (deg * diametr * PI) / 360;}
 
-float max3(float a, float b, float c) {
-	if (a >= b && a >= c) {
-        return a;
-    } else if (b >= a && b >= c) {
-        return b;
-    } else {
-        return c;
-    }
-}
+float d2d(float angle, float k = 1) {return (base * angle * k) / diametr;}
+float map(float val, float l, float r, float maxVal) {return maxVal * (val - l) / (r - l);}
 
-float fromCmToDeg(float cm) {
-	return (cm / (diametr * PI)) * 360;
-}
-
-float fromDegToCm(float degr) {
-	return (degr * (diametr / PI)) / 360;
-}
-
-float d2d(float angle, float k = 1) {
-	return (base * angle * k) / diametr;
-}
-
-float map(float val, float l, float r, float maxVal) {
-	float a = (val - l) / (r - l);
-  	return a * maxVal;
-}
-
-int lim(int cur, int l, int r) {
-	if(cur > r)
-    	return r;
-  	else if(cur < l)
-    	return l;
-  	return cur;
-}
-
-float calcCoefficient(float speed, float default_coef, float default_speed) {
-	if(speed == 0) return default_coef;
-	return sqrt(speed / default_speed) * default_coef;
-}
+int lim(int cur, int l, int r) {return cur < l ? l : cur > r ? r : cur;}
+float calcCoefficient(float speed, float default_coef, float default_speed) {return speed == 0 ? default_coef : default_coef * sqrt(speed / default_speed);}
 
 #endif

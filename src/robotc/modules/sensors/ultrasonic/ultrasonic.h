@@ -2,7 +2,7 @@
 #define _ULTRASONIC_H_
 
 int detectHigh() {
-    if (getUSDistance(ultrasonicS) > 9) {return 0;}
+    if (getUSDistance(ultrasonicS) > 10) {return 0;}
     return 1;
 }
 

@@ -119,23 +119,6 @@ void lineCM(int power, float cm, int startPower = startDefault, int endPower = s
 	localDistC = nMotorEncoder[rightMotor];
 }
 
-void align() {
-	eold = 0;
-	isum = 0;
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-
-	clearTimer(T1);
-	while (time1[T1] < 300) {
-		float u = line(50);
-		motor[motorB] = 9 - u;
-		motor[motorC] = 9 - u;
-	}
-	
-	localDistB = nMotorEncoder[leftMotor];
-	localDistC = nMotorEncoder[rightMotor];
-}
-
 void XCross(int power, int n, int startPower = startDefault, bool toWheels = true, int dist = 8, lineColor stopColorLeft = blackLine, lineColor stopColorRight = blackLine) {
 	eold = 0;
 	isum = 0;
@@ -172,6 +155,7 @@ void XCross(int power, int n, int startPower = startDefault, bool toWheels = tru
 		} else {
 			flag = false;
 		}
+		delay(1);
 	}
 
 	localDistB = nMotorEncoder[leftMotor];

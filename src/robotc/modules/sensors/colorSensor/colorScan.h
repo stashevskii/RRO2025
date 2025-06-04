@@ -20,19 +20,20 @@ long getRGBSum(tSensors sensor) {
 void getHSVLcs(tSensors sensor, float &h, float &s, float &v, float &l) {
     long r, g, b;
     getRGBcs(sensor, r, g, b);
-    float max_ = max3(r, g, b);
-    float min_ = min3(r, g, b);
-    if (max_ == min_) {h = 0;}
-    else if (max_ == r && g >= b) {h = 60 * (g - b) / (max_ - min_);}
-    else if (max_ == r && g < b) {h = 60 * (g - b) / (max_ - min_) + 360;}
-    else if (max_ == g) {h = 60 * (b - r) / (max_ - min_) + 120;}
-    else if (max_ == b) {h = 60 * (r - g) / (max_ - min_) + 240;}
+    float maxV = max3(r, g, b);
+    float minV = min3(r, g, b);
+    
+    if (maxV == minV) {h = 0;}
+    else if (maxV == r && g >= b) {h = 60 * (g - b) / (maxV - minV);}
+    else if (maxV == r && g < b) {h = 60 * (g - b) / (maxV - minV) + 360;}
+    else if (maxV == g) {h = 60 * (b - r) / (maxV - minV) + 120;}
+    else if (maxV == b) {h = 60 * (r - g) / (maxV - minV) + 240;}
 
-    if (max_ == 0) {s = 0;}
-    else {s = 1 - min_ / max_;}
+    if (maxV == 0) {s = 0;}
+    else {s = 1 - minV / maxV;}
 
-    l = (max_ + min_) / 2;
-    v = max_;
+    l = (maxV + minV) / 2;
+    v = maxV;
 }
 
 int getColorCS(tSensors sensor) {

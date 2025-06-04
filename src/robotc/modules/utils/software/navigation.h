@@ -4,18 +4,18 @@
 void directions(int currDir, int finishDir) {
     int diff = (finishDir - currDir + 4) % 4;
     switch (diff) {
-        case 1: turnLineRight(75, 70); break;
-        case 2: turnLine180(75); break;
-        case 3: turnLineLeft(75, 70); break;
+        case 1: turnLineRight(55, 70); break;
+        case 2: turnLine180(55); break;
+        case 3: turnLineLeft(55, 70); break;
     }
 }
 
 void directionsDeg(int currDir, int finishDir) {
     int diff = (finishDir - currDir + 4) % 4;
     switch (diff) {
-        case 1: turnRight(75, 91, 35); break;
-        case 2: turnLine180(75); break;
-        case 3: turnLeft(75, 91, 35); break;
+        case 1: turnRight(55, 91, 35); break;
+        case 2: turnLine180(55); break;
+        case 3: turnLeft(55, 91, 35); break;
     }
 }
 

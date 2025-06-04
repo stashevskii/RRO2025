@@ -21,12 +21,12 @@ lineColor whiteLine;
 lineValues lv;
 
 void initColors() {
-	blackLine.minR = -14;
-	blackLine.maxR = 31;
-	blackLine.minG = -14;
-	blackLine.maxG = 31;
-	blackLine.minB = -14;
-	blackLine.maxB = 31;
+	blackLine.minR = -20;
+	blackLine.maxR = 35;
+	blackLine.minG = -20;
+	blackLine.maxG = 35;
+	blackLine.minB = -20;
+	blackLine.maxB = 35;
 }
 
 void initLineValues() {

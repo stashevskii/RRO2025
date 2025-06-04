@@ -81,7 +81,6 @@ void turn(float power, float angle, int startPower = startDefault, int endPower 
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc))
 		drive(power , power, enc, -enc, startPower, endPower);
 
-
 	localDistB -= enc;
 	localDistC -= enc;
 }
@@ -115,7 +114,6 @@ void turnLeft(float power, float angle, int startPower = startDefault, int endPo
 	float enc = d2d(angle, angle > 0 ? 1 : 1);
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc))
 		drive(power , power, enc, -enc, startPower, endPower);
-
 
 	localDistB -= enc;
 	localDistC -= enc;

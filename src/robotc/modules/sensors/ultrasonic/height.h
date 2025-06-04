@@ -1,31 +1,23 @@
 #ifndef _HEIGHT_H_
 #define _HEIGHT_H_
 
-void leaveContsAtShip(int r, int l) {
-    if (r == 0 && l == 1) {right0left1();}
-    else if (r == 1 && l == 0) {right1left0();}
-    else if (r == 1 && l == 1) {twoSituations(true);} 
-    else {twoSituations(false);}
+void getFirstContHigh(int *arr, int c) {
+    arr[0] = (c != 2);
 }
 
-void getFirstContHigh(int *h, int c) {
-    if (c == 2) {h[0] = 0;}
-    else {h[0] = 1;}
-}
-
-void scanFiveConts(int *h, int &counter) {
+void scanFiveConts(int *arr, int &counter) {
     for (int i = 1; i < 6; i++) {
         if (i == 5) {
-            driveCM(87, 10, 87, 25);
-            h[i] = detectHigh();
-            driveCM(87, -3, 87, 25);
-            if (h[i] == 1) {counter++;}
-            break;
+            driveCM(80, 11, 80, 25);
+            arr[i] = detectHigh();
+            driveCM(80, -3, 80, 25);
+        } else {
+            XCross(80, 1, 80, false);
+            arr[i] = detectHigh();
+            driveCM(80, 1.7, 80, 80);
         }
-        XCross(87, 1, 87, false);
-        h[i] = detectHigh();
-        if (h[i] == 1) {counter++;}
-        driveCM(87, 1.7, 87, 87);
+
+        if (arr[i] == 1) {counter++};
     }
 }
 

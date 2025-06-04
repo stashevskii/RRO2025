@@ -58,7 +58,7 @@ void liftLeft45(bool afk = false) { // 45 degr
 }
 
 void liftContLeft(int size, bool afk = false) {
-	funcTemplateLeft(0.13, 262, afk, 500);
+	funcTemplateLeft(0.13, 248.5, afk, 500);
 }
 
 void closeLeft(bool afk = false) {
