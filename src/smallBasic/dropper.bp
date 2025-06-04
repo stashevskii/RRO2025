@@ -1,6 +1,5 @@
 include "dropper"
 
-Sensor.SetMode(3, 0)
 Sensor.SetMode(4, 4)
 
 flag = 1
@@ -8,9 +7,10 @@ Program.Delay(750)
 LCD.Clear()
 
 While flag = 1
-  value = Sensor.ReadRawValue(3, 0)
-  If value < 200 Then
-    stopBC(2700)
+  value = Sensor.ReadRawValue(4, 0) + Sensor.ReadRawValue(4, 1) + Sensor.ReadRawValue(4, 2)
+  If value > 30 Then
+    Speaker.Note(100,"C4",100)
+    stopBC(3000)
     down()
     stopBC(0)
     flag = 0
