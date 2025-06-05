@@ -248,4 +248,22 @@ void lineS2InnerCM(int power, float cm, int startPower = startDefault, int endPo
 	localDistC = nMotorEncoder[rightMotor];
 }
 
+void align() {
+	eold = 0;
+	isum = 0;
+	localDistB = nMotorEncoder[leftMotor];
+	localDistC = nMotorEncoder[rightMotor];
+
+	clearTimer(T1);
+	while (time1[T1] < 220) {
+		float u = line(50);
+		motor[motorB] = 12 - u;
+		motor[motorC] = 12 - u;
+	}
+	
+	localDistB = nMotorEncoder[leftMotor];
+	localDistC = nMotorEncoder[rightMotor];
+}
+
+
 #endif

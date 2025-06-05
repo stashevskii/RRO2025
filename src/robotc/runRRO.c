@@ -12,7 +12,7 @@
 task main() {
 	initSensor(&s, colorS);
 	initColors();
-	initLineValues();
+	initLine();
 	startTask(initGrabberLeft);
 	startTask(GrabberLeft);
 	startTask(initGrabberRight);

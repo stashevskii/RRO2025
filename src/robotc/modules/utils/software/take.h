@@ -2,16 +2,16 @@
 #define _TAKE_H_
 
 void takeDuoCells() {
-    turnLeft(65, 91, 20, 20);
+    turnLeft(60, 91.5, 20, 20);
     liftLeft45(true);
     liftRight45(true);
-    driveCM(50, 16, 20, 20);
+    driveCM(45, 16, 20, 20);
     closeLeft();
     closeRight(true);
     driveCM(80, -14.5, 20, 20);
 }
 
-void takeRightManip() {
+void takeMR() {
     turnOneMotor(leftMotor, 80, -13, 40, 40);
     driveCM(70, -2, 70, 70);
     openRight(true);
@@ -22,7 +22,7 @@ void takeRightManip() {
     turnOneMotor(leftMotor, 70, 13, 40, 40);
 }
 
-void takeLeftManip() {
+void takeML() {
     turnOneMotor(rightMotor, 70, -20, 40, 40);
     driveCM(70, -2, 70, 70);
     openLeft(true);
@@ -33,7 +33,7 @@ void takeLeftManip() {
     turnOneMotor(rightMotor, 70, 20, 40, 40);
 }
 
-void retakeConts() {
+void retake() {
     lineCM(80, 10, 45, 45);
     openLeft();
     openRight();

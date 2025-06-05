@@ -1,7 +1,7 @@
 #ifndef _SCREEN_H_
 #define _SCREEN_H_
 
-void printNumbers(int *nums, int n, int w = 5600) {
+void printArr(int *nums, int n, int w = 5600) {
     stopBC(0);
     eraseDisplay();
     for (int i = 0; i < n; i++) {

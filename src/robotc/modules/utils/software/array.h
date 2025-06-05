@@ -13,7 +13,7 @@ void reverseArray(int *arr, int size) {
     }
 }
 
-void findTwoMinIndexes(int *arr, int size, int &min1_idx, int &min2_idx) {
+void findTwoMin(int *arr, int size, int &min1_idx, int &min2_idx) {
     if (arr[0] < arr[1]) {
         min1_idx = 0;
         min2_idx = 1;
@@ -35,7 +35,7 @@ void findTwoMinIndexes(int *arr, int size, int &min1_idx, int &min2_idx) {
 
 void rewriteColors(int *cols) {
     int mi1, mi2;
-    findTwoMinIndexes(cols, 6, mi1, mi2);
+    findTwoMin(cols, 6, mi1, mi2);
     for (int i = 0; i < 6; i++) {
         if (i == mi1 || i == mi2) {
             cols[i] = 1;

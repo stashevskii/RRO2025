@@ -42,7 +42,7 @@ void grabLowRight(bool afk = false) {
 }
 
 void openRightShip(bool afk = false) {
-	funcTemplateRight(0.1, -585, afk);
+	funcTemplateRight(0.1, -600, afk);
 }
 
 void openRight(bool afk = false) {
@@ -55,13 +55,14 @@ void liftRight45(bool afk = false, int waiting = 400) {
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		funcTemplateRight(0.15, -170, afk);
+		funcTemplateRight(0.25, -152, afk);
 	} else {
-		funcTemplateRight(0.25, -195, afk);
+		funcTemplateRight(0.25, -165, afk);
 	}
 }
 
 void closeRight(bool afk = false) {
 	funcTemplateRight(1.1, 500, afk);
 }
+
 #endif

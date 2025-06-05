@@ -42,7 +42,7 @@ void grabLowLeft(bool afk = false) {
 }
 
 void openLeftShip(bool afk = false) {
-	funcTemplateLeft(0.1, 585, afk);
+	funcTemplateLeft(0.1, 600, afk);
 }
 
 void openLeftRubbish(bool afk = false) {
@@ -58,7 +58,7 @@ void liftLeft45(bool afk = false) { // 45 degr
 }
 
 void liftContLeft(int size, bool afk = false) {
-	funcTemplateLeft(0.13, 248.5, afk, 500);
+	funcTemplateLeft(0.13, 245, afk, 500);
 }
 
 void closeLeft(bool afk = false) {

@@ -8,17 +8,17 @@ typedef struct {
 } lineColor;
 
 typedef struct {
-	long r1Min;	long g1Min; long b1Min;
-	long r1Max; long g1Max; long b1Max;
+	long r1Min, g1Min, b1Min;
+	long r1Max, g1Max, b1Max;
 
-	long r2Min; long g2Min; long b2Min;
-	long r2Max; long g2Max; long b2Max;
+	long r2Min, g2Min, b2Min;
+	long r2Max, g2Max, b2Max;
 } lineValues;
 
 lineColor blackLine;
 lineColor whiteLine;
 
-lineValues lv;
+lineValues calibration;
 
 void initColors() {
 	blackLine.minR = -20;
@@ -29,20 +29,20 @@ void initColors() {
 	blackLine.maxB = 35;
 }
 
-void initLineValues() {
-	lv.r1Min = 0;
-	lv.g1Min = 38;
-	lv.b1Min = 39;
-	lv.r1Max = 263;
-	lv.g1Max = 278;
-	lv.b1Max = 336;
+void initLine() {
+	calibration.r1Min = 0;
+	calibration.g1Min = 38;
+	calibration.b1Min = 39;
+	calibration.r1Max = 263;
+	calibration.g1Max = 278;
+	calibration.b1Max = 336;
 
-	lv.r2Min = 22;
-	lv.g2Min = 47;
-	lv.b2Min = 42;
-	lv.r2Max = 151;
-	lv.g2Max = 276;
-	lv.b2Max = 356;
+	calibration.r2Min = 22;
+	calibration.g2Min = 47;
+	calibration.b2Min = 42;
+	calibration.r2Max = 151;
+	calibration.g2Max = 276;
+	calibration.b2Max = 356;
 }
 
 #endif
