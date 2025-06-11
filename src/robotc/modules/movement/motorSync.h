@@ -37,7 +37,7 @@ void drive(float powerB, float powerC, float encB = 0, float encC = 0, int start
 	motor[leftMotor] = powerrB;
 	motor[rightMotor] = powerrC;
 
-	delay(2);
+	delay(1.5);
 }
 
 #endif

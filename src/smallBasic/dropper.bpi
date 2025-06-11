@@ -25,6 +25,7 @@ Function arc(in number speedB, in number speedC, in number kp, in number kd, in 
     LCD.Text(1, 0, 0, 2, mb)
     errold = err
   EndWhile
+  stopBC(0)
 EndFunction
 
 Function resetGyro()
@@ -42,17 +43,26 @@ Function stopBC(in number w)
 EndFunction
 
 Function down()
-  arc(-65, -65, 0.1, 0.5, 1818)
+  arc(-95, -95, 0.1, 0.5, 2000)
 EndFunction
 
 Function up()
-  arc(65, 65, 0.1, 0.5, 1700)
+  arc(95, 95, 0.1, 0.5, 1700)
+EndFunction
+
+Function upToHighCont()
+  arc(80, 80, 0.1, 0.5, 185)
+EndFunction
+
+Function downToLowCont()
+  stopBC(0)
+  arc(-80, -80, 0.1, 0.5, 220)
 EndFunction
 
 Function dropCube()
-  Motor.StartPower("A", 29)
+  Motor.StartPower("A", 35)
   Program.Delay(750)
-  Motor.StartPower("A", -29)
+  Motor.StartPower("A", -35)
   Program.Delay(750)
 EndFunction
 
@@ -65,8 +75,11 @@ Function dropCubeAndScan()
     dropCube()
     dropCube()
   Else
+    downToLowCont()
     dropCube()
+    upToHighCont()
   EndIf
+  stopBC(200)
 EndFunction
 
 Function rotateLeft(in number value)

@@ -97,7 +97,6 @@ void turnRight(float power, float angle, int startPower = startDefault, int endP
 	while(fabs(nMotorEncoder[leftMotor] - localDistB) + fabs(nMotorEncoder[rightMotor] - localDistC) < 2 * fabs(enc))
 		drive(power , power, enc, -enc, startPower, endPower);
 
-
 	localDistB -= enc;
 	localDistC -= enc;
 }

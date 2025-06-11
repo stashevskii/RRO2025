@@ -12,24 +12,24 @@ void takeDuoCells() {
 }
 
 void takeMR() {
-    turnOneMotor(leftMotor, 80, -13, 40, 40);
+    turnOneMotor(leftMotor, 80, -22, 40, 40);
     driveCM(70, -2, 70, 70);
     openRight(true);
-    stopBC(300);
-    driveCM(70, 8, 20, 20);
+    stopBC(250);
+    driveCM(70, 11, 20, 20);
     grabLowRight(true);
-    driveCM(65, -6, 15, 15);
-    turnOneMotor(leftMotor, 70, 13, 40, 40);
+    driveCM(65, -8, 15, 15);
+    turnOneMotor(leftMotor, 70, 22, 40, 40);
 }
 
 void takeML() {
     turnOneMotor(rightMotor, 70, -20, 40, 40);
     driveCM(70, -2, 70, 70);
     openLeft(true);
-    stopBC(300);
-    driveCM(65, 8, 20, 20);
+    stopBC(250);
+    driveCM(65, 11, 20, 20);
     grabLowLeft(true);
-    driveCM(65, -6, 20, 20);
+    driveCM(65, -8, 20, 20);
     turnOneMotor(rightMotor, 70, 20, 40, 40);
 }
 

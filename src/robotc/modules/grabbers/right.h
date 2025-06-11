@@ -55,9 +55,9 @@ void liftRight45(bool afk = false, int waiting = 400) {
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		funcTemplateRight(0.25, -152, afk);
+		funcTemplateRight(0.25, -230, afk);
 	} else {
-		funcTemplateRight(0.25, -165, afk);
+		funcTemplateRight(0.25, -220, afk);
 	}
 }
 

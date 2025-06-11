@@ -9,9 +9,11 @@ LCD.Clear()
 While flag = 1
   value = Sensor.ReadRawValue(4, 0) + Sensor.ReadRawValue(4, 1) + Sensor.ReadRawValue(4, 2)
   If value > 20 Then
-    Speaker.Note(100,"C4",100)
-    stopBC(3000)
+    Speaker.Note(100, "C4", 100)
+    stopBC(2000)
     down()
+    stopBC(0)
+    upToHighCont()
     stopBC(0)
     flag = 0
   EndIf
@@ -20,17 +22,17 @@ While flag = 1
   Program.Delay(20)
 EndWhile
 
-rotateLeft(100)
+rotateLeft(105)
 dropCubeAndScan()
 
-rotateLeft(145)
+rotateLeft(155)
 dropCubeAndScan()
 
-rotateRight(351)
+rotateRight(370)
 dropCubeAndScan()
 
-rotateRight(130)
+rotateRight(140)
 dropCubeAndScan()
-rotateLeft(255)
+rotateLeft(245)
 
 up()
