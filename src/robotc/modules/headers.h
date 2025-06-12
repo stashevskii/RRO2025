@@ -23,6 +23,7 @@
 #include "utils/software/take.h"
 #include "utils/software/unload.h"
 #include "sensors/colorSensor/height.h"
+#include "utils/software/battery.h"
 #include "main.h"
 
 #endif

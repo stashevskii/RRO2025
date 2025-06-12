@@ -2,7 +2,7 @@
 #define _UNLOAD_H_
 
 float shipTurn = 73;
-const float turnPower = 75;
+const float turnPower = 68;
 
 void goShip(int w = 110) {
     localDistB = nMotorEncoder[leftMotor];
@@ -30,14 +30,15 @@ void right0left1() {
 }
 
 void right1left0() {
-    turnOneMotor(rightMotor, turnPower, shipTurn, 20, 20);
-    turnOneMotor(leftMotor, turnPower, shipTurn, 20, 20);
+    int v = 3;
+    turnOneMotor(rightMotor, turnPower, shipTurn + v, 20, 20);
+    turnOneMotor(leftMotor, turnPower, shipTurn + v, 20, 20);
     goShip();
     openLeftShip();
     openRightShip(true);
     driveCM(65, -5, 30, 30);
-    turnOneMotor(leftMotor, turnPower, -shipTurn, 20, 20);
-    turnOneMotor(rightMotor, turnPower, -shipTurn, 20, 20);
+    turnOneMotor(leftMotor, turnPower, -shipTurn - v, 20, 20);
+    turnOneMotor(rightMotor, turnPower, -shipTurn - v, 20, 20);
 }
 
 void chooseOpen(bool big) {
@@ -53,6 +54,7 @@ void chooseClose(bool big) {
 }
 
 void twoSits(bool big) {
+    int v = 3;
     turnOneMotor(leftMotor, turnPower, shipTurn, 20, 20);
     turnOneMotor(rightMotor, turnPower, shipTurn, 20, 20);
     goShip(150);
@@ -61,13 +63,13 @@ void twoSits(bool big) {
     turnOneMotor(rightMotor, turnPower, -shipTurn, 20, 20);
     turnOneMotor(leftMotor, turnPower, -shipTurn, 20, 20);
     chooseClose(big);
-    turnOneMotor(rightMotor, turnPower, shipTurn - 2.5, 20, 20);
-    turnOneMotor(leftMotor, turnPower, shipTurn - 2.5, 20, 20);
+    turnOneMotor(rightMotor, turnPower, shipTurn - v, 20, 20);
+    turnOneMotor(leftMotor, turnPower, shipTurn - v, 20, 20);
     goShip(300);
     chooseOpenRev(big);
     driveCM(75, -5, 60, 60); 
-    turnOneMotor(leftMotor, turnPower, -shipTurn + 5, 20, 20);
-    turnOneMotor(rightMotor, turnPower, -shipTurn + 5, 20, 20);
+    turnOneMotor(leftMotor, turnPower, -shipTurn - v, 20, 20);
+    turnOneMotor(rightMotor, turnPower, -shipTurn - v, 20, 20);
 }
 
 void unload(int r, int l) {

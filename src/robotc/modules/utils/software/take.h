@@ -13,25 +13,25 @@ void takeDC() {
 }
 
 void takeMR() {
-    turnOneMotor(leftMotor, 80, -22, 40, 40);
+    turnOneMotor(leftMotor, 65, -18, 40, 40);
     driveCM(70, -2, 70, 70);
     openRight(true);
     stopBC(250);
-    driveCM(70, 11, 20, 20);
+    driveCM(70, 10.5, 20, 20);
     grabLowRight(true);
-    driveCM(65, -8, 15, 15);
-    turnOneMotor(leftMotor, 70, 22, 40, 40);
+    driveCM(65, -7.5, 15, 15);
+    turnOneMotor(leftMotor, 65, 18, 40, 40);
 }
 
 void takeML() {
-    turnOneMotor(rightMotor, 70, -22, 40, 40);
+    turnOneMotor(rightMotor, 65, -18, 40, 40);
     driveCM(70, -2, 70, 70);
     openLeft(true);
     stopBC(250);
-    driveCM(65, 11, 20, 20);
+    driveCM(65, 10.5, 20, 20);
     grabLowLeft(true);
-    driveCM(65, -8, 20, 20);
-    turnOneMotor(rightMotor, 70, 22, 40, 40);
+    driveCM(65, -7.5, 20, 20);
+    turnOneMotor(rightMotor, 65, 18, 40, 40);
 }
 
 void retake() {

@@ -3,15 +3,16 @@
 
 void scanColors() {
     clearTimer(T3);
+    checkVoltage();
     driveCM(100, 8.5, 100, 30);
     lineCM(100, 22, 30, 30);
-    lineReading(90, 30, scannedColors);
+    lineReading(75, 30, scannedColors);
     // printArr(scannedColors, 6);
 }
 
 void toConts() {
     arc(100, 16.5, 50, 100, 100);
-	driveCM(100, 58.8, 100, 100);
+	driveCM(100, 56, 100, 100);
 	arc(100, -20, 39, 100, 100);
 	lineCM(95, 8, 40, 100);
     XCross(85, 1, 100, true, 5);
@@ -23,8 +24,8 @@ void scanHeights() {
     reverseArray(scannedColors, 6);
     scanFive(scannedHeights, counter);
     getFirst(scannedHeights, counter);
-    turnLine180(65, 110, 25);
-    printArr(scannedHeights, 6);
+    turnLine180(65, 155, 25);
+    // printArr(scannedHeights, 6);
 }
 
 void setManipValues(bool &v1, int &v2, int &v3, int i) {
@@ -80,7 +81,7 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, true, currentDir, true);
-    driveCM(70, 10, 30, 30);
+    driveCM(60, 9.5, 30, 30);
     directions(currentDir, 3);
 
     left ? takeML() : takeMR();
@@ -96,7 +97,7 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, false, currentDir);
-    driveCM(90, 10, 30, 30);
+    driveCM(60, 9.5, 30, 30);
 
     if (right) {
         directions(currentDir, 3);
@@ -111,13 +112,13 @@ void grab4() {
 
     navigate(currCross, finishCross, 3, false, currentDir);
     if (currentDir != 3) {
-        lineCM(60, 7.25, 35, 35);
+        lineCM(60, 8, 35, 35);
         directions(currentDir, 1);
     } else {
         // just turn, because already on finish cross
         turnLeft(65, 178, 35);
-        align();
     }
+    align();
 
     retake();
     XCross(80, 1, 100, true, 6);
@@ -156,25 +157,26 @@ void takeRubbish() {
     XCross(70, 1, 20, true, 7.1);
     turnLineLeft(60, 65, 20);
 
-    QCross(80, 4, 80, true, 2.8);
-    XCross(40, 1, 70, true);
+    QCross(70, 4, 70, true, 2.8);
+    XCross(35, 1, 35, true);
 
-    turnLineRight(75, 65, 20);
+    turnLineRight(65, 65, 20);
+    align();
     liftLeft45(true);
     lineCM(30, 2.9, 35, 35);
 
-	arc(40, 9, 88.5, 35, 35);
+	arc(35, 9, 90, 35, 35);
 
 	driveCM(40, 51, 20, 20);
 	openLeftRubbish(true);
 
 	arc(65, 15, 90, 25, 25);
 
-	driveCM(55, 41, 20, 25);
+	driveCM(55, 42, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 
-	arc(50, 20, -90, 25, 25);
+	arc(50, 20, -89, 25, 25);
 
     closeLeft();
     closeRight();

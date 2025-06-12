@@ -23,12 +23,12 @@ void scanFive(int *arr, int &counter) {
                 scanOne(arr, 30, i, 4);
                 break;
             case 5:
-                driveCM(80, 11, 80, 25);
+                driveCM(70, 11, 70, 25);
                 arr[i] = getHeight();
-                driveCM(80, -3, 80, 25);
+                driveCM(70, -3, 70, 25);
                 break;
             default:
-                scanOne(arr, 80, i);
+                scanOne(arr, 65, i);
         }
         if (arr[i] == 1) {counter++};
     }

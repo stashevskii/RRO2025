@@ -39,7 +39,7 @@ Function down()
 EndFunction
 
 Function up()
-  arc(95, 95, 0.1, 0.5, 2000)
+  arc(95, 95, 0.1, 0.5, 1900)
 EndFunction
 
 Function upToHighCont()
@@ -52,9 +52,9 @@ Function downToLowCont()
 EndFunction
 
 Function dropCube()
-  Motor.StartPower("A", 35)
+  Motor.StartPower("A", 70)
   Program.Delay(750)
-  Motor.StartPower("A", -35)
+  Motor.StartPower("A", -70)
   Program.Delay(750)
 EndFunction
 
