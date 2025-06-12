@@ -96,7 +96,7 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, false, currentDir);
-    driveCM(90, 7, 30, 30);
+    driveCM(90, 10, 30, 30);
 
     if (right) {
         directions(currentDir, 3);
