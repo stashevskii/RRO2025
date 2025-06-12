@@ -1,8 +1,9 @@
 #ifndef _TAKE_H_
 #define _TAKE_H_
 
-void takeDuoCells() {
-    turnLeft(60, 91.5, 20, 20);
+void takeDC() {
+    driveCM(70, -1, 35, 35);
+    turnLeft(60, 91, 20, 20);
     liftLeft45(true);
     liftRight45(true);
     driveCM(45, 16, 20, 20);
@@ -23,14 +24,14 @@ void takeMR() {
 }
 
 void takeML() {
-    turnOneMotor(rightMotor, 70, -20, 40, 40);
+    turnOneMotor(rightMotor, 70, -22, 40, 40);
     driveCM(70, -2, 70, 70);
     openLeft(true);
     stopBC(250);
     driveCM(65, 11, 20, 20);
     grabLowLeft(true);
     driveCM(65, -8, 20, 20);
-    turnOneMotor(rightMotor, 70, 20, 40, 40);
+    turnOneMotor(rightMotor, 70, 22, 40, 40);
 }
 
 void retake() {

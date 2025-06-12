@@ -22,8 +22,7 @@
 #include "grabbers/right.h"
 #include "utils/software/take.h"
 #include "utils/software/unload.h"
-#include "sensors/ultrasonic/ultrasonic.h"
-#include "sensors/ultrasonic/height.h"
+#include "sensors/colorSensor/height.h"
 #include "main.h"
 
 #endif

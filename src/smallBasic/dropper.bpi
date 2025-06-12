@@ -28,14 +28,6 @@ Function arc(in number speedB, in number speedC, in number kp, in number kd, in 
   stopBC(0)
 EndFunction
 
-Function resetGyro()
-  Sensor.SetMode(4, 0)
-  Sensor.ReadRawValue(4, 0)
-  gyroResetData[0] = 17
-  Sensor.SendUARTData(4, 1, gyroResetData)
-  Sensor.Wait(4)
-EndFunction
-
 Function stopBC(in number w)
   Motor.StartPower("B", 0)
   Motor.StartPower("C", 0)
@@ -47,7 +39,7 @@ Function down()
 EndFunction
 
 Function up()
-  arc(95, 95, 0.1, 0.5, 1700)
+  arc(95, 95, 0.1, 0.5, 2000)
 EndFunction
 
 Function upToHighCont()
@@ -56,7 +48,7 @@ EndFunction
 
 Function downToLowCont()
   stopBC(0)
-  arc(-80, -80, 0.1, 0.5, 220)
+  arc(-80, -80, 0.1, 0.5, 250)
 EndFunction
 
 Function dropCube()
@@ -83,9 +75,9 @@ Function dropCubeAndScan()
 EndFunction
 
 Function rotateLeft(in number value)
-  Motor.Move("D", 10.5, value, "true")
+  Motor.Move("D", 20, value, "true")
 EndFunction
 
 Function rotateRight(in number value)
-  Motor.Move("D", -10.5, value, "true")
+  Motor.Move("D", -20, value, "true")
 EndFunction

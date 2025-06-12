@@ -31,38 +31,39 @@ task initGrabberRight() {
 	nMotorEncoder[manipMotorRight] = 0;
 }
 
-void funcTemplateRight(float p, float k, bool afk, int w = 400) {
+// right manipulator function template
+void tr(float p, float k, bool afk, int w = 400) {
 	factorRight = p;
 	manipPosRight = k;
 	if (afk) {stopBC(w);}
 }
 
 void grabLowRight(bool afk = false) {
-	funcTemplateRight(0.7, -395, afk);
+	tr(0.7, -420, afk);
 }
 
 void openRightShip(bool afk = false) {
-	funcTemplateRight(0.1, -600, afk);
+	tr(0.1, -600, afk);
 }
 
 void openRight(bool afk = false) {
-	funcTemplateRight(1.2, -1000, afk);
+	tr(1.2, -1000, afk);
 }
 
 void liftRight45(bool afk = false, int waiting = 400) {
-	funcTemplateRight(0.55, -185, afk);
+	tr(0.55, -185, afk);
 }
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		funcTemplateRight(0.25, -230, afk);
+		tr(0.25, -225, afk);
 	} else {
-		funcTemplateRight(0.25, -220, afk);
+		tr(0.25, -217, afk);
 	}
 }
 
 void closeRight(bool afk = false) {
-	funcTemplateRight(1.1, 500, afk);
+	tr(1.1, 500, afk);
 }
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef _UNLOAD_H_
 #define _UNLOAD_H_
 
-float shipTurn = 75;
+float shipTurn = 73;
 const float turnPower = 75;
 
 void goShip(int w = 110) {
@@ -17,55 +17,64 @@ void goShip(int w = 110) {
 	localDistC = nMotorEncoder[rightMotor];
 }
 
-void twoTurns(bool minus = false) {
-    int m = (minus) ? -1 : 1;
-    printNumber(m);
-    turnOneMotor(leftMotor, turnPower, shipTurn * m, 20, 20);
-    turnOneMotor(rightMotor, turnPower, shipTurn * m, 20, 20);
-}
-
 void right0left1() {
-    twoTurns();
+    int v = 3;
+    turnOneMotor(leftMotor, turnPower, shipTurn + v, 20, 20);
+    turnOneMotor(rightMotor, turnPower, shipTurn + v, 20, 20);
     goShip();
     openLeftShip();
     openRightShip(true);
     driveCM(65, -6, 30, 30);
-    twoTurns(true);
+    turnOneMotor(rightMotor, turnPower, -shipTurn - v, 20, 20);
+    turnOneMotor(leftMotor, turnPower, -shipTurn - v, 20, 20);
 }
 
 void right1left0() {
-    twoTurns();
+    turnOneMotor(rightMotor, turnPower, shipTurn, 20, 20);
+    turnOneMotor(leftMotor, turnPower, shipTurn, 20, 20);
     goShip();
     openLeftShip();
     openRightShip(true);
     driveCM(65, -5, 30, 30);
-    twoTurns(true);
+    turnOneMotor(leftMotor, turnPower, -shipTurn, 20, 20);
+    turnOneMotor(rightMotor, turnPower, -shipTurn, 20, 20);
 }
 
-void openFunc(bool big) {
-    if (big) {openLeftShip(true);}
-    else {openRightShip(true);}
+void chooseOpen(bool big) {
+    big ? openLeftShip(true) : openRightShip(true);
 }
 
-void twoSituations(bool big) {
-    twoTurns();
+void chooseOpenRev(bool big) {
+    big ? openRightShip(true) : openLeftShip(true);
+}
+
+void chooseClose(bool big) {
+    big ? closeLeft() : closeRight();
+}
+
+void twoSits(bool big) {
+    turnOneMotor(leftMotor, turnPower, shipTurn, 20, 20);
+    turnOneMotor(rightMotor, turnPower, shipTurn, 20, 20);
     goShip(150);
-    openFunc(big);
+    chooseOpen(big);
     driveCM(75, -5, 60, 60);
-    twoTurns(true);
-    openFunc(big);
-    twoTurns();
+    turnOneMotor(rightMotor, turnPower, -shipTurn, 20, 20);
+    turnOneMotor(leftMotor, turnPower, -shipTurn, 20, 20);
+    chooseClose(big);
+    turnOneMotor(rightMotor, turnPower, shipTurn - 2.5, 20, 20);
+    turnOneMotor(leftMotor, turnPower, shipTurn - 2.5, 20, 20);
     goShip(300);
-    openFunc(big);
+    chooseOpenRev(big);
     driveCM(75, -5, 60, 60); 
-    twoTurns(true);
+    turnOneMotor(leftMotor, turnPower, -shipTurn + 5, 20, 20);
+    turnOneMotor(rightMotor, turnPower, -shipTurn + 5, 20, 20);
 }
 
-void leaveContsAtShip(int r, int l) {
+void unload(int r, int l) {
     if (r == 0 && l == 1) {right0left1();}
     else if (r == 1 && l == 0) {right1left0();}
-    else if (r == 1 && l == 1) {twoSituations(true);} 
-    else {twoSituations(false);}
+    else if (r == 1 && l == 1) {twoSits(true);} 
+    else {twoSits(false);}
 }
 
 #endif

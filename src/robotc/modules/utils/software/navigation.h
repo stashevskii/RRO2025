@@ -8,6 +8,7 @@ void directions(int currDir, int finishDir) {
         case 2: turnLine180(55); break;
         case 3: turnLineLeft(55, 70); break;
     }
+    stopBC(20);
 }
 
 void directionsDeg(int currDir, int finishDir) {
@@ -43,7 +44,7 @@ void navigate(int startX, int finishX, int dir, bool degr = false, int &outDir, 
         lineCM(80, 4.1, 25, 25);
     }
 
-    QCross(80, abs(delta), 80, false, 2.7);
+    QCross(80, abs(delta), 80, false, 2);
     outDir = dir;
 }
 

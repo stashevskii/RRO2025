@@ -3,20 +3,19 @@
 
 void scanColors() {
     clearTimer(T3);
-    driveCM(100, 10.5, 45, 100);
-    lineCM(100, 20, 100, 100);
-    lineReading(90, 60, scannedColors);
+    driveCM(100, 8.5, 100, 30);
+    lineCM(100, 22, 30, 30);
+    lineReading(90, 30, scannedColors);
     // printArr(scannedColors, 6);
 }
 
 void toConts() {
     arc(100, 16.5, 50, 100, 100);
-	driveCM(100, 60.2, 100, 100);
+	driveCM(100, 58.8, 100, 100);
 	arc(100, -20, 39, 100, 100);
 	lineCM(95, 8, 40, 100);
-    XCross(100, 1, 100, true, 4.75);
-    turnLineLeft(90, 70, 45);
-    driveCM(85, -4, 25, 25);
+    XCross(85, 1, 100, true, 5);
+    turnLineLeft(55, 70, 45);
 }
 
 void scanHeights() {
@@ -25,10 +24,11 @@ void scanHeights() {
     scanFive(scannedHeights, counter);
     getFirst(scannedHeights, counter);
     turnLine180(65, 110, 25);
-    // printArr(scannedHeights, 6);
+    printArr(scannedHeights, 6);
 }
 
-void setManipValues(bool &v1, int &v2, int &v3) {
+void setManipValues(bool &v1, int &v2, int &v3, int i) {
+    // v2 and v3 - manipulator variables
     v1 = true;
     v2 = scannedHeights[i];
     for (int j = 0; j < 6; j++) {
@@ -59,18 +59,20 @@ void grab4() {
     }
 
     navigate(0, targetCross, 0, false, _);
-    takeDuoCells();
+    takeDC();
 
     currCross = targetCross;
 
     for (int i = 0; i < 6; i++) {
+        // white found
         if (scannedColors[i] == 6) {
             scannedColors[i] = -1;
             targetCross = i;
+            // set vals
             if (cellRight == scannedHeights[i]) {
-                setManipValues(left, manipLeft, manipRight);
+                setManipValues(left, manipLeft, manipRight, i);
             } else {
-                setManipValues(right, manipRight, manipLeft);
+                setManipValues(right, manipRight, manipLeft, i);
             }
             break;
         }
@@ -78,7 +80,7 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, true, currentDir, true);
-    driveCM(75, 8.9, 30, 30);
+    driveCM(70, 10, 30, 30);
     directions(currentDir, 3);
 
     left ? takeML() : takeMR();
@@ -94,13 +96,13 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, false, currentDir);
-    driveCM(90, 9, 30, 30);
+    driveCM(90, 7, 30, 30);
 
     if (right) {
         directions(currentDir, 3);
         takeML();
     } else if (left) {
-        turnLine180(70, 155, 35);
+        turnLine180(70, 165, 35);
         directions(opposite(currentDir), 3);
         takeMR();
     }
@@ -112,7 +114,9 @@ void grab4() {
         lineCM(60, 7.25, 35, 35);
         directions(currentDir, 1);
     } else {
-        turnLeft(70, 179, 35);
+        // just turn, because already on finish cross
+        turnLeft(65, 178, 35);
+        align();
     }
 
     retake();
@@ -159,18 +163,18 @@ void takeRubbish() {
     liftLeft45(true);
     lineCM(30, 2.9, 35, 35);
 
-	arc(30, 9, 89, 35, 35);
+	arc(40, 9, 88.5, 35, 35);
 
 	driveCM(40, 51, 20, 20);
 	openLeftRubbish(true);
 
 	arc(65, 15, 90, 25, 25);
 
-	driveCM(55, 40, 20, 25);
+	driveCM(55, 41, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 
-	arc(60, 20.5, -90, 25, 25);
+	arc(50, 20, -90, 25, 25);
 
     closeLeft();
     closeRight();
@@ -227,16 +231,16 @@ void leaveConts() {
 
     stopBC(100);
 
-    turnLine180(60, 155, 35);
+    turnLine180(60, 160, 35);
     align();
 
     XCross(85, 1, 35, false);
     lineCM(80, 6.1, 30, 30);
+    unload(manipRight, manipLeft);
 
-    leaveContsAtShip(manipRight, manipLeft);
-
-    turnLine180(60, 155, 35);
+    turnLine180(65, 165, 35);
     align();
+
     openLeft();
     openRight(true);
     stopBC(250);
@@ -245,7 +249,7 @@ void leaveConts() {
     grabLowLeft();
     grabLowRight(true);
 
-    turnLine180(60, 155, 35);
+    turnLine180(60, 160, 35);
     align();
 
     liftContLeft(cellLeft, true);
@@ -256,9 +260,9 @@ void leaveConts() {
     lineCM(70, 6, 30, 30);
     stopBC(100);
 
-    leaveContsAtShip(cellRight, cellLeft);
+    unload(cellRight, cellLeft);
 
-    turnLine180(60, 155, 35);
+    turnLine180(60, 160, 35);
     align();
 }
 
@@ -271,7 +275,7 @@ void finish() {
     closeRight();
 
     XCross(100, 1, 100, false);
-    driveCM(70, 19, 100, 15);
+    driveCM(70, 20.5, 100, 15);
 
     printTime();
 }
