@@ -6,13 +6,13 @@ void scanColors() {
     checkVoltage();
     driveCM(100, 8.5, 100, 30);
     lineCM(100, 22, 30, 30);
-    lineReading(75, 30, scannedColors);
+    lineReading(90, 30, scannedColors);
     // printArr(scannedColors, 6);
 }
 
 void toConts() {
     arc(100, 16.5, 50, 100, 100);
-	driveCM(100, 56, 100, 100);
+	driveCM(100, 58.5, 100, 100);
 	arc(100, -20, 39, 100, 100);
 	lineCM(95, 8, 40, 100);
     XCross(85, 1, 100, true, 5);
@@ -42,7 +42,7 @@ void setManipValues(bool &v1, int &v2, int &v3, int i) {
 
 void grab4() {
     int targetCross = 0, currCross = 0, _, currentDir = 0;
-    const int finishCross = 4;
+    const int finishCross = 4, navigCm = 8.1;
     bool left = false, right = false;
 
     reverseArray(scannedColors, 6);
@@ -81,7 +81,8 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, true, currentDir, true);
-    driveCM(60, 9.5, 30, 30);
+    stopBC(100);
+    driveCM(50, navigCm, 30, 30);
     directions(currentDir, 3);
 
     left ? takeML() : takeMR();
@@ -97,13 +98,14 @@ void grab4() {
     if (targetCross < currCross) {currCross--;}
 
     navigate(currCross, targetCross, 3, false, currentDir);
-    driveCM(60, 9.5, 30, 30);
+    stopBC(100);
+    driveCM(50, navigCm, 30, 30);
 
     if (right) {
         directions(currentDir, 3);
         takeML();
     } else if (left) {
-        turnLine180(70, 165, 35);
+        turnLine180(70, 175, 35);
         directions(opposite(currentDir), 3);
         takeMR();
     }
@@ -116,7 +118,7 @@ void grab4() {
         directions(currentDir, 1);
     } else {
         // just turn, because already on finish cross
-        turnLeft(65, 178, 35);
+        turnLine180(70, 170, 40);
     }
     align();
 
@@ -129,12 +131,12 @@ void leaveCubes() {
     lineCM(90, 5, 20, 35);
 
     XCross(40, 1, 25, false);
-    driveCM(60, 16.1, 15, 15);
+    driveCM(85, 16.1, 15, 15);
 
     openLeft();
     openRight(true);
 
-    driveCM(60, -9.2, 35, 35);
+    driveCM(85, -9, 35, 35);
 
     closeLeft();
     closeRight(true);
@@ -142,12 +144,11 @@ void leaveCubes() {
     liftLeft45();
     liftRight45(true);
 
-    driveCM(70, 7.5, 20, 20);
-    driveCM(70, -29.3, 20, 20);
-    turnLine180(60, 155, 20);
-
-    XCross(50, 1, 30, true, 7);
-    turnLineLeft(90, 70, 20);
+    driveCM(60, 7.5, 20, 20);
+    driveCM(85, -43, 40, 35);
+    turnLineRight(65, 70, 20);
+    align();
+    lineCM(70, 5, 20, 70);
 }
 
 void takeRubbish() {
@@ -172,11 +173,11 @@ void takeRubbish() {
 
 	arc(65, 15, 90, 25, 25);
 
-	driveCM(55, 42, 20, 25);
+	driveCM(55, 43, 20, 25);
 	liftContLeft(0, true);
     driveCM(62, -3.5, 20, 25);
 
-	arc(50, 20, -89, 25, 25);
+	arc(50, 19, -89, 25, 25);
 
     closeLeft();
     closeRight();
@@ -187,32 +188,83 @@ void takeRubbish() {
     XCross(85, 1, 30, true, 6.5);
 }
 
-void takeCubes() {
-    turnLineRight(70, 70, 20);
+void takeRubbishV2() {
+    closeLeft();
+    closeRight();
 
+    XCross(70, 1, 70, true, 7.1);
+
+    int r1 = -1, r2 = -1, currentDir;
+    for (int i = 0; i < 6; i++) {
+        if (scannedColors[i] == 1 && r1 == -1) {
+            r1 = i;
+        } else if (scannedColors[i] == 1) {
+            r2 = i;
+            break;
+        }
+    }
+
+    navigate(4, r1, 3, false, currentDir);
+    if (r1 != 4) {
+        stopBC();
+        driveCM(60, 8, 30, 30);
+        directions(currentDir, 3);
+    }
+    takeML();
+    navigate(r1, r2, 3, false, currentDir);
+    stopBC();
+    driveCM(60, 8, 30, 30);
+    turnLine180(70, 165, 35);
+    directions(opposite(currentDir), 3);
+    takeMR(11);
+
+    navigate(r2, 4, 3, false, currentDir);
+    if (currentDir != 3) {
+        lineCM(60, 7, 30, 30);
+        directions(currentDir, 1);
+    } else {
+        // just turn, because already on finish cross
+        turnLine180(70, 165, 35);
+    }
+    align();
+
+    retake();
+    XCross(100, 1, 30, true, 7.5);
+    turnLineLeft(55, 75, 35);
+    XCross(30, 1, 30, false);
+    driveCM(30, 5, 30, 30);
+
+    openLeft();
+    openRight(true);
+
+    driveCM(80, -20, 35, 25);
+    turnLine180(55, 160, 30);
+}
+
+void takeCubes() {
     liftLeft45();
     liftRight45();
 
-    lineCM(25, 10, 25, 25);
-    XCross(25, 1, 25, false);
+    lineCM(55, 11, 20, 35);
+    XCross(75, 1, 60, false);
     turnOneMotor(leftMotor, 40, 1.7, 20, 20);
-    driveCM(20, 17.6, 20, 20);
+    driveCM(30, 17.6, 20, 20);
 
     closeLeft();
     closeRight(true);
 
     stopBC(100);
 
-    driveCM(70, -11, 20, 20);  
+    driveCM(80, -11, 20, 20);  
     openLeft()
     openRight(true)
-    driveCM(70, 11, 20, 20);
+    driveCM(80, 11, 20, 20);
 
     grabLowLeft();
     grabLowRight(true);
 
     driveCM(80, -30, 17, 17);
-    turnLine180(65, 155, 30);
+    turnLine180(60, 165, 30);
     XCross(55, 1, 40, true, 7);
     turnLineRight(65, 75, 30);
 
@@ -231,21 +283,19 @@ void leaveConts() {
     lineCM(90, 28, 20, 20);
     driveCM(80, -18, 20, 20);
 
-    stopBC(100);
-
-    turnLine180(60, 160, 35);
+    turnLine180(60, 165, 35);
     align();
 
     XCross(85, 1, 35, false);
-    lineCM(80, 6.1, 30, 30);
+    lineCM(50, 8, 60, 30);
+
     unload(manipRight, manipLeft);
 
     turnLine180(65, 165, 35);
     align();
 
     openLeft();
-    openRight(true);
-    stopBC(250);
+    openRight();
     XCross(35, 1, 35);
 
     grabLowLeft();
@@ -257,25 +307,20 @@ void leaveConts() {
     liftContLeft(cellLeft, true);
     liftContRight(cellRight, true);
 
-    XCross(75, 1, 60, false);
-
-    lineCM(70, 6, 30, 30);
-    stopBC(100);
+    XCross(80, 1, 60, false);
+    lineCM(50, 7, 60, 30);
 
     unload(cellRight, cellLeft);
 
-    turnLine180(60, 160, 35);
-    align();
+    turnRight(60, 90, 35, 35);
 }
 
 void finish() {
-    lineCM(45, 17, 25, 25);
-    arc(100, -27.52, 179, 100, 100);
-    lineCM(90, 5, 30, 100);
-
     closeLeft();
     closeRight();
-
+    driveCM(80, 45, 50, 35);
+    turnOneMotor(rightMotor, 60, 88, 35, 35);
+    lineCM(45, 5, 25, 25);
     XCross(100, 1, 100, false);
     driveCM(70, 20.5, 100, 15);
 
@@ -288,7 +333,7 @@ void runner() {
     scanHeights();
     grab4();
     leaveCubes();
-    takeRubbish();
+    takeRubbishV2();
     takeCubes();
     leaveConts();
     finish();

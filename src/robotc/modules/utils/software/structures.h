@@ -27,6 +27,13 @@ void initColors() {
 	blackLine.maxG = 35;
 	blackLine.minB = -20;
 	blackLine.maxB = 35;
+
+	whiteLine.minR = 0;
+	whiteLine.maxR = 255;
+	whiteLine.minG = 0;
+	whiteLine.maxG = 255;
+	whiteLine.minB = 0;
+	whiteLine.maxB = 255;
 }
 
 void initLine() {

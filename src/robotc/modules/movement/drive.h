@@ -173,10 +173,10 @@ void turnLineLeft(int power, int angle = defaultAngle90, int startPower = startD
 	}
 
 	turn(power, -angle, startPower, 0);
-	float r, g, b;
 	while(!checkColor(leftS, blackLine)) {
 		drive(power, power, -1, 1, 0, 0);
 	}
+
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];
 }
@@ -195,6 +195,7 @@ void turnLine180(int power, int angle = defaultAngle180, int startPower = startD
 		while(!checkColor(leftS, blackLine)) {
 			drive(power, power, -1, 1, 0, 0);
 		}
+
 	} else {
 		while(!checkColor(rightS, blackLine)) {
 			drive(power, power, 1, -1, 0, 0);

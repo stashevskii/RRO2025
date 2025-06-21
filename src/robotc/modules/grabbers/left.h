@@ -31,7 +31,7 @@ task initGrabberLeft() {
 	nMotorEncoder[manipMotorLeft] = 0;
 }
 
-// right manipulator function template
+// left manipulator function template
 void tl(float p, float k, bool afk, int w = 400) {
 	factorLeft = p;
 	manipPosLeft = k;
@@ -39,7 +39,7 @@ void tl(float p, float k, bool afk, int w = 400) {
 }
 
 void grabLowLeft(bool afk = false) {
-	tl(0.7, 395, afk);
+	tl(0.7, 400, afk);
 }
 
 void openLeftShip(bool afk = false) {
@@ -54,12 +54,20 @@ void openLeft(bool afk = false) {
 	tl(1.2, 1000, afk);
 }
 
+void openLeftSlow(bool afk = false) {
+	tl(0.015, 1000, afk, 1500);
+}
+
 void liftLeft45(bool afk = false) { // 45 degr
-	tl(0.55, 185, afk);
+	tl(0.5, 185, afk);
 }
 
 void liftContLeft(int size, bool afk = false) {
-	tl(0.13, 247, afk, 500);
+	if (size == 0) {
+		tl(0.17, 238, afk, 500);
+	} else {
+		tl(0.17, 238, afk, 500);
+	}
 }
 
 void closeLeft(bool afk = false) {

@@ -2,8 +2,8 @@
 #define _HEIGHT_H_
 
 int getHeight() {
-    if (getRGBSum(colorS2) < 10) {return 0;}
-    return 1;
+    if (getUSDistance(ultraS) < 10) {return 1;}
+    return 0;
 }
 
 void getFirst(int *arr, int c) {
@@ -12,6 +12,7 @@ void getFirst(int *arr, int c) {
 
 void scanOne(int *arr, int speed, int i, int cm = 3) {
     XCross(speed, 1, speed, false);
+    stopBC(5);
     arr[i] = getHeight();
     driveCM(speed, cm, speed, speed);
 }

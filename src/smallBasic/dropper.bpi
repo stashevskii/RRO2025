@@ -35,20 +35,20 @@ Function stopBC(in number w)
 EndFunction
 
 Function down()
-  arc(-95, -95, 0.1, 0.5, 2000)
+  arc(-70, -70, 0.1, 0.5, 700)
 EndFunction
 
 Function up()
-  arc(95, 95, 0.1, 0.5, 1900)
+  arc(70, 70, 0.1, 0.5, 600)
 EndFunction
 
 Function upToHighCont()
-  arc(80, 80, 0.1, 0.5, 185)
+  arc(70, 70, 0.1, 0.5, 95)
 EndFunction
 
 Function downToLowCont()
   stopBC(0)
-  arc(-80, -80, 0.1, 0.5, 250)
+  arc(-70, -70, 0.1, 0.5, 85)
 EndFunction
 
 Function dropCube()
@@ -75,9 +75,9 @@ Function dropCubeAndScan()
 EndFunction
 
 Function rotateLeft(in number value)
-  Motor.Move("D", 20, value, "true")
+  Motor.Move("D", 40, value, "true")
 EndFunction
 
 Function rotateRight(in number value)
-  Motor.Move("D", -20, value, "true")
+  Motor.Move("D", -40, value, "true")
 EndFunction

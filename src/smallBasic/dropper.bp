@@ -22,17 +22,20 @@ While flag = 1
   Program.Delay(20)
 EndWhile
 
-rotateLeft(105)
+rotateLeft(340)
 dropCubeAndScan()
 
-rotateLeft(145)
+rotateLeft(350)
 dropCubeAndScan()
 
-rotateRight(350)
+rotateLeft(450)
 dropCubeAndScan()
 
-rotateRight(145)
+rotateLeft(365)
 dropCubeAndScan()
-rotateLeft(250)
+
+rotateLeft(70)
 
 up()
+While "true"
+EndWhile

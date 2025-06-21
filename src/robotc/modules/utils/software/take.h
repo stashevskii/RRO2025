@@ -4,7 +4,7 @@
 void takeDC() {
     driveCM(70, -1, 35, 35);
     turnLeft(60, 91, 20, 20);
-    liftLeft45(true);
+    liftLeft45();
     liftRight45(true);
     driveCM(45, 16, 20, 20);
     closeLeft();
@@ -12,23 +12,25 @@ void takeDC() {
     driveCM(80, -14.5, 20, 20);
 }
 
-void takeMR() {
+void takeMR(int cm = 10) {
+    align();
     turnOneMotor(leftMotor, 65, -18, 40, 40);
     driveCM(70, -2, 70, 70);
     openRight(true);
     stopBC(250);
-    driveCM(70, 10.5, 20, 20);
+    driveCM(40, cm, 20, 20);
     grabLowRight(true);
     driveCM(65, -7.5, 15, 15);
     turnOneMotor(leftMotor, 65, 18, 40, 40);
 }
 
-void takeML() {
+void takeML(int cm = 10) {
+    align();
     turnOneMotor(rightMotor, 65, -18, 40, 40);
     driveCM(70, -2, 70, 70);
     openLeft(true);
     stopBC(250);
-    driveCM(65, 10.5, 20, 20);
+    driveCM(40, cm, 20, 20);
     grabLowLeft(true);
     driveCM(65, -7.5, 20, 20);
     turnOneMotor(rightMotor, 65, 18, 40, 40);

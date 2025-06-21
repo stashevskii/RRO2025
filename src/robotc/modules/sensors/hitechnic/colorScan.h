@@ -4,6 +4,7 @@
 #include "drivers/hitechnic-colour-v2.h"
 
 tHTCS2 s;
+tHTCS2 hS;
 
 void getRGB(tHTCS2 sensor, float &r, float &g, float &b) {
     readSensor(&sensor);
@@ -14,7 +15,7 @@ void getRGB(tHTCS2 sensor, float &r, float &g, float &b) {
 
 float getSum(tHTCS2 sensor) {
     float r, g, b;
-    getRGB(s, r, g, b);
+    getRGB(sensor, r, g, b);
     return r + g + b;
 }
 

@@ -56,9 +56,9 @@ void liftRight45(bool afk = false, int waiting = 400) {
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		tr(0.25, -225, afk);
+		tr(0.15, -250, afk);
 	} else {
-		tr(0.25, -217, afk);
+		tr(0.15, -250, afk);
 	}
 }
 
