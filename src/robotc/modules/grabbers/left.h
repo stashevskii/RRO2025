@@ -39,11 +39,11 @@ void tl(float p, float k, bool afk, int w = 400) {
 }
 
 void grabLowLeft(bool afk = false) {
-	tl(0.7, 400, afk);
+	tl(0.4, 420, afk);
 }
 
 void openLeftShip(bool afk = false) {
-	tl(0.1, 600, afk);
+	tl(0.08, 600, afk);
 }
 
 void openLeftRubbish(bool afk = false) {
@@ -59,14 +59,14 @@ void openLeftSlow(bool afk = false) {
 }
 
 void liftLeft45(bool afk = false) { // 45 degr
-	tl(0.5, 185, afk);
+	tl(0.45, 265, afk);
 }
 
 void liftContLeft(int size, bool afk = false) {
 	if (size == 0) {
-		tl(0.17, 238, afk, 500);
+		tl(0.135, 257.5, afk, 500);
 	} else {
-		tl(0.17, 238, afk, 500);
+		tl(0.15, 255, afk, 500);
 	}
 }
 

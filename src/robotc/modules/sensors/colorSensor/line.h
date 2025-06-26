@@ -59,7 +59,7 @@ void lineReading(int power, int startPower = startDefault, int *cols) {
 		globalDistC = nMotorEncoder[rightMotor];
 	}
 
-	int i = 0, count = 0, degr = 150;
+	int i = 0, count = 0, degr = 128;
 
 	while (i < 6) {
 		float speedB = smoothB(startPower, power, 0, 0);
@@ -76,12 +76,14 @@ void lineReading(int power, int startPower = startDefault, int *cols) {
 		motor[motorC] = powerC;
 
 		if (nMotorEncoder[motorC] > i * degr) {
-			cols[i] = getSum(s);
+			stopBC(300);
+			int value = getRGBSum(colorS);
+			if (value < 18) {cols[i] = 1;}
+			else if (value < 30) {cols[i] = 0;}
+			else {cols[i] = 6;}
 			i++;
 		}
 	}
-
-	rewriteColors(cols);
 
 	localDistB = nMotorEncoder[leftMotor];
 	localDistC = nMotorEncoder[rightMotor];

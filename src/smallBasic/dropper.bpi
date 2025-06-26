@@ -61,16 +61,9 @@ EndFunction
 Function dropCubeAndScan()
   LCD.Clear()
   Motor.StartPower("D", 0)
-  stopBC(200)
-  value = Sensor.ReadRawValue(4, 2)
-  If value > 3 Then
-    dropCube()
-    dropCube()
-  Else
-    downToLowCont()
-    dropCube()
-    upToHighCont()
-  EndIf
+  downToLowCont()
+  dropCube()
+  upToHighCont()
   stopBC(200)
 EndFunction
 

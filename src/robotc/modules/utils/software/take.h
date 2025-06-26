@@ -2,11 +2,10 @@
 #define _TAKE_H_
 
 void takeDC() {
-    driveCM(70, -1, 35, 35);
     turnLeft(60, 91, 20, 20);
     liftLeft45();
     liftRight45(true);
-    driveCM(45, 16, 20, 20);
+    driveCM(40, 16, 20, 20);
     closeLeft();
     closeRight(true);
     driveCM(80, -14.5, 20, 20);

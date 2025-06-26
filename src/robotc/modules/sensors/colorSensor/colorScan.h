@@ -49,5 +49,4 @@ int getColorCS(tSensors sensor) {
     }
 }
 
-
 #endif

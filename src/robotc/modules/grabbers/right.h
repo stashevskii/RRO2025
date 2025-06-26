@@ -39,11 +39,11 @@ void tr(float p, float k, bool afk, int w = 400) {
 }
 
 void grabLowRight(bool afk = false) {
-	tr(0.7, -420, afk);
+	tr(0.4, -420, afk);
 }
 
 void openRightShip(bool afk = false) {
-	tr(0.1, -600, afk);
+	tr(0.08, -600, afk);
 }
 
 void openRight(bool afk = false) {
@@ -51,14 +51,14 @@ void openRight(bool afk = false) {
 }
 
 void liftRight45(bool afk = false, int waiting = 400) {
-	tr(0.55, -185, afk);
+	tr(0.45, -260, afk);
 }
 
 void liftContRight(int size, bool afk = false) {
 	if (size == 0) {
-		tr(0.15, -250, afk);
+		tr(0.125, -259, afk);
 	} else {
-		tr(0.15, -250, afk);
+		tr(0.145, -259, afk);
 	}
 }
 

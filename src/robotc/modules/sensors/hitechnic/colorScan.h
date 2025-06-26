@@ -16,7 +16,7 @@ void getRGB(tHTCS2 sensor, float &r, float &g, float &b) {
 float getSum(tHTCS2 sensor) {
     float r, g, b;
     getRGB(sensor, r, g, b);
-    return r + g + b;
+    return r;
 }
 
 void getHSVL(tHTCS2 sensor, float &h, float &s, float &v, float &l) {

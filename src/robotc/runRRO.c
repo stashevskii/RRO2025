@@ -11,7 +11,6 @@
 #include "modules/headers.h"
 
 task main() {
-	initSensor(&s, S1);
 	initColors();
 	initLine();
 	startTask(initGrabberLeft);

@@ -6,13 +6,13 @@ void scanColors() {
     checkVoltage();
     driveCM(100, 8.5, 100, 30);
     lineCM(100, 22, 30, 30);
-    lineReading(90, 30, scannedColors);
+    lineReading(70, 35, scannedColors);
     // printArr(scannedColors, 6);
 }
 
 void toConts() {
     arc(100, 16.5, 50, 100, 100);
-	driveCM(100, 58.5, 100, 100);
+	driveCM(90, 58.5, 80, 50);
 	arc(100, -20, 39, 100, 100);
 	lineCM(95, 8, 40, 100);
     XCross(85, 1, 100, true, 5);
@@ -131,6 +131,7 @@ void leaveCubes() {
     lineCM(90, 5, 20, 35);
 
     XCross(40, 1, 25, false);
+    turnOneMotor(rightMotor, 70, 1.2, 50, 50);
     driveCM(85, 16.1, 15, 15);
 
     openLeft();
@@ -149,43 +150,6 @@ void leaveCubes() {
     turnLineRight(65, 70, 20);
     align();
     lineCM(70, 5, 20, 70);
-}
-
-void takeRubbish() {
-    closeLeft();
-    closeRight();
-
-    XCross(70, 1, 20, true, 7.1);
-    turnLineLeft(60, 65, 20);
-
-    QCross(70, 4, 70, true, 2.8);
-    XCross(35, 1, 35, true);
-
-    turnLineRight(65, 65, 20);
-    align();
-    liftLeft45(true);
-    lineCM(30, 2.9, 35, 35);
-
-	arc(35, 9, 90, 35, 35);
-
-	driveCM(40, 51, 20, 20);
-	openLeftRubbish(true);
-
-	arc(65, 15, 90, 25, 25);
-
-	driveCM(55, 43, 20, 25);
-	liftContLeft(0, true);
-    driveCM(62, -3.5, 20, 25);
-
-	arc(50, 19, -89, 25, 25);
-
-    closeLeft();
-    closeRight();
-    turnLineRight(75, 65, 20);
-
-    closeLeft();
-    closeRight();
-    XCross(85, 1, 30, true, 6.5);
 }
 
 void takeRubbishV2() {
@@ -224,20 +188,20 @@ void takeRubbishV2() {
         directions(currentDir, 1);
     } else {
         // just turn, because already on finish cross
-        turnLine180(70, 165, 35);
+        turnLine180(70, 175, 35);
     }
     align();
 
     retake();
     XCross(100, 1, 30, true, 7.5);
-    turnLineLeft(55, 75, 35);
-    XCross(30, 1, 30, false);
+    turnLineLeft(50, 75, 35);
+    XCross(30, 1, 25, false);
     driveCM(30, 5, 30, 30);
 
     openLeft();
     openRight(true);
 
-    driveCM(80, -20, 35, 25);
+    driveCM(75, -20, 35, 25);
     turnLine180(55, 160, 30);
 }
 
@@ -281,13 +245,14 @@ void leaveConts() {
     liftContRight(manipRight, true);
 
     lineCM(90, 28, 20, 20);
-    driveCM(80, -18, 20, 20);
+    driveCM(40, -19, 20, 20);
 
     turnLine180(60, 165, 35);
     align();
 
-    XCross(85, 1, 35, false);
-    lineCM(50, 8, 60, 30);
+    XCross(80, 1, 40, false);
+	stopBC(50);
+    lineCM(35, 6.8, 40, 30);
 
     unload(manipRight, manipLeft);
 
@@ -308,7 +273,8 @@ void leaveConts() {
     liftContRight(cellRight, true);
 
     XCross(80, 1, 60, false);
-    lineCM(50, 7, 60, 30);
+    stopBC(50);
+    lineCM(35, 5.8, 40, 30);
 
     unload(cellRight, cellLeft);
 
@@ -318,12 +284,11 @@ void leaveConts() {
 void finish() {
     closeLeft();
     closeRight();
-    driveCM(80, 45, 50, 35);
-    turnOneMotor(rightMotor, 60, 88, 35, 35);
+    driveCM(85, 45, 50, 50);
+    turnOneMotor(rightMotor, 80, 88, 45, 45);
     lineCM(45, 5, 25, 25);
     XCross(100, 1, 100, false);
     driveCM(70, 20.5, 100, 15);
-
     printTime();
 }
 

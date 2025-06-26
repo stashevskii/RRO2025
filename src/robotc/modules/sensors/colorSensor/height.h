@@ -12,7 +12,7 @@ void getFirst(int *arr, int c) {
 
 void scanOne(int *arr, int speed, int i, int cm = 3) {
     XCross(speed, 1, speed, false);
-    stopBC(5);
+    stopBC(45);
     arr[i] = getHeight();
     driveCM(speed, cm, speed, speed);
 }
@@ -29,7 +29,7 @@ void scanFive(int *arr, int &counter) {
                 driveCM(70, -3, 70, 25);
                 break;
             default:
-                scanOne(arr, 65, i);
+                scanOne(arr, 50, i);
         }
         if (arr[i] == 1) {counter++};
     }
